@@ -6,11 +6,19 @@ const tools=[
  {n:'Claude',c:'Intelligenza artificiale',p:'Freemium',d:'AI utile per testi lunghi, documenti e codice.',b:'Documenti estesi',w:['Drive','GitHub','API'],u:'https://claude.ai/',x:'#c15f3c'},
  {n:'Supabase',c:'Database',p:'Freemium',d:'Database, autenticazione e archiviazione per applicazioni moderne.',b:'Dati persistenti',w:['Next.js','n8n','Netlify'],u:'https://supabase.com/',x:'#3ecf8e'},
  {n:'Airtable',c:'Database',p:'Freemium',d:'La semplicità di un foglio con funzioni da database.',b:'Archivi e piccoli team',w:['Make','Zapier','Forms'],u:'https://airtable.com/',x:'#18bfff'},
+ {n:'Baserow',c:'Database',p:'Open source',d:'Alternativa no-code ad Airtable disponibile in cloud o self-hosted.',b:'Più controllo sull’infrastruttura',w:['n8n','API','Form'],u:'https://baserow.io/',x:'#5190ef'},
+ {n:'SmartSuite',c:'Database',p:'Freemium',d:'Workspace no-code orientato a processi, progetti e operazioni aziendali.',b:'Flussi strutturati per team',w:['Fillout','Make','Zapier'],u:'https://www.smartsuite.com/',x:'#6c5ce7'},
  {n:'GitHub',c:'Siti e app',p:'Gratis',d:'Conserva il codice e tiene traccia di ogni modifica.',b:'Versioni e backup',w:['Netlify','Cloudflare','VS Code'],u:'https://github.com/',x:'#24292f'},
  {n:'Netlify',c:'Siti e app',p:'Freemium',d:'Pubblica un sito e lo aggiorna automaticamente dal repository.',b:'Siti statici',w:['GitHub','Supabase','Forms'],u:'https://www.netlify.com/',x:'#00a99d'},
  {n:'Microsoft Clarity',c:'Marketing',p:'Gratis',d:'Registrazioni e mappe di calore per capire come viene usato un sito.',b:'Analisi del comportamento',w:['Analytics','GTM','Siti web'],u:'https://clarity.microsoft.com/',x:'#1678f2'},
  {n:'Notion',c:'Organizzazione',p:'Freemium',d:'Note, procedure, progetti e piccoli database.',b:'Conoscenza condivisa',w:['Make','Drive','AI'],u:'https://www.notion.so/',x:'#191919'},
  {n:'Obsidian',c:'Organizzazione',p:'Gratis',d:'Note locali collegate e conservate sul computer.',b:'Archivio personale duraturo',w:['Markdown','GitHub','Plugin'],u:'https://obsidian.md/',x:'#7c3aed'}
+ ,{n:'Tally',c:'Form e raccolta dati',p:'Freemium',d:'Moduli con stile essenziale; piano gratuito con moduli e invii illimitati entro le regole di uso corretto.',b:'Raccogliere dati con pochi costi',w:['Notion','Make','Google Sheets'],u:'https://tally.so/',x:'#333333'}
+ ,{n:'Typeform',c:'Form e raccolta dati',p:'Freemium',d:'Moduli conversazionali e curati, con piani a pagamento e limiti di risposte.',b:'Esperienze di compilazione visive',w:['Zapier','CRM','Webhooks'],u:'https://www.typeform.com/',x:'#262627'}
+ ,{n:'Fillout',c:'Form e raccolta dati',p:'Freemium',d:'Moduli avanzati che possono creare e aggiornare record in Airtable e altri database.',b:'Form collegati direttamente ai dati',w:['Airtable','Notion','SmartSuite'],u:'https://www.fillout.com/',x:'#7b61ff'}
+ ,{n:'Anytype',c:'Organizzazione',p:'Freemium',d:'Workspace local-first, cifrato end-to-end e basato su oggetti.',b:'Privacy e uso anche offline',w:['Oggetti','Relazioni','Sync'],u:'https://anytype.io/',x:'#ff5c35'}
+ ,{n:'Capacities',c:'Organizzazione',p:'Freemium',d:'Note organizzate come oggetti collegati invece che come semplici file e cartelle.',b:'Studio, ricerca e conoscenza collegata',w:['Oggetti','AI','Calendario'],u:'https://capacities.io/',x:'#2d6cdf'}
+ ,{n:'Perplexity',c:'Intelligenza artificiale',p:'Freemium',d:'Motore di risposta orientato alla ricerca sul web e alle fonti consultabili.',b:'Ricerca e prima raccolta di fonti',w:['Web','API','Report'],u:'https://www.perplexity.ai/',x:'#1f7a7a'}
 ];
 const categories=['Tutti',...new Set(tools.map(t=>t.c))];let active='Tutti',expanded=false;
 const grid=document.querySelector('#tool-grid'),search=document.querySelector('#search'),filters=document.querySelector('#filters'),more=document.querySelector('#more');
