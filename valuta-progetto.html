@@ -1,88 +1,39 @@
 <!doctype html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Valutazione orientativa di un progetto digitale in base a obiettivo, autonomia tecnica, dati e dimensione.">
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Prima valutazione orientativa di un progetto digitale, elaborata localmente nel browser.">
   <title>Valuta il tuo progetto — Strumenti Digitali</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="assessment.css">
+  <link rel="stylesheet" href="styles.css"><link rel="stylesheet" href="assessment.css">
 </head>
 <body>
-  <header class="topbar">
-    <a class="brand" href="index.html"><span class="brand-icon">✦</span>Strumenti<span>Digitali</span></a>
-    <nav><a href="index.html">Raccolta</a><a href="index.html#combinazioni">Combinazioni</a><a href="convenienza.html">Meno costo</a><a href="privacy.html">Note legali</a></nav>
-  </header>
-
+  <header class="topbar"><a class="brand" href="index.html"><span class="brand-icon">✦</span>Strumenti<span>Digitali</span></a><nav><a href="index.html">Raccolta</a><a href="index.html#combinazioni">Combinazioni</a><a href="convenienza.html">Meno costo</a><a href="privacy.html">Note legali</a></nav></header>
   <main>
-    <section class="assessment-hero">
-      <small>SIMULATORE ORIENTATIVO</small>
-      <h1>Valuta il tuo<br><em>progetto digitale.</em></h1>
-      <p>Seleziona ciò che vuoi realizzare e come vorresti gestirlo. La valutazione cambia in base a obiettivo, autonomia tecnica, dati trattati e dimensione prevista.</p>
-      <div class="method-points"><span>✓ Nessun account</span><span>✓ Nessun dato inviato</span><span>✓ Risultato immediato</span></div>
-    </section>
-
-    <section class="evaluator-layout">
-      <form class="evaluator-form" id="assessment-form">
-        <div class="form-intro"><div><small>CONFIGURA LA VALUTAZIONE</small><h2>Quattro scelte decisive</h2></div><span id="progress">1/4</span></div>
-
-        <fieldset class="choice-group" data-group="goal">
-          <legend><span>1</span><div><b>Cosa vuoi realizzare?</b><small>Scegli l’obiettivo più vicino al tuo progetto.</small></div></legend>
-          <div class="choice-grid goal-grid">
-            <label><input type="radio" name="goal" value="lead" checked><span><b>Lead e richieste</b><small>Form, preventivi e gestione contatti</small></span></label>
-            <label><input type="radio" name="goal" value="content"><span><b>Contenuti e video</b><small>Grafiche, script e social media</small></span></label>
-            <label><input type="radio" name="goal" value="app"><span><b>Web app o MVP</b><small>Strumento interattivo o area riservata</small></span></label>
-            <label><input type="radio" name="goal" value="assistant"><span><b>Assistente documentale</b><small>Ricerca AI su documenti propri</small></span></label>
-            <label><input type="radio" name="goal" value="automation"><span><b>Automazione</b><small>Collegare piattaforme e ridurre attività manuali</small></span></label>
-            <label><input type="radio" name="goal" value="analytics"><span><b>Misurazione</b><small>Traffico, conversioni e comportamento utenti</small></span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="choice-group" data-group="skill">
-          <legend><span>2</span><div><b>Chi gestirà il sistema?</b><small>Il livello cambia strumenti, tempi e manutenzione.</small></div></legend>
-          <div class="choice-grid">
-            <label><input type="radio" name="skill" value="beginner" checked><span><b>Principiante</b><small>Preferisco soluzioni visive e guidate</small></span></label>
-            <label><input type="radio" name="skill" value="intermediate"><span><b>Intermedio</b><small>Posso usare webhook e logiche condizionali</small></span></label>
-            <label><input type="radio" name="skill" value="advanced"><span><b>Avanzato</b><small>Posso gestire codice, API e database</small></span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="choice-group" data-group="data">
-          <legend><span>3</span><div><b>Quali dati utilizzerai?</b><small>La sensibilità dei dati aumenta i controlli necessari.</small></div></legend>
-          <div class="choice-grid">
-            <label><input type="radio" name="data" value="public" checked><span><b>Pubblici o generici</b><small>Contenuti e informazioni non riservate</small></span></label>
-            <label><input type="radio" name="data" value="customer"><span><b>Clienti o aziendali</b><small>Contatti, richieste e documenti interni</small></span></label>
-            <label><input type="radio" name="data" value="special"><span><b>Particolari o delicati</b><small>Salute, minori, dati legali o finanziari</small></span></label>
-          </div>
-        </fieldset>
-
-        <fieldset class="choice-group" data-group="scale">
-          <legend><span>4</span><div><b>Quanto sarà utilizzato?</b><small>Una prova personale è diversa da un servizio pubblico.</small></div></legend>
-          <div class="choice-grid">
-            <label><input type="radio" name="scale" value="test" checked><span><b>Prova o uso personale</b><small>Pochi dati e utilizzo limitato</small></span></label>
-            <label><input type="radio" name="scale" value="small"><span><b>Piccola attività</b><small>Clienti reali e uso continuativo</small></span></label>
-            <label><input type="radio" name="scale" value="public"><span><b>Servizio pubblico</b><small>Più utenti, accessi e continuità operativa</small></span></label>
-          </div>
-        </fieldset>
-      </form>
-
-      <aside class="diagnosis" id="result" aria-live="polite">
+    <section class="subhero"><small>SIMULATORE ORIENTATIVO</small><h1>Valuta il tuo<br><em>progetto digitale.</em></h1><p>Rispondi a quattro domande. La valutazione cambia in base all’obiettivo, alle competenze, ai dati trattati e alla dimensione prevista.</p></section>
+    <section class="assessment-layout">
+      <div>
+        <form class="assessment-form" id="assessment-form">
+          <h2>Configura la valutazione</h2>
+          <div class="privacy-callout"><b>Privacy:</b> le risposte restano su questo dispositivo. Non vengono inviate né conservate.</div>
+          <div class="field"><label for="goal"><span>1</span> Cosa vuoi realizzare?</label><select id="goal" name="goal"><option value="lead">Lead, richieste e preventivi</option><option value="content">Contenuti, immagini e video</option><option value="app">Web app o prototipo</option><option value="assistant">Assistente documentale AI</option><option value="automation">Automazione di un processo</option><option value="analytics">Misurazione e conversioni</option></select></div>
+          <div class="field"><label for="skill"><span>2</span> Chi gestirà il sistema?</label><select id="skill" name="skill"><option value="beginner">Principiante — preferisco strumenti visivi</option><option value="intermediate">Intermedio — posso usare webhook e logiche</option><option value="advanced">Avanzato — posso gestire codice, API e database</option></select></div>
+          <div class="field"><label for="data"><span>3</span> Quali dati utilizzerai?</label><select id="data" name="data"><option value="public">Dati pubblici o generici</option><option value="customer">Dati di clienti o aziendali</option><option value="special">Dati particolari o delicati</option></select></div>
+          <div class="field"><label for="scale"><span>4</span> Quanto sarà utilizzato?</label><select id="scale" name="scale"><option value="test">Prova o uso personale</option><option value="small">Piccola attività con uso continuativo</option><option value="public">Servizio pubblico con più utenti</option></select></div>
+          <p class="form-help">Il risultato si aggiorna automaticamente quando cambi una risposta.</p>
+        </form>
+      </div>
+      <aside class="assessment-info diagnosis" id="result" aria-live="polite">
         <div class="diagnosis-head"><small>VALUTAZIONE ATTUALE</small><span class="complexity low" id="complexity">Complessità contenuta</span></div>
-        <h2 id="result-title">Raccolta contatti essenziale</h2>
-        <p id="result-summary"></p>
+        <h2 id="result-title"></h2><p id="result-summary"></p>
         <div class="result-block"><h3>Stack da approfondire</h3><div class="stack-flow" id="stack"></div></div>
         <div class="result-block"><h3>Perché questa scelta</h3><ul id="reasons"></ul></div>
-        <div class="result-block split"><div><h3>Modello di costo</h3><p id="cost"></p></div><div><h3>Proprietà dei dati</h3><p id="ownership"></p></div></div>
+        <div class="result-columns"><div class="result-block"><h3>Modello di costo</h3><p id="cost"></p></div><div class="result-block"><h3>Gestione dei dati</h3><p id="ownership"></p></div></div>
         <div class="result-block warning"><h3>Controlli prima di partire</h3><ul id="checks"></ul></div>
         <div class="next-step"><small>PROSSIMO PASSO</small><b id="next-step"></b></div>
         <p class="result-note">Il risultato nasce da regole generali applicate alle risposte selezionate ed è fornito esclusivamente a scopo informativo e conoscitivo. Non costituisce una previsione o una garanzia di fattibilità, guadagno o beneficio. Non è stato generato da un’intelligenza artificiale.</p>
       </aside>
     </section>
-
-    <section class="evaluation-advice">
-      <small>CONSIGLI DEL SITO</small><h2>Tre parametri da non trascurare</h2>
-      <div class="advice-grid"><article><span>01</span><h3>Modello di costo</h3><p>Controlla se il servizio fattura attività complete, singole operazioni, utenti, crediti AI oppure risorse del server.</p></article><article><span>02</span><h3>Proprietà dei dati</h3><p>Cloud e locale non sono automaticamente sicuri o insicuri: valuta accessi, cifratura, backup, localizzazione e contratti dei fornitori.</p></article><article><span>03</span><h3>Autonomia tecnica</h3><p>Un sistema più flessibile richiede spesso più configurazione, controllo degli errori, aggiornamenti e manutenzione.</p></article></div>
-    </section>
+    <section class="evaluation-advice"><small>CONSIGLI DEL SITO</small><h2>Tre parametri da non trascurare</h2><div class="advice-grid"><article><span>01</span><h3>Modello di costo</h3><p>Controlla se paghi attività complete, singole operazioni, utenti, crediti AI oppure risorse del server.</p></article><article><span>02</span><h3>Proprietà dei dati</h3><p>Valuta accessi, cifratura, backup, localizzazione, esportazione e condizioni dei fornitori.</p></article><article><span>03</span><h3>Autonomia tecnica</h3><p>Maggiore flessibilità significa spesso più configurazione, controllo degli errori e manutenzione.</p></article></div></section>
   </main>
   <footer><div><a class="brand" href="index.html"><span class="brand-icon">✦</span>Strumenti<span>Digitali</span></a><p>Guida informativa indipendente curata da Elena Savkina.</p></div><div><a href="index.html">Raccolta</a><a href="privacy.html">Privacy e note legali</a></div></footer>
   <script src="project-assessment.js"></script>
