@@ -11,6 +11,7 @@ Raccoglitore pubblico e indipendente di piattaforme digitali, curato da Elena Sa
 - sezione blog e aggiornamenti;
 - note legali separate.
 - pagina “Meno costo, più flessibilità” con criteri prudenti e data di verifica.
+- valutatore dimostrativo dei progetti, elaborato localmente senza invio dei dati.
 
 ## Pubblicazione
 
