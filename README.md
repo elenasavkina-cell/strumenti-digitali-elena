@@ -10,6 +10,7 @@ Raccoglitore pubblico e indipendente di piattaforme digitali, curato da Elena Sa
 - combinazioni consigliate;
 - sezione blog e aggiornamenti;
 - note legali separate.
+- pagina “Meno costo, più flessibilità” con criteri prudenti e data di verifica.
 
 ## Pubblicazione
 
