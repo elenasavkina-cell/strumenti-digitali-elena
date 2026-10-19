@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+# Sito ancora in fase privata di pre-lancio.

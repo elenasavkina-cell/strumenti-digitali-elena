@@ -1,0 +1,135 @@
+const tools=[
+ {n:'Make',c:'Automazione',p:'Freemium',d:'Scenari visuali per collegare app, dati e operazioni.',b:'Flussi articolati senza programmare',w:['Notion','Google Sheets','Webhook'],u:'https://www.make.com/',x:'#7659f5'},
+ {n:'Zapier',c:'Automazione',p:'Freemium',d:'Automazioni rapide con migliaia di integrazioni pronte.',b:'Iniziare velocemente',w:['Gmail','Trello','HubSpot'],u:'https://zapier.com/',x:'#ff4f00'},
+ {n:'n8n',c:'Automazione',p:'Open source',d:'Flussi avanzati, anche installati sul proprio server.',b:'Controllo dei dati',w:['Supabase','API','AI'],u:'https://n8n.io/',x:'#e94b70'},
+ {n:'ChatGPT',c:'Intelligenza artificiale',p:'Freemium',d:'Assistente per scrittura, analisi, ricerca e programmazione.',b:'Lavoro quotidiano',w:['Notion','Canva','GitHub'],u:'https://chatgpt.com/',x:'#10a37f'},
+ {n:'Claude',c:'Intelligenza artificiale',p:'Freemium',d:'AI utile per testi lunghi, documenti e codice.',b:'Documenti estesi',w:['Drive','GitHub','API'],u:'https://claude.ai/',x:'#c15f3c'},
+ {n:'Supabase',c:'Database',p:'Freemium',d:'Database, autenticazione e archiviazione per applicazioni moderne.',b:'Dati persistenti',w:['Next.js','n8n','Netlify'],u:'https://supabase.com/',x:'#3ecf8e'},
+ {n:'Airtable',c:'Database',p:'Freemium',d:'La semplicità di un foglio con funzioni da database.',b:'Archivi e piccoli team',w:['Make','Zapier','Forms'],u:'https://airtable.com/',x:'#18bfff'},
+ {n:'Baserow',c:'Database',p:'Open source',d:'Alternativa no-code ad Airtable disponibile in cloud o self-hosted.',b:'Più controllo sull’infrastruttura',w:['n8n','API','Form'],u:'https://baserow.io/',x:'#5190ef'},
+ {n:'SmartSuite',c:'Database',p:'Freemium',d:'Workspace no-code orientato a processi, progetti e operazioni aziendali.',b:'Flussi strutturati per team',w:['Fillout','Make','Zapier'],u:'https://www.smartsuite.com/',x:'#6c5ce7'},
+ {n:'GitHub',c:'Siti e app',p:'Gratis',d:'Conserva il codice e tiene traccia di ogni modifica.',b:'Versioni e backup',w:['Netlify','Cloudflare','VS Code'],u:'https://github.com/',x:'#24292f'},
+ {n:'Netlify',c:'Siti e app',p:'Freemium',d:'Pubblica un sito e lo aggiorna automaticamente dal repository.',b:'Siti statici',w:['GitHub','Supabase','Forms'],u:'https://www.netlify.com/',x:'#00a99d'},
+ {n:'Microsoft Clarity',c:'Marketing',p:'Gratis',d:'Registrazioni e mappe di calore per capire come viene usato un sito.',b:'Analisi del comportamento',w:['Analytics','GTM','Siti web'],u:'https://clarity.microsoft.com/',x:'#1678f2'},
+ {n:'Notion',c:'Organizzazione',p:'Freemium',d:'Note, procedure, progetti e piccoli database.',b:'Conoscenza condivisa',w:['Make','Drive','AI'],u:'https://www.notion.so/',x:'#191919'},
+ {n:'Obsidian',c:'Organizzazione',p:'Gratis',d:'Note locali collegate e conservate sul computer.',b:'Archivio personale duraturo',w:['Markdown','GitHub','Plugin'],u:'https://obsidian.md/',x:'#7c3aed'}
+ ,{n:'Tally',c:'Form e raccolta dati',p:'Freemium',d:'Moduli con stile essenziale; piano gratuito con moduli e invii illimitati entro le regole di uso corretto.',b:'Raccogliere dati con pochi costi',w:['Notion','Make','Google Sheets'],u:'https://tally.so/',x:'#333333'}
+ ,{n:'Typeform',c:'Form e raccolta dati',p:'Freemium',d:'Moduli conversazionali e curati, con piani a pagamento e limiti di risposte.',b:'Esperienze di compilazione visive',w:['Zapier','CRM','Webhooks'],u:'https://www.typeform.com/',x:'#262627'}
+ ,{n:'Fillout',c:'Form e raccolta dati',p:'Freemium',d:'Moduli avanzati che possono creare e aggiornare record in Airtable e altri database.',b:'Form collegati direttamente ai dati',w:['Airtable','Notion','SmartSuite'],u:'https://www.fillout.com/',x:'#7b61ff'}
+ ,{n:'Anytype',c:'Organizzazione',p:'Freemium',d:'Workspace local-first, cifrato end-to-end e basato su oggetti.',b:'Privacy e uso anche offline',w:['Oggetti','Relazioni','Sync'],u:'https://anytype.io/',x:'#ff5c35'}
+ ,{n:'Capacities',c:'Organizzazione',p:'Freemium',d:'Note organizzate come oggetti collegati invece che come semplici file e cartelle.',b:'Studio, ricerca e conoscenza collegata',w:['Oggetti','AI','Calendario'],u:'https://capacities.io/',x:'#2d6cdf'}
+ ,{n:'Perplexity',c:'Intelligenza artificiale',p:'Freemium',d:'Motore di risposta orientato alla ricerca sul web e alle fonti consultabili.',b:'Ricerca e prima raccolta di fonti',w:['Web','API','Report'],u:'https://www.perplexity.ai/',x:'#1f7a7a'}
+ ,{n:'Gemini',c:'Intelligenza artificiale',p:'Freemium',d:'Famiglia di modelli multimodali di Google, integrata nei suoi servizi e disponibile anche per sviluppatori.',b:'Lavorare con l’ecosistema Google',w:['Workspace','NotebookLM','Google AI Studio'],u:'https://gemini.google.com/',x:'#4d7cff'}
+ ,{n:'Gemma',c:'Intelligenza artificiale',p:'Open weights',d:'Famiglia di modelli Google leggeri e aperti, pensata per sviluppo, ricerca e utilizzo su infrastrutture proprie.',b:'Sperimentare con modelli Google aperti',w:['Google AI Studio','Hugging Face','Kaggle'],u:'https://ai.google.dev/gemma',x:'#4285f4'}
+ ,{n:'Llama',c:'Intelligenza artificiale',p:'Open weights',d:'Famiglia di modelli Meta con pesi disponibili, utilizzabile per personalizzazione e distribuzione secondo la relativa licenza.',b:'Creare soluzioni AI personalizzate',w:['Hugging Face','Ollama','LlamaIndex'],u:'https://www.llama.com/',x:'#0668e1'}
+ ,{n:'Mixtral',c:'Intelligenza artificiale',p:'Open source',d:'Serie di modelli mixture-of-experts di Mistral AI, progettata per unire prestazioni ed efficienza.',b:'Studiare modelli europei efficienti',w:['Mistral AI','Hugging Face','Ollama'],u:'https://mistral.ai/news/mixtral-of-experts/',x:'#f97316'}
+ ,{n:'DeepSeek',c:'Intelligenza artificiale',p:'Open weights',d:'Famiglia di modelli orientata anche a ragionamento, matematica e programmazione; disponibilità e licenze variano per modello.',b:'Ragionamento tecnico e codice',w:['API','Hugging Face','Ollama'],u:'https://www.deepseek.com/',x:'#4d6bfe'}
+ ,{n:'Qwen',c:'Intelligenza artificiale',p:'Open weights',d:'Famiglia di modelli sviluppata da Alibaba, con varianti per testo, codice e contenuti multimodali.',b:'Provare modelli multilingue e tecnici',w:['Qwen Code','Hugging Face','ModelScope'],u:'https://qwenlm.github.io/',x:'#615ced'}
+ ,{n:'NotebookLM',c:'Ricerca e conoscenza',p:'Freemium',d:'Analizza e sintetizza fonti caricate dall’utente mantenendo i riferimenti ai documenti.',b:'Studiare PDF e raccolte documentali',w:['Drive','PDF','Gemini'],u:'https://notebooklm.google.com/',x:'#3569d4'}
+ ,{n:'Cursor',c:'Sviluppo e codice',p:'Freemium',d:'Editor AI progettato per comprendere e modificare progetti di codice completi.',b:'Sviluppo assistito su repository',w:['GitHub','Supabase','Netlify'],u:'https://cursor.com/',x:'#1c1c1c'}
+ ,{n:'Windsurf',c:'Sviluppo e codice',p:'Freemium',d:'Editor con agente AI e strumenti per intervenire su più file del progetto.',b:'Prototipi e refactoring assistito',w:['GitHub','API','Deploy'],u:'https://windsurf.com/',x:'#00a98f'}
+ ,{n:'v0',c:'Sviluppo e codice',p:'Freemium',d:'Genera interfacce e prototipi web a partire da istruzioni testuali.',b:'Partire rapidamente dalla UI',w:['React','Vercel','GitHub'],u:'https://v0.dev/',x:'#111111'}
+ ,{n:'Bolt.new',c:'Sviluppo e codice',p:'Freemium',d:'Ambiente nel browser per generare e modificare applicazioni tramite prompt.',b:'Creare prototipi funzionanti',w:['Supabase','GitHub','Netlify'],u:'https://bolt.new/',x:'#6b46ff'}
+ ,{n:'GitHub Copilot',c:'Sviluppo e codice',p:'A pagamento',d:'Assistente integrato negli editor e nei flussi GitHub per scrivere e rivedere codice.',b:'Sviluppo quotidiano',w:['VS Code','GitHub','Repository'],u:'https://github.com/features/copilot',x:'#24292f'}
+ ,{n:'Firebase',c:'Database',p:'Freemium',d:'Servizi Google per database, autenticazione, hosting e funzioni backend.',b:'Backend gestito rapidamente',w:['Gemini','Web app','Android'],u:'https://firebase.google.com/',x:'#f5a623'}
+ ,{n:'Activepieces',c:'Automazione',p:'Open source',d:'Piattaforma di automazione disponibile in cloud o installabile autonomamente.',b:'Alternativa moderna per i flussi',w:['AI','Webhook','Self-hosted'],u:'https://www.activepieces.com/',x:'#6c5ce7'}
+ ,{n:'Dify',c:'Agenti AI',p:'Open source',d:'Piattaforma per costruire applicazioni AI, flussi e assistenti collegati ai propri documenti.',b:'Prototipi RAG e chatbot',w:['Modelli AI','API','Knowledge base'],u:'https://dify.ai/',x:'#155eef'}
+ ,{n:'Flowise',c:'Agenti AI',p:'Open source',d:'Strumento visuale per creare flussi e applicazioni basate su modelli linguistici.',b:'Sperimentare agenti visualmente',w:['LangChain','API','Database vettoriali'],u:'https://flowiseai.com/',x:'#2c8b75'}
+ ,{n:'Runway',c:'Grafica e video',p:'Freemium',d:'Generazione e trasformazione video da testo, immagini, video o audio.',b:'Scene animate e contenuti promozionali',w:['Immagini','Audio','Montaggio'],u:'https://runwayml.com/',x:'#181818'}
+ ,{n:'Ideogram',c:'Grafica e video',p:'Freemium',d:'Generatore di immagini particolarmente adatto a grafiche che includono testo.',b:'Concept grafici e titoli visivi',w:['Canva','Photoroom','Social'],u:'https://ideogram.ai/',x:'#ef3c5b'}
+ ,{n:'Photoroom',c:'Grafica e video',p:'Freemium',d:'Rimuove sfondi e prepara immagini di prodotto o contenuti per siti e social.',b:'Pulizia rapida degli asset',w:['Canva','E-commerce','Social'],u:'https://www.photoroom.com/',x:'#7357ff'}
+ ,{n:'Canva',c:'Grafica e video',p:'Freemium',d:'Crea grafiche, presentazioni e video con modelli e strumenti assistiti dall’AI.',b:'Contenuti pronti per la pubblicazione',w:['ChatGPT','Runway','Social'],u:'https://www.canva.com/',x:'#00a8c6'}
+ ,{n:'Kimi',c:'Intelligenza artificiale',p:'Freemium',d:'Assistente orientato a ricerca, documenti, ragionamento e programmazione.',b:'Analizzare informazioni e lavorare sul codice',w:['Documenti','Web','GitHub'],u:'https://www.kimi.com/',x:'#111827'}
+ ,{n:'Genspark',c:'Intelligenza artificiale',p:'Piani variabili',d:'Workspace con agenti per ricerca, documenti e creazione di contenuti multimediali.',b:'Riunire più attività in un solo ambiente',w:['Ricerca','Presentazioni','Video'],u:'https://www.genspark.ai/',x:'#635bff'}
+ ,{n:'Manus',c:'Agenti AI',p:'Piani variabili',d:'Agente che può svolgere ricerche e produrre documenti, presentazioni e siti.',b:'Delegare attività articolate con un risultato finale',w:['Browser','Documenti','Siti web'],u:'https://manus.im/',x:'#111111'}
+ ,{n:'Microsoft Copilot',c:'Intelligenza artificiale',p:'Freemium',d:'Assistente Microsoft per ricerca, scrittura, immagini e attività quotidiane.',b:'Lavorare nell’ecosistema Microsoft',w:['Microsoft 365','Edge','Windows'],u:'https://copilot.microsoft.com/',x:'#2563eb'}
+ ,{n:'DeepL',c:'Testi e lingue',p:'Freemium',d:'Traduzione, riscrittura e supporto linguistico per testi e documenti.',b:'Tradurre e migliorare testi multilingue',w:['Documenti','Browser','API'],u:'https://www.deepl.com/',x:'#0f2b46'}
+ ,{n:'ChatPDF',c:'Ricerca e conoscenza',p:'Freemium',d:'Permette di interrogare e sintetizzare documenti PDF in forma conversazionale.',b:'Ottenere rapidamente risposte da un PDF',w:['PDF','Ricerca','Studio'],u:'https://www.chatpdf.com/',x:'#e45757'}
+ ,{n:'Leonardo AI',c:'Grafica e video',p:'Freemium',d:'Genera e modifica immagini e contenuti visivi con modelli creativi.',b:'Concept, immagini e asset per contenuti',w:['Canva','Video','Social'],u:'https://leonardo.ai/',x:'#6d28d9'}
+ ,{n:'Higgsfield',c:'Grafica e video',p:'Piani variabili',d:'Suite creativa per generare immagini e video con controlli visivi e cinematografici.',b:'Scene dinamiche e contenuti pubblicitari',w:['Immagini','Video','Social'],u:'https://higgsfield.ai/',x:'#111827'}
+ ,{n:'Clipdrop',c:'Grafica e video',p:'Freemium',d:'Strumenti rapidi per rimuovere sfondi, pulire, espandere e generare immagini.',b:'Correggere e preparare immagini',w:['Canva','E-commerce','Social'],u:'https://clipdrop.co/',x:'#3b82f6'}
+ ,{n:'OpusClip',c:'Grafica e video',p:'Freemium',d:'Trasforma video lunghi in clip brevi, aggiungendo ritaglio, sottotitoli e adattamenti.',b:'Ricavare contenuti social da video lunghi',w:['YouTube','Podcast','Social'],u:'https://www.opus.pro/',x:'#7c3aed'}
+ ,{n:'Synthesia',c:'Grafica e video',p:'Piani variabili',d:'Crea video con avatar e voci artificiali a partire da un testo.',b:'Video formativi e spiegazioni multilingue',w:['Script','Presentazioni','Formazione'],u:'https://www.synthesia.io/',x:'#4f46e5'}
+ ,{n:'HeyGen',c:'Grafica e video',p:'Freemium',d:'Genera video con avatar, voci e traduzione del parlato.',b:'Presentatori virtuali e localizzazione video',w:['Script','Avatar','Social'],u:'https://www.heygen.com/',x:'#6c5ce7'}
+ ,{n:'Remotion',c:'Grafica e video',p:'Framework',d:'Crea video tramite componenti e codice, con contenuti e formati aggiornabili.',b:'Automatizzare video ripetibili e personalizzati',w:['React','Dati','Rendering'],u:'https://www.remotion.dev/',x:'#0b84f3'}
+ ,{n:'Google Flow',c:'Grafica e video',p:'Piani variabili',d:'Ambiente Google per creare sequenze video con modelli generativi.',b:'Ideare e costruire scene video',w:['Gemini','Immagini','Montaggio'],u:'https://flow.google.com/',x:'#4285f4'}
+ ,{n:'Suno',c:'Voce e audio',p:'Freemium',d:'Genera brani musicali e contenuti sonori a partire da indicazioni testuali.',b:'Bozze musicali e colonne sonore originali',w:['Video','Social','Montaggio'],u:'https://suno.com/',x:'#ef4444'}
+ ,{n:'Adobe Podcast',c:'Voce e audio',p:'Freemium',d:'Registra, migliora e trascrive la voce con strumenti pensati per podcast e video.',b:'Pulire l’audio parlato',w:['Microfono','Podcast','Video'],u:'https://podcast.adobe.com/',x:'#e11d48'}
+ ,{n:'Napkin AI',c:'Grafica e video',p:'Freemium',d:'Trasforma testi in diagrammi, mappe, schemi e altri visual modificabili.',b:'Spiegare un concetto con una visualizzazione',w:['Documenti','Presentazioni','Social'],u:'https://www.napkin.ai/',x:'#f97316'}
+ ,{n:'Gamma',c:'Presentazioni e contenuti',p:'Freemium',d:'Crea presentazioni, documenti, pagine web e contenuti social a partire da un’idea.',b:'Produrre una prima struttura visuale',w:['Documenti','Siti web','Social'],u:'https://gamma.app/',x:'#7c3aed'}
+ ,{n:'Replit',c:'Sviluppo e codice',p:'Freemium',d:'Ambiente online per creare, eseguire e pubblicare applicazioni anche con assistenza AI.',b:'Prototipare applicazioni nel browser',w:['GitHub','Database','Deploy'],u:'https://replit.com/',x:'#f26207'}
+ ,{n:'Lovable',c:'Sviluppo e codice',p:'Freemium',d:'Genera applicazioni web tramite istruzioni testuali e modifiche iterative.',b:'Creare rapidamente un prototipo web',w:['Supabase','GitHub','Deploy'],u:'https://lovable.dev/',x:'#f43f5e'}
+];
+const groups={
+ 'Testi e ricerca':['ChatGPT','Claude','Perplexity','Gemini','Gemma','Llama','Mixtral','DeepSeek','Qwen','NotebookLM','Kimi','Genspark','Manus','Microsoft Copilot','DeepL','ChatPDF','Napkin AI','Gamma'],
+ 'Video e immagini':['Runway','Ideogram','Photoroom','Canva','Genspark','Manus','Leonardo AI','Higgsfield','Clipdrop','OpusClip','Synthesia','HeyGen','Remotion','Google Flow','Napkin AI','Gamma'],
+ 'Voce e audio':['ChatGPT','Gemini','Runway','Genspark','DeepL','OpusClip','Synthesia','HeyGen','Suno','Adobe Podcast'],
+ 'Automazione':['Make','Zapier','n8n','Activepieces','Dify','Flowise','Genspark','Manus','OpusClip','Remotion','Gamma'],
+ 'Siti e sviluppo':['Supabase','GitHub','Netlify','Cursor','Windsurf','v0','Bolt.new','GitHub Copilot','Firebase','Kimi','Manus','Remotion','Gamma','Replit','Lovable'],
+ 'Organizzazione e dati':['Airtable','Baserow','SmartSuite','Microsoft Clarity','Notion','Obsidian','Tally','Typeform','Fillout','Anytype','Capacities','NotebookLM']
+};
+tools.forEach(tool=>{tool.uses=Object.entries(groups).filter(([,names])=>names.includes(tool.n)).map(([group])=>group);if(!tool.uses.length)tool.uses=['Altro']});
+const categories=['Tutte le categorie',...Object.keys(groups),'Altro'];
+let active='Tutte le categorie';
+const grid=document.querySelector('#tool-grid');
+const filters=document.querySelector('#filters');
+const count=document.querySelector('#result-count');
+const empty=document.querySelector('#empty');
+function render(){
+ const found=tools.filter(tool=>active==='Tutte le categorie'||tool.uses.includes(active));
+ count.textContent=`${found.length} strumenti`;
+ empty.style.display=found.length?'none':'block';
+ grid.innerHTML=found.map(tool=>`<article class="tool-card"><div class="card-top"><span class="tool-logo" style="background:${tool.x}">${tool.n[0]}</span><span class="badge">${tool.p}</span></div><p class="tool-category">${tool.uses.join(' · ')}</p><h3>${tool.n}</h3><p>${tool.d}</p><div class="ideal">✓ <span><b>Utile per</b>${tool.b}</span></div><label>SI COMBINA BENE CON</label><div class="tags">${tool.w.map(item=>`<span>${item}</span>`).join('')}</div><a href="${tool.u}" target="_blank" rel="noopener">Visita il sito ufficiale ↗</a></article>`).join('');
+}
+function drawFilters(){
+ filters.innerHTML=categories.map(category=>{const total=category==='Tutte le categorie'?tools.length:tools.filter(tool=>tool.uses.includes(category)).length;return `<button class="${category===active?'active':''}" data-cat="${category}">${category} <span>${total}</span></button>`}).join('');
+ filters.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{active=button.dataset.cat;drawFilters();render()}));
+}
+drawFilters();
+render();
+
+const advisor=document.querySelector('[data-tool-advisor]');
+if(advisor){
+ const questionBox=advisor.querySelector('.advisor-question');
+ const progress=advisor.querySelector('.advisor-progress');
+ const progressBar=progress.querySelector('span');
+ const progressText=progress.querySelector('small');
+ const resultBox=advisor.querySelector('.advisor-result');
+ const answers={};
+ const goals=[
+  ['video','Creare o montare video'],['images','Creare immagini e grafiche'],['site','Costruire un sito o un’app'],['server','Pubblicare un sito e collegarlo a dominio o server'],['automation','Automatizzare attività e collegare strumenti'],['all','Fare più attività in un solo ambiente']
+ ];
+ const questions=[
+  {key:'goal',title:'Che cosa vuoi realizzare?',options:goals},
+  {key:'experience',title:'Come preferisci iniziare?',options:[['easy','Senza programmare, con passaggi semplici'],['guided','Con l’aiuto dell’AI e la possibilità di modificare'],['technical','Con maggiore controllo tecnico']]},
+  {key:'budget',title:'Quanto vuoi investire nella prima prova?',options:[['free','Vorrei iniziare gratuitamente'],['small','Posso valutare un piccolo abbonamento'],['flexible','Scelgo in base al risultato']]}
+ ];
+ const plans={
+  video:{title:'Crea un primo video breve',items:[['Canva','Prepara grafica, testo e formato verticale con un modello semplice.'],['OpusClip','Provalo se devi ricavare clip brevi da un video già esistente.'],['Runway','Usalo dopo per generare o trasformare singole scene con l’AI.']],task:'Crea un video verticale di 15 secondi usando prima materiali già disponibili.',category:'Video e immagini'},
+  images:{title:'Crea e rifinisci una grafica',items:[['Canva','Parti da un formato preciso e costruisci la composizione.'],['Ideogram','Prova una proposta visiva quando nell’immagine deve comparire del testo.'],['Photoroom','Rimuovi lo sfondo e prepara fotografie o oggetti per la grafica finale.']],task:'Realizza una grafica 1080 × 1350 con un titolo, una foto e un invito all’azione.',category:'Video e immagini'},
+  site:{title:'Costruisci un piccolo sito funzionante',items:[['Bolt.new o Lovable','Descrivi la pagina e genera il primo prototipo senza partire dal codice vuoto.'],['GitHub','Salva il progetto e conserva la cronologia delle modifiche.'],['Netlify','Pubblica il codice quando la prima versione è pronta da provare online.']],task:'Crea una pagina con titolo, descrizione e pulsante; pubblicala soltanto dopo averla controllata da telefono.',category:'Siti e sviluppo'},
+  server:{title:'Collega correttamente sito, dominio e servizi',items:[['GitHub','Conserva qui il codice che dovrà essere pubblicato.'],['Netlify','Collega il repository: gestisce pubblicazione, HTTPS e aggiornamenti del sito.'],['Supabase','Aggiungilo soltanto se servono database, accesso utenti o dati persistenti.']],task:'Pubblica prima una pagina di prova con indirizzo temporaneo; collega il dominio solo quando funziona.',category:'Siti e sviluppo'},
+  automation:{title:'Automatizza un’attività reale',items:[['Make','Disegna visivamente il primo flusso e osserva ogni passaggio.'],['Zapier','Confrontalo se cerchi configurazioni rapide e integrazioni già pronte.'],['n8n','Valutalo dopo se vuoi più controllo o installazione su un tuo server.']],task:'Crea un flusso di prova che copia i dati di un modulo in un foglio, senza inviare messaggi pubblici.',category:'Automazione'},
+  all:{title:'Prova un ambiente versatile senza fare tutto insieme',items:[['ChatGPT','Usalo per ricerca, testi, analisi e supporto alla costruzione del progetto.'],['Genspark','Prova un’attività completa che unisca ricerca e produzione di un risultato.'],['Canva','Completa la parte visuale e prepara formati pronti da condividere.']],task:'Scegli un solo risultato — per esempio una mini guida — e realizzalo con massimo due strumenti.',category:'Testi e ricerca'}
+ };
+ let step=0;
+ function showQuestion(){
+  const current=questions[step];
+  questionBox.innerHTML=`<h3>${current.title}</h3><div class="advisor-options">${current.options.map(([value,label])=>`<button type="button" data-value="${value}">${label}</button>`).join('')}</div>`;
+  progressBar.style.width=`${((step+1)/questions.length)*100}%`;
+  progressText.textContent=`Domanda ${step+1} di ${questions.length}`;
+  questionBox.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{answers[current.key]=button.dataset.value;if(step<questions.length-1){step+=1;showQuestion()}else showResult()}));
+ }
+ function showResult(){
+  const plan=plans[answers.goal];
+  const budgetNote=answers.budget==='free'?'Inizia dai piani gratuiti e verifica i limiti prima di inserire dati o acquistare crediti.':answers.budget==='small'?'Usa prima la prova gratuita; paga soltanto se il piccolo progetto riesce e la funzione necessaria è inclusa.':'Confronta comunque piano gratuito e pagamento: un prezzo maggiore non garantisce che lo strumento sia più adatto.';
+  const technicalNote=answers.experience==='technical'?'Hai scelto maggiore controllo: verifica esportazione, proprietà dei dati e possibilità di installazione autonoma.':answers.experience==='guided'?'Conserva sempre una copia esportabile del progetto e controlla le modifiche proposte dall’AI.':'Parti con impostazioni gestite e pochi passaggi; aggiungi complessità soltanto quando serve.';
+  questionBox.hidden=true;progress.hidden=true;resultBox.hidden=false;
+  resultBox.innerHTML=`<p class="result-label">Percorso da provare</p><h3>${plan.title}</h3><ol>${plan.items.map(([name,why])=>`<li><strong>${name}</strong><span>${why}</span></li>`).join('')}</ol><p>${technicalNote} ${budgetNote}</p><p class="test-task"><strong>Prima prova:</strong> ${plan.task}</p><a href="#strumenti" data-filter="${plan.category}">Mostra gli strumenti consigliati ↓</a><button type="button" data-advisor-restart>Ricomincia</button>`;
+  resultBox.querySelector('[data-filter]').addEventListener('click',()=>{active=plan.category;drawFilters();render()});
+  resultBox.querySelector('[data-advisor-restart]').addEventListener('click',restart);
+  resultBox.focus();
+ }
+ function restart(){step=0;Object.keys(answers).forEach(key=>delete answers[key]);questionBox.hidden=false;progress.hidden=false;resultBox.hidden=true;showQuestion();questionBox.querySelector('button').focus()}
+ showQuestion();
+}

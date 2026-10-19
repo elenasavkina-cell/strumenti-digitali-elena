@@ -9,7 +9,19 @@ const catalog={
 const form=document.querySelector('#assessment-form');
 const value=name=>form.elements[name].value;
 function render(){
-  const goal=value('goal'),skill=value('skill'),data=value('data'),scale=value('scale'),item=catalog[goal];
+  const goal=value('goal'),skill=value('skill'),data=value('data'),scale=value('scale');
+  const answers=[goal,skill,data,scale].filter(Boolean).length;
+  document.querySelector('#progress').textContent=`${answers}/4 risposte`;
+  if(answers<4){
+    document.querySelector('#result').hidden=true;
+    document.querySelector('#result-placeholder').hidden=false;
+    document.querySelector('#form-help').textContent=answers?`Mancano ${4-answers} ${4-answers===1?'risposta':'risposte'}.`:'Completa tutte le risposte per vedere il suggerimento.';
+    return;
+  }
+  const item=catalog[goal];
+  document.querySelector('#result-placeholder').hidden=true;
+  document.querySelector('#result').hidden=false;
+  document.querySelector('#form-help').textContent='Percorso generato. Puoi modificare qualsiasi risposta.';
   let score=item.base+({beginner:0,intermediate:1,advanced:2}[skill])+({public:0,customer:1,special:3}[data])+({test:0,small:1,public:2}[scale]);
   const level=score<=2?'contenuta':score<=5?'intermedia':'elevata';
   const levelClass=score<=2?'low':score<=5?'medium':'high';
@@ -31,6 +43,5 @@ function render(){
   if(!checks.length)checks.push('limiti del piano gratuito, backup ed eventuali dati raccolti');
   document.querySelector('#checks').innerHTML=checks.map(x=>`<li>${x}</li>`).join('');
   document.querySelector('#next-step').textContent=item.next[skill];
-  document.querySelector('#progress').textContent='4/4';
 }
 form.addEventListener('change',render);render();

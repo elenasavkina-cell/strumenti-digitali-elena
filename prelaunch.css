@@ -1,0 +1,396 @@
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  width: 100%;
+  max-width: none;
+  height: 76px;
+  padding-left: max(24px, calc((100% - 1180px) / 2));
+  padding-right: max(24px, calc((100% - 1180px) / 2));
+  background: rgba(244, 246, 248, 0.94);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 1px 0 rgba(7, 24, 47, 0.12);
+}
+
+.article-page .site-header {
+  background: rgba(255, 255, 255, 0.94);
+}
+
+.question-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 12px max(24px, calc((100% - 1180px) / 2));
+  background: var(--ink);
+  color: #fff;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.question-banner strong {
+  color: var(--signal);
+  white-space: nowrap;
+}
+
+.question-banner:hover strong,
+.question-banner:focus-visible strong {
+  text-decoration: underline;
+}
+
+@media (min-width: 1100px) {
+  .hero {
+    padding-top: 62px;
+    padding-bottom: 82px;
+  }
+
+  .hero h1 {
+    font-size: clamp(4rem, 5.45vw, 5.55rem);
+  }
+
+  .learning-hero {
+    padding-top: 60px;
+    padding-bottom: 70px;
+  }
+
+  .learning-hero h1 {
+    font-size: clamp(3.8rem, 5.1vw, 5.15rem);
+  }
+
+  .article-head {
+    padding-top: 62px;
+  }
+
+  .article-head h1 {
+    font-size: clamp(3.8rem, 5.35vw, 5.35rem);
+  }
+
+  .resource-preview,
+  .topics,
+  .about {
+    padding-top: 72px;
+    padding-bottom: 72px;
+  }
+
+  .subhero {
+    padding-bottom: 48px;
+  }
+
+  .split-subhero {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(320px, 0.75fr);
+    align-items: end;
+    column-gap: 80px;
+    padding-top: 44px;
+    padding-bottom: 44px;
+  }
+
+  .split-subhero h1 {
+    font-size: clamp(3.6rem, 4.6vw, 4.85rem);
+  }
+
+  .split-subhero h1,
+  .split-subhero .dek {
+    margin-bottom: 0;
+  }
+
+  .split-subhero .subhero-copy {
+    padding-bottom: 10px;
+  }
+
+  .split-subhero .text-link {
+    display: inline-block;
+    margin-top: 24px;
+  }
+}
+
+.project-page .article-head {
+  padding-bottom: 20px;
+}
+
+.project-page .prose h2 {
+  margin-top: 44px;
+}
+
+@media print {
+  .project-page .site-header,
+  .project-page .question-banner,
+  .project-page .site-footer {
+    display: none;
+  }
+
+  .project-page .article-shell {
+    width: 100%;
+  }
+
+  .project-page .article-head {
+    padding: 0 0 12pt;
+  }
+
+  .project-page .article-head h1 {
+    margin-bottom: 0;
+    font-size: 28pt;
+  }
+
+  .project-page .kicker {
+    margin-bottom: 8pt;
+  }
+
+  .project-page .prose {
+    padding-bottom: 0;
+  }
+
+  .project-page .prose p,
+  .project-page .prose li {
+    font-size: 10.5pt;
+    line-height: 1.45;
+  }
+
+  .project-page .prose h2 {
+    margin: 18pt 0 7pt;
+    font-size: 19pt;
+    break-after: avoid;
+  }
+
+  .project-page .prose h2 + p,
+  .project-page .prose h2 + ul {
+    break-inside: avoid;
+  }
+}
+
+.article-page:has(nav a[href="/chi-sono/"][aria-current="page"]) .article-head {
+  padding-bottom: 14px;
+}
+
+.article-navigation {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+}
+
+.article-navigation h2 {
+  margin: 0 0 18px;
+  font: 800 0.78rem/1.4 var(--body);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.article-navigation-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.article-navigation a {
+  display: block;
+  padding: 18px;
+  border: 1px solid var(--line);
+  font: 700 1rem/1.45 var(--body);
+  text-decoration: none;
+}
+
+.article-navigation a:hover,
+.article-navigation a:focus-visible {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+@media (max-width: 620px) {
+  .site-header {
+    position: sticky;
+    top: 0;
+    height: auto;
+    padding: 12px 14px 9px;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    background: rgba(244, 246, 248, 0.97);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+
+  .article-page .site-header {
+    background: rgba(255, 255, 255, 0.97);
+  }
+
+  .site-header .brand {
+    line-height: 1.2;
+  }
+
+  .site-header nav {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    width: 100%;
+    overflow-x: auto;
+    padding: 2px 0 5px;
+    text-align: left;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .site-header nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .site-header nav a {
+    flex: 0 0 auto;
+    font-size: 0.82rem;
+  }
+
+  .question-banner {
+    padding: 10px 14px;
+    gap: 10px;
+    font-size: 0.78rem;
+  }
+
+  .hero {
+    padding-top: 28px;
+    padding-bottom: 20px;
+  }
+
+  .hero h1,
+  .learning-hero h1 {
+    font-size: clamp(3.05rem, 12vw, 4rem);
+  }
+
+  .topics,
+  .about {
+    padding: 32px 0;
+  }
+
+  .resource-preview {
+    padding: 28px 0;
+  }
+
+  .topics > h2 {
+    margin: 30px 0 34px;
+  }
+
+  .resource-grid,
+  .about-grid {
+    gap: 24px;
+    margin-top: 22px;
+  }
+
+  .article-page:has(nav a[href="/chi-sono/"][aria-current="page"]) .article-head {
+    padding-top: 30px;
+    padding-bottom: 8px;
+  }
+
+  .article-page:has(nav a[href="/chi-sono/"][aria-current="page"]) .article-head h1 {
+    margin-bottom: 0;
+  }
+
+  .article-page:has(nav a[href="/chi-sono/"][aria-current="page"]) .prose {
+    padding-bottom: 58px;
+  }
+
+  .article-page:has(nav a[href="/chi-sono/"][aria-current="page"]) .prose .intro {
+    margin-bottom: 24px;
+    font-size: clamp(1.3rem, 6.4vw, 1.65rem);
+    line-height: 1.48;
+  }
+
+  .article-page:has(nav a[href="/chi-sono/"][aria-current="page"]) .prose p {
+    line-height: 1.68;
+  }
+
+  .article-page .article-head {
+    padding-top: 24px;
+    padding-bottom: 14px;
+  }
+
+  .article-page .article-head h1 {
+    margin-bottom: 0;
+    font-size: clamp(2.75rem, 11.8vw, 3.8rem);
+  }
+
+  .article-page .article-meta {
+    margin-top: 20px;
+  }
+
+  .article-page .prose {
+    padding-bottom: 62px;
+  }
+
+  .article-page .prose .intro {
+    margin-bottom: 20px;
+  }
+
+  .article-page .prose h2 {
+    margin: 34px 0 12px;
+    font-size: clamp(1.9rem, 8.8vw, 2.4rem);
+  }
+
+  .article-page .prose .warning {
+    margin: 16px 0 30px;
+    padding: 20px;
+  }
+
+  .article-navigation {
+    margin-top: 38px;
+  }
+
+  .article-navigation-links {
+    grid-template-columns: 1fr;
+  }
+
+  .subhero {
+    padding-top: 28px;
+    padding-bottom: 30px;
+  }
+
+  .subhero h1 {
+    margin-bottom: 20px;
+    font-size: clamp(2.9rem, 12.5vw, 4rem);
+  }
+
+  .subhero .dek {
+    margin-bottom: 0;
+  }
+
+  .split-subhero {
+    display: block;
+  }
+
+  .split-subhero .text-link {
+    display: inline-block;
+    margin-top: 20px;
+  }
+
+  .resource-grid h2,
+  .about-grid h2 {
+    font-size: clamp(2.5rem, 11vw, 3.25rem);
+  }
+
+  .topic-grid.four {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .topic-grid.four article,
+  .topic-grid.four article + article {
+    padding: 18px 12px 18px 0;
+    min-height: 0;
+    border-right: 1px solid var(--line);
+  }
+
+  .topic-grid.four article:nth-child(2n) {
+    padding-right: 0;
+    padding-left: 12px;
+    border-right: 0;
+  }
+
+  .topic-grid.four h3 {
+    margin: 16px 0 8px;
+    font-size: 1rem;
+  }
+
+  .topic-grid.four p {
+    margin-bottom: 0;
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+}
