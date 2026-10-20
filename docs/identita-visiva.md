@@ -73,3 +73,18 @@ Descrittore consigliato: **AI, strumenti digitali e turismo tecnologico spiegati
 Firma breve: **Capire. Verificare. Scegliere.**
 
 Prima di aprire nuovi profili si controllano gli account esistenti: accesso, pubblico, storico, eventuali limitazioni, nome disponibile e coerenza dei contenuti.
+
+
+## Sistema copertine articoli — 20 ottobre 2026
+
+Ogni articolo utilizza una copertina distinta, costruita con la stessa grammatica visiva: formato 16:9, fondo chiaro, segni blu notte e blu elettrico, volumi turchesi e un piccolo accento verde lime. Le immagini non contengono titoli, loghi di terzi o testo incorporato.
+
+- **Allucinazioni AI:** risposta digitale, linea interrotta e lente di verifica.
+- **AI Act:** documento digitale e scudo.
+- **Risposte critiche:** superfici trasparenti e linea che cambia direzione.
+- **Recensioni online:** schede, stelle e lente.
+- **Algoritmi di viaggio:** mappa, nodi e percorso selezionato.
+- **Traduttori in viaggio:** due fumetti e lente.
+- **Tour virtuali:** arco reale e ricostruzione tridimensionale.
+
+La copertina deve comparire nell’articolo, nella Home, nell’indice di sezione e nei metadati Open Graph/Twitter. Ogni immagine ha un testo alternativo descrittivo.
