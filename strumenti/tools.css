@@ -22,6 +22,7 @@
 .tool-card>a:hover{color:var(--accent)}
 .more{display:block;margin:30px auto 0}
 .empty{display:none}
+.trademark-note{max-width:760px;margin:28px 0 0;color:var(--muted);font-size:.76rem;line-height:1.55}
 .collection-note{background:var(--ink);color:#fff;padding:60px 0}
 .collection-note>.shell>h2{max-width:850px;margin-bottom:38px;font-size:clamp(2.5rem,4.2vw,4.2rem)}
 .collection-note .kicker{color:var(--signal)}
