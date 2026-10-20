@@ -219,27 +219,20 @@
   }
 
   .site-header nav {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 0;
     width: 100%;
-    overflow-x: auto;
+    overflow: visible;
     padding: 2px 0 5px;
-    text-align: left;
+    text-align: center;
     white-space: nowrap;
-    scrollbar-width: none;
-    -webkit-overflow-scrolling: touch;
-    -webkit-mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 18px), transparent 100%);
-    mask-image: linear-gradient(to right, #000 0, #000 calc(100% - 18px), transparent 100%);
-  }
-
-  .site-header nav::-webkit-scrollbar {
-    display: none;
   }
 
   .site-header nav a {
-    flex: 0 0 auto;
-    font-size: 0.82rem;
+    min-width: 0;
+    padding: 3px 1px;
+    font-size: clamp(0.7rem, 3.7vw, 0.82rem);
   }
 
   .question-banner {
