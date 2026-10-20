@@ -35,7 +35,7 @@
     node.setAttribute('role','dialog');
     node.setAttribute('aria-modal','true');
     node.setAttribute('aria-labelledby','cookie-title');
-    node.innerHTML='<div class="cookie-banner__copy"><strong id="cookie-title">Statistiche e privacy</strong><p>Con il tuo consenso, Microsoft Clarity ci aiuta a capire come viene utilizzato il sito attraverso dati di navigazione, mappe di calore e registrazioni anonimizzate. Puoi accettare o rifiutare.</p><a href="/privacy/">Leggi la Privacy</a></div><div class="cookie-banner__actions"><button type="button" data-cookie-choice="deny">Rifiuta</button><button type="button" class="cookie-accept" data-cookie-choice="accept">Accetta</button></div>';
+    node.innerHTML='<div class="cookie-banner__copy"><strong id="cookie-title">Statistiche e privacy</strong><p>Con il tuo consenso, Microsoft Clarity ci aiuta a capire come viene utilizzato il sito attraverso dati di navigazione, mappe di calore e registrazioni delle interazioni, con i contenuti sensibili mascherati. Puoi accettare o rifiutare.</p><a href="/privacy/">Leggi la Privacy</a></div><div class="cookie-banner__actions"><button type="button" data-cookie-choice="deny">Rifiuta</button><button type="button" class="cookie-accept" data-cookie-choice="accept">Accetta</button></div>';
     document.body.appendChild(node);
     return node;
   }
