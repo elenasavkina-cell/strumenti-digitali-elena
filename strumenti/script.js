@@ -69,7 +69,7 @@ const groups={
  'Organizzazione e dati':['Airtable','Baserow','SmartSuite','Microsoft Clarity','Notion','Obsidian','Tally','Typeform','Fillout','Anytype','Capacities','NotebookLM']
 };
 tools.forEach(tool=>{tool.uses=Object.entries(groups).filter(([,names])=>names.includes(tool.n)).map(([group])=>group);if(!tool.uses.length)tool.uses=['Altro']});
-const categories=['Tutte le categorie',...Object.keys(groups),'Altro'];
+const categories=['Tutte le categorie',...Object.keys(groups),...(tools.some(tool=>tool.uses.includes('Altro'))?['Altro']:[])];
 let active='Tutte le categorie';
 const grid=document.querySelector('#tool-grid');
 const filters=document.querySelector('#filters');
