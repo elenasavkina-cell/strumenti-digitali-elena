@@ -300,7 +300,12 @@
 
   .article-page .article-head h1 {
     margin-bottom: 0;
-    font-size: clamp(2.75rem, 11.8vw, 3.8rem);
+    font-size: clamp(2.2rem, 9.4vw, 3rem);
+  }
+
+  .article-page .article-head .dek {
+    margin-top: 16px;
+    margin-bottom: 0;
   }
 
   .article-page .article-meta {
