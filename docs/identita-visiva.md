@@ -89,7 +89,6 @@ Ogni articolo utilizza una copertina distinta, costruita con la stessa grammatic
 
 La copertina deve comparire nell’articolo, nella Home, nell’indice di sezione e nei metadati Open Graph/Twitter. Ogni immagine ha un testo alternativo descrittivo.
 
-
 ## Regole tecniche obbligatorie per la pubblicazione
 
 - In Home deve esserci **un solo** articolo con la classe `article-card-latest`.
@@ -101,3 +100,34 @@ La copertina deve comparire nell’articolo, nella Home, nell’indice di sezion
 - Le miniature accanto a titolo e descrizione sono decorative e usano `alt=""`; la copertina nell’articolo conserva una descrizione significativa.
 
 Netlify esegue `scripts/validate-site.mjs` prima di ogni pubblicazione. Se una di queste regole viene violata, il deploy si interrompe e indica la correzione necessaria.
+
+## Fondamenta CSS e crescita del sito — 21 ottobre 2026
+
+I fogli di stile restano separati per responsabilità. Non devono essere uniti soltanto per ridurre il numero dei file: la separazione rende più sicuro aggiungere pagine e componenti senza modificare tutto il sito.
+
+- `styles.css` è l’unica fonte delle variabili globali.
+- `--navy` identifica il blu notte dei blocchi scuri.
+- `--surface` identifica il fondo neutro delle miniature chiare.
+- I fogli di sezione devono usare le variabili e non introdurre colori quasi uguali.
+- `prelaunch.css` contiene regole ormai definitive: sarà rinominato o riassorbito gradualmente, senza una riscrittura generale.
+- Hero, copertina dell’articolo e miniatura possono avere funzioni differenti: le card e le copertine editoriali restano 16:9; la hero può mantenere una composizione diversa quando intenzionale.
+
+## Controlli automatici prima di ogni deploy
+
+Il validatore blocca la pubblicazione se rileva:
+
+- più di una scheda in evidenza o una variante scura in una scheda normale;
+- copertine mancanti, non SVG o prive di testo alternativo;
+- immagini social mancanti o non raster;
+- dati strutturati `Article` mancanti;
+- SVG senza `viewBox` valido;
+- collegamenti o risorse locali inesistenti;
+- assenza delle variabili globali `--navy` e `--surface`.
+
+Il controllo automatico non sostituisce la verifica visiva su telefono e computer, né il controllo editoriale di fonti, date e affermazioni.
+
+## Regola per nuove sezioni
+
+Una nuova sezione deve introdurre soltanto gli stili specifici che non esistono già. Header, menu, footer, tipografia, colori, card, copertine, avvisi e pulsanti devono riutilizzare i componenti comuni. Correzioni valide per tutto il sito non devono essere applicate alla singola pagina.
+
+Prima di sviluppare un’area riservata, i contenuti dovranno essere separati dai template. L’area editoriale futura richiederà autenticazione reale, bozze, anteprima, approvazione, storico revisioni e nessuna chiave segreta nel browser.
