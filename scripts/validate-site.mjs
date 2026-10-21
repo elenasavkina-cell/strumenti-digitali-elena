@@ -1,4 +1,4 @@
-import { readFile, access } from "node:fs/promises";
+import { readFile, access, readdir } from "node:fs/promises";
 import { constants } from "node:fs";
 
 const errors = [];
@@ -8,9 +8,24 @@ const mustExist = async (path, label) => {
   catch { errors.push(`${label}: file mancante (${path})`); }
 };
 
+const walk = async (dir) => {
+  const files = [];
+  for (const entry of await readdir(dir, { withFileTypes: true })) {
+    if (entry.name === ".git" || entry.name === "node_modules") continue;
+    const path = dir === "." ? entry.name : `${dir}/${entry.name}`;
+    if (entry.isDirectory()) files.push(...await walk(path));
+    else files.push(path);
+  }
+  return files;
+};
+
 const home = await read("index.html");
 const cardCss = await read("article-index.css");
 const mainCss = await read("styles.css");
+
+if (!/--navy:#07182f/.test(mainCss) || !/--surface:#eef2f6/.test(mainCss)) {
+  errors.push("CSS: styles.css deve definire le variabili globali --navy e --surface.");
+}
 
 // La Home deve avere una sola evidenza, sempre la prima scheda.
 const latestMatches = [...home.matchAll(/<article class="article-card article-card-latest">([\s\S]*?)<\/article>/g)];
@@ -63,13 +78,43 @@ for (const file of [...new Set(articleFiles)]) {
     const html = await read(file);
     const og = html.match(/<meta property="og:image" content="([^"]+)"/)?.[1];
     const twitter = html.match(/<meta name="twitter:image" content="([^"]+)"/)?.[1];
+    const cover = html.match(/<figure class="article-cover">\s*<img[^>]+src="([^"]+)"[^>]+alt="([^"]*)"/) ?? [];
     if (!og || !/\.(png|jpe?g|webp)$/i.test(og)) errors.push(`${file}: og:image deve essere PNG, JPG o WebP.`);
     if (!twitter || twitter !== og) errors.push(`${file}: twitter:image deve coincidere con og:image.`);
+    if (!cover[1]?.endsWith(".svg")) errors.push(`${file}: la copertina nella pagina deve essere un SVG.`);
+    if (!cover[2]?.trim()) errors.push(`${file}: la copertina principale deve avere un testo alternativo significativo.`);
+    if (!/<script type="application\/ld\+json">[\s\S]*?"@type":"Article"/.test(html)) {
+      errors.push(`${file}: dati strutturati Article mancanti.`);
+    }
     if (og?.startsWith("https://elenasavkina.it/")) {
       await mustExist(og.replace("https://elenasavkina.it/", ""), `${file} immagine social`);
     }
+    if (cover[1]?.startsWith("/")) await mustExist(cover[1].slice(1), `${file} copertina SVG`);
   } catch {
     errors.push(`Home: collegamento a un articolo senza file locale (${file}).`);
+  }
+}
+
+// Ogni SVG deve dichiarare proporzioni intrinseche valide per evitare salti di layout.
+const allFiles = await walk(".");
+for (const file of allFiles.filter((path) => path.endsWith(".svg"))) {
+  const svg = await read(file);
+  const viewBox = svg.match(/<svg[^>]+viewBox="([^"]+)"/i)?.[1];
+  const values = viewBox?.trim().split(/\s+/).map(Number) ?? [];
+  if (values.length !== 4 || values.some(Number.isNaN) || values[2] <= 0 || values[3] <= 0) {
+    errors.push(`${file}: viewBox mancante o non valido.`);
+  }
+}
+
+// Collegamenti e risorse locali dichiarati nell'HTML devono esistere prima del deploy.
+for (const file of allFiles.filter((path) => path.endsWith(".html"))) {
+  const html = await read(file);
+  for (const [, raw] of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
+    if (!raw.startsWith("/") || raw.startsWith("//")) continue;
+    const clean = raw.split(/[?#]/)[0];
+    if (!clean) continue;
+    const localPath = clean.endsWith("/") ? `${clean.slice(1)}index.html` : clean.slice(1);
+    await mustExist(localPath || "index.html", `${file} collegamento locale ${raw}`);
   }
 }
 
@@ -78,4 +123,4 @@ if (errors.length) {
   process.exit(1);
 }
 
-console.log("Controllo editoriale superato: evidenza, copertine e immagini social coerenti.");
+console.log("Controllo editoriale superato: evidenza, copertine, SVG, collegamenti e immagini social coerenti.");
