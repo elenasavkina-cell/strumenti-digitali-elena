@@ -13,4 +13,4 @@ Sito editoriale statico pubblicato automaticamente da Netlify.
 - `site-sections.css`: sezioni e raccolte
 - `article-enhancements.css`: componenti degli articoli
 
-Ogni modifica salvata sul ramo `main` viene pubblicata automaticamente da Netlify. Prima della pubblicazione vanno controllati collegamenti, resa mobile, data di verifica e fonti.
+Ogni modifica salvata sul ramo `main` viene controllata e pubblicata automaticamente da Netlify. Lo script `scripts/validate-site.mjs` impedisce che vengano pubblicate più schede in evidenza, varianti grafiche errate, copertine fuori misura o immagini social mancanti. Restano da verificare manualmente resa mobile, data, collegamenti e fonti.
