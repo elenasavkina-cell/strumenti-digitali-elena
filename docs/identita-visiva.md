@@ -88,3 +88,16 @@ Ogni articolo utilizza una copertina distinta, costruita con la stessa grammatic
 - **Tour virtuali:** arco reale e ricostruzione tridimensionale.
 
 La copertina deve comparire nell’articolo, nella Home, nell’indice di sezione e nei metadati Open Graph/Twitter. Ogni immagine ha un testo alternativo descrittivo.
+
+
+## Regole tecniche obbligatorie per la pubblicazione
+
+- In Home deve esserci **un solo** articolo con la classe `article-card-latest`.
+- L’articolo in evidenza usa la variante `nome-dark.svg`, ricavata dalla stessa composizione e senza rettangolo di fondo.
+- Le schede normali usano sempre `nome.svg`: nessun file `-dark.svg` può rimanere dopo lo spostamento dell’evidenza.
+- Ogni articolo conserva entrambe le varianti SVG, chiara e scura, così il passaggio dentro o fuori dall’evidenza non richiede di ridisegnare la copertina.
+- Le copertine dentro gli articoli hanno larghezza massima di 820 px, rapporto 16:9 e `object-fit: contain`.
+- Le anteprime social utilizzano un file raster separato `nome-social.png` da 1200×630 px, mai l’SVG del sito.
+- Le miniature accanto a titolo e descrizione sono decorative e usano `alt=""`; la copertina nell’articolo conserva una descrizione significativa.
+
+Netlify esegue `scripts/validate-site.mjs` prima di ogni pubblicazione. Se una di queste regole viene violata, il deploy si interrompe e indica la correzione necessaria.
