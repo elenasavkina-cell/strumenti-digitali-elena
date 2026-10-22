@@ -3,16 +3,16 @@ const knowledge = [
     id: 'claude-mistral',
     terms: ['claude o mistral', 'mistral o claude', 'mistral', 'modello europeo'],
     title: 'Claude o Mistral: dipende da che cosa vuoi fare',
-    answer: 'L’archivio non contiene ancora un confronto diretto e verificato tra i due. Claude può essere una prima prova per testi e documenti; Mistral merita una valutazione specifica quando contano fornitore europeo, modelli disponibili o integrazione tecnica.',
-    tools: [['Claude', 'Prima prova per testi, revisione e lavoro sui documenti.'], ['Mistral', 'Da valutare se contano ecosistema europeo e possibilità tecniche.'], ['Scheda di confronto', 'Annota compito, piano, data e risultato: evita una classifica assoluta.']],
+    answer: 'L’archivio non contiene ancora un confronto diretto e verificato tra i due. Le schede descrivono funzioni e contesti d’uso, senza stabilire un vincitore. Controlla sempre disponibilità, piano e condizioni sui siti ufficiali.',
+    tools: [['Claude', 'Consulta la scheda per funzioni relative a testi, documenti e sviluppo.'], ['Mistral', 'Consulta la scheda per modelli, servizi e possibilità di integrazione.'], ['Scheda di confronto', 'Annota compito, piano, data e risultato: evita una classifica assoluta.']],
     links: [['Come scegliere un assistente in base al compito', '/blog/chatgpt-claude-gemini-quale-scegliere/'], ['Controlla Claude e Mistral nella raccolta', '/strumenti/#strumenti']]
   },
   {
     id: 'assistenti',
     terms: ['chatgpt o gemini', 'claude o gemini', 'chatgpt', 'gemini', 'claude', 'assistente ai', 'quale ai', 'meglio ai'],
     title: 'Scegli in base al compito, non a un vincitore',
-    answer: 'ChatGPT è un punto di partenza trasversale; Claude è particolarmente adatto a testi e documenti; Gemini può essere pratico se lavori già nei servizi Google o con materiali molto lunghi. La scelta va verificata sul lavoro che devi svolgere.',
-    tools: [['ChatGPT', 'Per attività diverse nello stesso ambiente.'], ['Claude', 'Per sviluppare e revisionare testi o documenti.'], ['Gemini', 'Per chi usa già l’ecosistema Google.']],
+    answer: 'I tre servizi includono funzioni che in parte si sovrappongono. L’archivio non assegna un vincitore: ti rimanda alle differenze documentate e al metodo di scelta descritto nell’articolo.',
+    tools: [['ChatGPT', 'Consulta la scheda per funzioni, strumenti disponibili e condizioni del piano.'], ['Claude', 'Consulta la scheda per funzioni relative a testi, documenti e sviluppo.'], ['Gemini', 'Consulta la scheda per funzioni e integrazioni con i servizi Google.']],
     links: [['ChatGPT, Claude o Gemini: quale scegliere?', '/blog/chatgpt-claude-gemini-quale-scegliere/'], ['Esplora gli strumenti AI', '/strumenti/#strumenti']]
   },
   {
@@ -65,7 +65,7 @@ const knowledge = [
   },
   {
     id: 'organizzazione',
-    terms: ['organizz', 'notion', 'obsidian', 'appunti', 'note', 'conoscenza', 'archivio personale'],
+    terms: ['organizz', 'notion', 'obsidian', 'appunti', 'prendere appunti', 'conoscenza', 'archivio personale'],
     title: 'Scegli dove vuoi conservare e ritrovare le informazioni',
     answer: 'Notion è pratico per pagine, procedure e piccoli database condivisi; Obsidian conserva note locali collegate; Anytype e Capacities organizzano la conoscenza come oggetti.',
     tools: [['Notion', 'Per pagine, procedure e progetti condivisi.'], ['Obsidian', 'Per un archivio locale in Markdown.'], ['Anytype o Capacities', 'Per note e oggetti collegati.']],
@@ -73,7 +73,7 @@ const knowledge = [
   },
   {
     id: 'audio',
-    terms: ['audio', 'voce', 'podcast', 'musica', 'microfono', 'trascriz', 'sottotitol'],
+    terms: ['audio', 'voce', 'podcast', 'musica', 'registrare microfono', 'trascriz', 'sottotitol'],
     title: 'Distingui voce, pulizia audio e musica',
     answer: 'Sono attività diverse: prima chiarisci se devi registrare o migliorare una voce, trascrivere un parlato oppure creare una colonna sonora.',
     tools: [['Adobe Podcast', 'Per registrare, pulire e trascrivere la voce.'], ['Suno', 'Per bozze musicali e contenuti sonori originali.'], ['CapCut o un editor video', 'Per sottotitoli e sincronizzazione con le immagini.']],
@@ -89,10 +89,10 @@ const knowledge = [
   },
   {
     id: 'file',
-    terms: ['file', 'pdf', 'document', 'privacy', 'dati personali', 'alleg', 'caric', 'metadati'],
+    terms: ['file', 'pdf', 'document', 'privacy', 'dati personali', 'dati clienti', 'documento riservato', 'contratto', 'caricare contratto', 'alleg', 'caric', 'metadati', 'notebooklm', 'studiare documenti'],
     title: 'Controlla il file prima di allegarlo',
     answer: 'Invia soltanto ciò che serve. Rimuovi identificatori e metadati non necessari, verifica account e impostazioni e ricontrolla la risposta sul documento originale.',
-    tools: [['Controllo documento', 'Per cercare dati nascosti nei file Microsoft.'], ['NotebookLM', 'Per lavorare su una raccolta documentale scelta.'], ['ChatPDF', 'Per una prova rapida su PDF non riservati.']],
+    tools: [['Controllo del file', 'Cerca dati personali, metadati e contenuti nascosti prima dell’invio.'], ['Scheda NotebookLM', 'Consulta funzioni e condizioni per lavorare su fonti scelte.'], ['Scheda ChatPDF', 'Consulta funzioni e condizioni prima di caricare un PDF non riservato.']],
     links: [['Cosa succede ai file caricati nell’AI?', '/blog/file-caricati-intelligenza-artificiale-privacy/'], ['Regole europee prima di usare l’AI', '/blog/ai-act-cosa-sapere-prima-di-usare-intelligenza-artificiale/']]
   },
   {
@@ -145,7 +145,7 @@ const knowledge = [
   },
   {
     id: 'pubblicita',
-    terms: ['pubblicit', 'telefono ascolta', 'microfono', 'annunci', 'tracciament', 'pensato qualcosa'],
+    terms: ['pubblicit', 'telefono ascolta', 'microfono', 'permessi microfono', 'microfono android', 'microfono iphone', 'android', 'dashboard privacy', 'annunci', 'tracciament', 'pensato qualcosa'],
     title: 'Un annuncio preciso non prova da solo l’uso del microfono',
     answer: 'Il risultato può dipendere da attività precedenti, profilo statistico, dispositivi collegati, posizione, contesto o coincidenza. Controlla la spiegazione dell’annuncio e i permessi del telefono.',
     tools: [['Centro annunci', 'Per vedere alcuni fattori usati nella selezione.'], ['Dashboard privacy', 'Per controllare gli accessi al microfono su Android.'], ['Impostazioni Privacy', 'Per verificare i permessi su iPhone.']],
@@ -196,7 +196,8 @@ function termScore(query, queryTokens, term) {
   }
   if (queryTokens.includes(cleanTerm)) return 3;
   if (cleanTerm.length < 4) return 0;
-  return queryTokens.some(token => token.startsWith(cleanTerm) || (cleanTerm.startsWith(token) && token.length >= 4)) ? 2 : 0;
+  if (queryTokens.some(token => token.startsWith(cleanTerm))) return 3;
+  return queryTokens.some(token => cleanTerm.startsWith(token) && token.length >= 4) ? 2 : 0;
 }
 
 function findAnswers(value) {
@@ -205,7 +206,7 @@ function findAnswers(value) {
   return knowledge
     .map(item => ({ item, score: item.terms.reduce((total, term) => total + termScore(query, queryTokens, term), 0) }))
     .filter(match => match.score > 0)
-    .sort((a, b) => b.score - a.score);
+    .sort((a, b) => b.score - a.score || (a.item.id === 'assistenti' ? 1 : b.item.id === 'assistenti' ? -1 : 0));
 }
 
 function relatedMarkup(matches) {
