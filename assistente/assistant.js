@@ -81,7 +81,7 @@ const knowledge = [
   },
   {
     id: 'verifica',
-    terms: ['risposta sbagliat', 'inventat', 'allucin', 'verific', 'fonti', 'controllare risposta', 'fact check', 'citaz', 'assecond', 'compiacen', 'contraddittori', 'sempre ragione', 'obiezi', 'pensiero critico'],
+    terms: ['risposta sbagliat', 'inventat', 'allucin', 'verific', 'fonti', 'controllare risposta', 'controll', 'fact check', 'citaz', 'assecond', 'compiacen', 'contraddittori', 'sempre ragione', 'obiezi', 'pensiero critico'],
     title: 'Una risposta convincente deve ancora essere verificata',
     answer: 'Controlla se la fonte esiste, se sostiene davvero l’affermazione, se la data è adeguata e se il sistema distingue fatti e deduzioni. Per decisioni importanti usa anche fonti indipendenti.',
     tools: [['Perplexity', 'Per una prima raccolta di fonti consultabili.'], ['NotebookLM', 'Per lavorare su documenti scelti da te.'], ['Un secondo controllo', 'Chiedi obiezioni e limiti, ma non trattare un’altra AI come prova finale.']],
