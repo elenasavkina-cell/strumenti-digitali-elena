@@ -23,6 +23,35 @@ const home = await read("index.html");
 const cardCss = await read("article-index.css");
 const mainCss = await read("styles.css");
 
+const assistantPage = await read("assistente/index.html");
+const assistantJs = await read("assistente/assistant.js");
+const tourismPage = await read("turismo/index.html");
+const notFoundPage = await read("404.html");
+const assessmentPage = await read("valuta-progetto/index.html");
+
+if (/Prototipo privato/i.test(assistantPage)) {
+  errors.push("Assistente: la pagina pubblica non deve definirsi prototipo privato.");
+}
+if (!/meta name="robots" content="noindex,follow"/.test(assistantPage)) {
+  errors.push("Assistente: durante la fase sperimentale deve restare noindex,follow.");
+}
+if (!/maxlength="500"/.test(assistantPage) || !/data-netlify-honeypot="bot-field"/.test(assistantPage)) {
+  errors.push("Assistente: limite del campo o protezione antispam mancante.");
+}
+if (!assistantJs.includes("a.item.id === 'assistenti'") || !assistantJs.includes("token.startsWith(cleanTerm))) return 3")) {
+  errors.push("Assistente: priorità delle schede specifiche o punteggio delle radici non protetti.");
+}
+if ((tourismPage.match(/Tour virtuali e realtà aumentata/g) || []).length !== 1) {
+  errors.push("Turismo: l’articolo in evidenza non deve essere duplicato nella griglia.");
+}
+if (!/<nav aria-label="Navigazione principale">/.test(notFoundPage) || !/<footer class="site-footer shell">/.test(notFoundPage)) {
+  errors.push("404: navigazione o footer mancanti.");
+}
+if (!/meta name="robots" content="noindex,follow"/.test(assessmentPage)) {
+  errors.push("Valuta progetto: la guida sperimentale deve restare noindex,follow.");
+}
+
+
 if (!/--navy:#07182f/.test(mainCss) || !/--surface:#eef2f6/.test(mainCss)) {
   errors.push("CSS: styles.css deve definire le variabili globali --navy e --surface.");
 }
