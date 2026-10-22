@@ -178,7 +178,9 @@ function findAnswers(value) {
 
 function relatedMarkup(matches) {
   const primary = matches[0];
-  const secondary = matches.find((match, index) => index > 0 && match.item.id !== primary.item.id && match.score >= Math.max(2, Math.ceil(primary.score * 0.45)));
+  const threshold = Math.max(2, Math.ceil(primary.score * 0.45));
+  const candidates = matches.slice(1).filter(match => match.item.id !== primary.item.id && match.score >= threshold);
+  const secondary = candidates.find(match => match.item.id !== 'assistenti') || candidates[0];
   if (!secondary) return '';
   const [label, url] = secondary.item.links[0];
   return `<p class="related-result"><strong>Pertinente anche:</strong> <a href="${url}">${label} →</a></p>`;
