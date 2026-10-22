@@ -89,7 +89,7 @@ const knowledge = [
   },
   {
     id: 'file',
-    terms: ['file', 'pdf', 'document', 'privacy', 'dati personali', 'dati clienti', 'documento riservato', 'contratto', 'caricare contratto', 'alleg', 'caric', 'metadati', 'notebooklm', 'studiare documenti'],
+    terms: ['file', 'pdf', 'document', 'privacy', 'dati personali', 'dati clienti', 'dati dei clienti', 'proteggere dati', 'documento riservato', 'contratto', 'caricare contratto', 'alleg', 'caric', 'metadati', 'notebooklm', 'studiare documenti'],
     title: 'Controlla il file prima di allegarlo',
     answer: 'Invia soltanto ciò che serve. Rimuovi identificatori e metadati non necessari, verifica account e impostazioni e ricontrolla la risposta sul documento originale.',
     tools: [['Controllo del file', 'Cerca dati personali, metadati e contenuti nascosti prima dell’invio.'], ['Scheda NotebookLM', 'Consulta funzioni e condizioni per lavorare su fonti scelte.'], ['Scheda ChatPDF', 'Consulta funzioni e condizioni prima di caricare un PDF non riservato.']],
@@ -129,7 +129,7 @@ const knowledge = [
   },
   {
     id: 'traduttori',
-    terms: ['tradutt', 'lingua viaggio', 'offline viaggio', 'fotocamera testo', 'conversazione lingua'],
+    terms: ['tradutt', 'lingua viaggio', 'offline viaggio', 'fotocamera testo', 'foto menu', 'menu', 'conversazione lingua'],
     title: 'Scegli la funzione in base alla situazione',
     answer: 'Offline, fotocamera e conversazione sono funzioni diverse. Scarica prima le lingue, prova il funzionamento in modalità aereo e non affidare a una sola traduzione informazioni mediche o importanti.',
     tools: [['Offline', 'Scarica le lingue e prova prima di partire.'], ['Fotocamera', 'Utile per cartelli e menu, ma controlla il contesto.'], ['Conversazione', 'Parla con frasi brevi e verifica i passaggi importanti.']],
