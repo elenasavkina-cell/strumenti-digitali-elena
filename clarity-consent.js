@@ -52,8 +52,10 @@
     const css=document.createElement('link');
     css.rel='stylesheet';css.href='/cookie-consent.css';document.head.appendChild(css);
     const footer=document.querySelector('.site-footer span:last-child');
-    if(footer&&!footer.querySelector('[data-cookie-preferences]')){
-      footer.insertAdjacentHTML('beforeend',' · <button type="button" class="cookie-preferences" data-cookie-preferences>Preferenze cookie</button>');
+    if(footer){
+      if(!footer.querySelector('a[href="/assistente/"]')) footer.insertAdjacentHTML('beforeend',' · <a href="/assistente/">Chiedi all’archivio</a>');
+      if(!footer.querySelector('a[href="/domande/"]')) footer.insertAdjacentHTML('beforeend',' · <a href="/domande/">Proponi una domanda</a>');
+      if(!footer.querySelector('[data-cookie-preferences]')) footer.insertAdjacentHTML('beforeend',' · <button type="button" class="cookie-preferences" data-cookie-preferences>Preferenze cookie</button>');
     }
     document.addEventListener('click',event=>{
       const choice=event.target.closest('[data-cookie-choice]');
