@@ -232,7 +232,7 @@ function render(value, shouldCollect = false) {
     return;
   }
   const x = matches[0].item;
-  result.innerHTML = `<p class="result-label">Risposta dell’archivio</p><h2>${x.title}</h2><p class="quick-answer">${x.answer}</p><div class="result-grid"><section><h3>Soluzione da provare</h3><ol class="tool-path">${x.tools.map(([name, why]) => `<li><strong>${name}</strong><span>${why}</span></li>`).join('')}</ol></section><section><h3>Approfondisci e verifica</h3><ul class="reading-list">${x.links.map(([name, url]) => `<li><a href="${url}">${name} →</a></li>`).join('')}</ul></section></div>${relatedMarkup(matches)}<p class="result-note">Prototipo basato sui contenuti già pubblicati. Non interroga il web e non sostituisce la verifica delle fonti ufficiali.</p>`;
+  result.innerHTML = `<p class="result-label">Risposta dell’archivio</p><h2>${x.title}</h2><p class="quick-answer">${x.answer}</p><div class="result-grid"><section><h3>Soluzione da provare</h3><ol class="tool-path">${x.tools.map(([name, why]) => `<li><strong>${name}</strong><span>${why}</span></li>`).join('')}</ol></section><section><h3>Approfondisci e verifica</h3><ul class="reading-list">${x.links.map(([name, url]) => `<li><a href="${url}">${name} →</a></li>`).join('')}</ul></section></div>${relatedMarkup(matches)}<p class="result-note">Ricerca guidata sperimentale basata sui contenuti già pubblicati. Non interroga il web e non sostituisce la verifica delle fonti ufficiali.</p>`;
 }
 
 form.addEventListener('submit', event => {
