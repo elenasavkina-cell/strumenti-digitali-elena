@@ -38,7 +38,7 @@ if (!/meta name="robots" content="noindex,follow"/.test(assistantPage)) {
 if (!/maxlength="500"/.test(assistantPage) || !/data-netlify-honeypot="bot-field"/.test(assistantPage)) {
   errors.push("Assistente: limite del campo o protezione antispam mancante.");
 }
-if (!/a\.item\.id === 'assistenti'/.test(assistantJs) || !/token\.startsWith\(cleanTerm\)\) return 3/.test(assistantJs)) {
+if (!assistantJs.includes("a.item.id === 'assistenti'") || !assistantJs.includes("token.startsWith(cleanTerm))) return 3")) {
   errors.push("Assistente: priorità delle schede specifiche o punteggio delle radici non protetti.");
 }
 if ((tourismPage.match(/Tour virtuali e realtà aumentata/g) || []).length !== 1) {
