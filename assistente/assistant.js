@@ -158,6 +158,35 @@ const tokens = value => normalize(value).split(' ').filter(Boolean);
 const form = document.querySelector('#archive-form');
 const input = document.querySelector('#archive-question');
 const result = document.querySelector('#archive-result');
+const STATISTICS_CONSENT_KEY = 'elena_statistics_consent_v2';
+const QUERY_COLLECTION_ENDPOINT = '/';
+
+function recordQuery(value, matches) {
+  try {
+    if (localStorage.getItem(STATISTICS_CONSENT_KEY) !== 'granted') return;
+    const normalized = normalize(value);
+    if (!normalized) return;
+    const recorded = JSON.parse(sessionStorage.getItem('archiveRecordedQueries') || '[]');
+    if (recorded.includes(normalized)) return;
+    recorded.push(normalized);
+    sessionStorage.setItem('archiveRecordedQueries', JSON.stringify(recorded.slice(-20)));
+    const payload = new URLSearchParams({
+      'form-name': 'archive-queries',
+      domanda: value.slice(0, 500),
+      tema: matches[0]?.item.id || 'nessuna-corrispondenza',
+      esito: matches.length ? 'risultato-trovato' : 'nessun-risultato',
+      data: new Date().toISOString()
+    });
+    fetch(QUERY_COLLECTION_ENDPOINT, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: payload.toString(),
+      keepalive: true
+    }).catch(() => {});
+  } catch (error) {
+    /* La ricerca continua a funzionare se consenso, storage o raccolta non sono disponibili. */
+  }
+}
 
 function termScore(query, queryTokens, term) {
   const cleanTerm = normalize(term);
@@ -189,8 +218,9 @@ function relatedMarkup(matches) {
   return `<p class="related-result"><strong>Pertinente anche:</strong> <a href="${url}">${label} →</a></p>`;
 }
 
-function render(value) {
+function render(value, shouldCollect = false) {
   const matches = findAnswers(value);
+  if (shouldCollect) recordQuery(value, matches);
   result.hidden = false;
   if (!matches.length) {
     result.innerHTML = `<div class="no-result"><p class="result-label">Nessuna corrispondenza sicura</p><h2>Questa domanda non è ancora coperta dall’archivio.</h2><p>Non preparo una risposta generica: puoi consultare la raccolta oppure proporre il tema per un futuro approfondimento.</p><p><a href="/strumenti/">Esplora gli strumenti →</a><br><a href="/domande/" data-propose-question>Proponi la domanda →</a></p></div>`;
@@ -207,7 +237,7 @@ function render(value) {
 form.addEventListener('submit', event => {
   event.preventDefault();
   const value = input.value.trim();
-  if (value) render(value);
+  if (value) render(value, true);
 });
 
 document.querySelectorAll('.examples button').forEach(button => button.addEventListener('click', () => {
