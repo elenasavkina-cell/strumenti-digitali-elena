@@ -81,7 +81,7 @@ const knowledge = [
   },
   {
     id: 'verifica',
-    terms: ['risposta sbagliat', 'inventat', 'allucin', 'verific', 'fonti', 'controllare risposta', 'fact check', 'citaz'],
+    terms: ['risposta sbagliat', 'inventat', 'allucin', 'verific', 'fonti', 'controllare risposta', 'fact check', 'citaz', 'assecond', 'compiacen', 'contraddittori', 'sempre ragione', 'obiezi', 'pensiero critico'],
     title: 'Una risposta convincente deve ancora essere verificata',
     answer: 'Controlla se la fonte esiste, se sostiene davvero l’affermazione, se la data è adeguata e se il sistema distingue fatti e deduzioni. Per decisioni importanti usa anche fonti indipendenti.',
     tools: [['Perplexity', 'Per una prima raccolta di fonti consultabili.'], ['NotebookLM', 'Per lavorare su documenti scelti da te.'], ['Un secondo controllo', 'Chiedi obiezioni e limiti, ma non trattare un’altra AI come prova finale.']],
@@ -162,9 +162,12 @@ const result = document.querySelector('#archive-result');
 function termScore(query, queryTokens, term) {
   const cleanTerm = normalize(term);
   if (!cleanTerm) return 0;
-  if (query.includes(cleanTerm)) return cleanTerm.includes(' ') ? 5 + tokens(cleanTerm).length : 3;
+  if (cleanTerm.includes(' ')) {
+    return query.includes(cleanTerm) ? 5 + tokens(cleanTerm).length : 0;
+  }
+  if (queryTokens.includes(cleanTerm)) return 3;
   if (cleanTerm.length < 4) return 0;
-  return queryTokens.some(token => token.startsWith(cleanTerm) || cleanTerm.startsWith(token) && token.length >= 4) ? 2 : 0;
+  return queryTokens.some(token => token.startsWith(cleanTerm) || (cleanTerm.startsWith(token) && token.length >= 4)) ? 2 : 0;
 }
 
 function findAnswers(value) {
