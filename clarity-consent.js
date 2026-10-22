@@ -1,5 +1,5 @@
 (()=>{
-  const KEY='elena_clarity_consent_v1';
+  const KEY='elena_statistics_consent_v2';
   const PROJECT='z0p2q09d71';
   let clarityLoaded=false;
 
@@ -34,7 +34,7 @@
     node.dataset.cookieBanner='';
     node.setAttribute('role','region');
     node.setAttribute('aria-labelledby','cookie-title');
-    node.innerHTML='<div class="cookie-banner__copy"><strong id="cookie-title">Statistiche e privacy</strong><p>Con il tuo consenso usiamo Microsoft Clarity per capire come viene utilizzato il sito. Puoi accettare o rifiutare. <a href="/privacy/">Privacy</a>.</p></div><div class="cookie-banner__actions"><button type="button" data-cookie-choice="deny">Rifiuta</button><button type="button" class="cookie-accept" data-cookie-choice="accept">Accetta</button></div>';
+    node.innerHTML='<div class="cookie-banner__copy"><strong id="cookie-title">Statistiche e privacy</strong><p>Con il tuo consenso usiamo Microsoft Clarity e registriamo le ricerche effettuate nell’archivio per capire come migliorare il sito. I campi restano mascherati nelle registrazioni. Puoi accettare o rifiutare. <a href="/privacy/">Privacy</a>.</p></div><div class="cookie-banner__actions"><button type="button" data-cookie-choice="deny">Rifiuta</button><button type="button" class="cookie-accept" data-cookie-choice="accept">Accetta</button></div>';
     document.body.appendChild(node);
     return node;
   }
