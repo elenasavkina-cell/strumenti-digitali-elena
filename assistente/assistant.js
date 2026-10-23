@@ -238,34 +238,49 @@ function render(value, shouldCollect = false) {
 }
 
 let revealTimer;
+let viewportSettleTimer;
+let cancelPendingReveal = () => {};
 
 function revealResult(waitForKeyboard) {
-  clearTimeout(revealTimer);
+  cancelPendingReveal();
 
   const reveal = () => {
     requestAnimationFrame(() => {
-      result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (waitForKeyboard) {
+        result.scrollIntoView({ behavior: 'auto', block: 'start' });
+      } else {
+        result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
       result.focus({ preventScroll: true });
     });
   };
 
   /*
    * Su mobile input.blur() chiude la tastiera e modifica l'altezza del viewport.
-   * Aspettiamo quel ridimensionamento prima di scorrere: altrimenti il primo
-   * risultato può fermarsi troppo in basso. Il timer copre i browser che non
-   * espongono visualViewport o non emettono l'evento resize.
+   * Alcuni telefoni emettono più eventi resize durante l'animazione: aspettiamo
+   * 180 ms dall'ultimo evento, non il primo. Il timer più lungo copre i browser
+   * che non espongono visualViewport o non emettono l'evento resize.
    */
   if (waitForKeyboard && window.visualViewport && window.innerWidth <= 760) {
-    const onViewportResize = () => {
-      window.visualViewport.removeEventListener('resize', onViewportResize);
-      clearTimeout(revealTimer);
+    let completed = false;
+    const finish = () => {
+      if (completed) return;
+      completed = true;
+      cancelPendingReveal();
       reveal();
     };
-    window.visualViewport.addEventListener('resize', onViewportResize, { once: true });
-    revealTimer = window.setTimeout(() => {
+    const onViewportResize = () => {
+      clearTimeout(viewportSettleTimer);
+      viewportSettleTimer = window.setTimeout(finish, 180);
+    };
+    cancelPendingReveal = () => {
       window.visualViewport.removeEventListener('resize', onViewportResize);
-      reveal();
-    }, 420);
+      clearTimeout(viewportSettleTimer);
+      clearTimeout(revealTimer);
+      cancelPendingReveal = () => {};
+    };
+    window.visualViewport.addEventListener('resize', onViewportResize);
+    revealTimer = window.setTimeout(finish, 700);
     return;
   }
 
