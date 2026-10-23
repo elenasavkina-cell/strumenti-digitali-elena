@@ -29,6 +29,8 @@ const tourismPage = await read("turismo/index.html");
 const notFoundPage = await read("404.html");
 const assessmentPage = await read("valuta-progetto/index.html");
 const sitemap = await read("sitemap.xml");
+const studyPage = await read("blog/ai-studio-imparare-intelligenza-artificiale/index.html");
+const studyJs = await read("study-test.js");
 
 if (/Prototipo privato/i.test(assistantPage)) {
   errors.push("Assistente: la pagina pubblica non deve definirsi prototipo privato.");
@@ -53,6 +55,16 @@ if (!/<nav aria-label="Navigazione principale">/.test(notFoundPage) || !/<footer
 }
 if (!/meta name="robots" content="noindex,follow"/.test(assessmentPage)) {
   errors.push("Valuta progetto: la guida sperimentale deve restare noindex,follow.");
+}
+
+if ((studyPage.match(/<fieldset/g) || []).length !== 4 || !/data-clarity-mask="true"/.test(studyPage)) {
+  errors.push("AI e studio: il test deve avere quattro domande ed essere mascherato per Clarity.");
+}
+if (!studyJs.includes("answers[2].value") || !studyJs.includes("prompt.value") || /fetch\(|localStorage|netlify/i.test(studyJs)) {
+  errors.push("AI e studio: spareggio, copia del testo modificato o funzionamento locale del test non conformi.");
+}
+if ((studyJs.match(/aspetta la mia risposta prima di procedere/g) || []).length !== 3) {
+  errors.push("AI e studio: i tre prompt devono attendere la risposta iniziale.");
 }
 
 

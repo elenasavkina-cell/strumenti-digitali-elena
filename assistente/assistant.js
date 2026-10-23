@@ -105,11 +105,11 @@ const knowledge = [
   },
   {
     id: 'impara',
-    terms: ['impar', 'corso', 'corsi', 'formaz', 'studiare ai', 'principiante', 'livello iniziale', 'prompt'],
+    terms: ['impar', 'corso', 'corsi', 'formaz', 'studiare ai', 'studio ai', 'scuola', 'universita', 'student', 'esame', 'riassunt', 'principiante', 'livello iniziale', 'prompt'],
     title: 'Inizia dal livello che usi già, non dal corso più difficile',
     answer: 'Prima impara a formulare richieste e controllare le risposte; poi trasforma le prove riuscite in un metodo; soltanto dopo passa ad automazioni, agenti e API.',
     tools: [['Livello iniziale', 'Richieste chiare, limiti e verifica delle risposte.'], ['Livello intermedio', 'Prompt riutilizzabili, fonti e procedure.'], ['Livello avanzato', 'Agenti, API, automazioni e controlli.']],
-    links: [['Trova il tuo percorso gratuito', '/impara/']]
+    links: [['AI e studio: aiuto o scorciatoia?', '/blog/ai-studio-imparare-intelligenza-artificiale/'], ['Trova il tuo percorso gratuito', '/impara/']]
   },
   {
     id: 'recensioni',

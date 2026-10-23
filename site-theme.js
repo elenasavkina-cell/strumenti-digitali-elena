@@ -4,6 +4,7 @@
   var root=document.documentElement;
   var saved=null;
   var darkImages={
+    '/assets/ai-studio-imparare.svg':'/assets/ai-studio-imparare-dark.svg',
     '/assets/hero-verifica.svg':'/assets/hero-verifica-dark.svg',
     '/assets/ai-allucinazioni.svg':'/assets/ai-allucinazioni-dark.svg',
     '/assets/ai-act-regole-europee.svg':'/assets/ai-act-regole-europee-dark.svg',
