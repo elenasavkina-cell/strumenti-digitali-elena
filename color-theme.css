@@ -58,7 +58,8 @@
 .feature,.article-card-latest,.collection-note,.tutor-section,
 .assistant-area form,.advisor-result,.level-test-result,.test-result,
 .next-step,.answer-progress,.prose .article-table th,
-.filters button:hover,.filters button.active,.level-tabs button.active{
+.filters button:hover,.filters button.active,.level-tabs button.active,
+.question-banner{
   background:var(--panel-dark)!important;
   color:var(--panel-text)!important;
 }
