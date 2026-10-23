@@ -154,6 +154,15 @@ for (const file of htmlFiles) {
   const html = await read(file);
   if (!html.includes('src="/site-theme.js"')) errors.push(`${file}: script del tema mancante.`);
   if (!html.includes('href="/color-theme.css"')) errors.push(`${file}: foglio del tema mancante.`);
+
+  const hasQuestionBanner = html.includes('class="question-banner"');
+  if (file === "chi-sono/index.html") {
+    if (!html.includes('class="question-banner" href="/domande/"')) {
+      errors.push("Chi sono: il banner deve portare a Proponi una domanda.");
+    }
+  } else if (hasQuestionBanner && !html.includes('class="question-banner" href="/assistente/"')) {
+    errors.push(`${file}: il banner deve portare a Chiedi all’archivio.`);
+  }
 }
 
 // Ogni illustrazione editoriale chiara deve avere una variante scura trasparente.
