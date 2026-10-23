@@ -156,6 +156,25 @@ for (const file of htmlFiles) {
   if (!html.includes('href="/color-theme.css"')) errors.push(`${file}: foglio del tema mancante.`);
 }
 
+// Ogni illustrazione editoriale chiara deve avere una variante scura trasparente.
+const illustratedSvgs = new Set();
+for (const file of htmlFiles) {
+  const html = await read(file);
+  for (const [, src] of html.matchAll(/<img[^>]+src="(\/assets\/[^"?]+\.svg)"/g)) {
+    if (!src.endsWith('-dark.svg')) illustratedSvgs.add(src.slice(1));
+  }
+}
+for (const lightPath of illustratedSvgs) {
+  const darkPath = lightPath.replace(/\.svg$/, '-dark.svg');
+  await mustExist(darkPath, `Tema scuro per ${lightPath}`);
+  try {
+    const darkSvg = await read(darkPath);
+    if (/<rect[^>]+width="1200"[^>]+height="675"[^>]+fill=/i.test(darkSvg)) {
+      errors.push(`${darkPath}: la variante scura deve avere sfondo trasparente.`);
+    }
+  } catch {}
+}
+
 for (const file of allFiles.filter((path) => path.endsWith(".svg"))) {
   const svg = await read(file);
   const viewBox = svg.match(/<svg[^>]+viewBox="([^"]+)"/i)?.[1];
