@@ -28,6 +28,7 @@ const assistantJs = await read("assistente/assistant.js");
 const tourismPage = await read("turismo/index.html");
 const notFoundPage = await read("404.html");
 const assessmentPage = await read("valuta-progetto/index.html");
+const sitemap = await read("sitemap.xml");
 
 if (/Prototipo privato/i.test(assistantPage)) {
   errors.push("Assistente: la pagina pubblica non deve definirsi prototipo privato.");
@@ -40,6 +41,9 @@ if (!/maxlength="500"/.test(assistantPage) || !/data-netlify-honeypot="bot-field
 }
 if (!assistantJs.includes("a.item.id === 'assistenti'") || !assistantJs.includes("token.startsWith(cleanTerm))) return 3")) {
   errors.push("Assistente: priorità delle schede specifiche o punteggio delle radici non protetti.");
+}
+if (!assistantJs.includes("scrollIntoView({ behavior: 'smooth', block: 'start' })") || !assistantJs.includes("input.blur()")) {
+  errors.push("Assistente: riscontro mobile, chiusura tastiera o scorrimento al risultato mancanti.");
 }
 if ((tourismPage.match(/Tour virtuali e realtà aumentata/g) || []).length !== 1) {
   errors.push("Turismo: l’articolo in evidenza non deve essere duplicato nella griglia.");
@@ -102,9 +106,12 @@ if (!/\.article-page \.article-cover img\{[^}]*object-fit:contain/.test(mainCss)
 // Le immagini social devono essere raster e separate dall’SVG usato nella pagina.
 const articleFiles = [...home.matchAll(/href="(\/(?:blog|turismo)\/[^"#?]+\/)"/g)]
   .map(([, url]) => `${url.slice(1)}index.html`);
+const sitemapUrls = [...sitemap.matchAll(/<loc>https:\/\/elenasavkina\.it(\/[^<]*)<\/loc>/g)].map(([, url]) => url);
 for (const file of [...new Set(articleFiles)]) {
   try {
     const html = await read(file);
+    const articleUrl = `/${file.replace(/index\.html$/, "")}`;
+    if (!sitemapUrls.includes(articleUrl)) errors.push(`Sitemap: manca l’articolo ${articleUrl}.`);
     const og = html.match(/<meta property="og:image" content="([^"]+)"/)?.[1];
     const twitter = html.match(/<meta name="twitter:image" content="([^"]+)"/)?.[1];
     const cover = html.match(/<figure class="article-cover">\s*<img[^>]+src="([^"]+)"[^>]+alt="([^"]*)"/) ?? [];
@@ -121,6 +128,18 @@ for (const file of [...new Set(articleFiles)]) {
     if (cover[1]?.startsWith("/")) await mustExist(cover[1].slice(1), `${file} copertina SVG`);
   } catch {
     errors.push(`Home: collegamento a un articolo senza file locale (${file}).`);
+  }
+}
+
+for (const url of sitemapUrls) {
+  const file = url === "/" ? "index.html" : `${url.slice(1)}index.html`;
+  try {
+    const html = await read(file);
+    if (/meta name="robots" content="[^"]*noindex/i.test(html)) {
+      errors.push(`Sitemap: la pagina ${url} è noindex ma compare nella sitemap.`);
+    }
+  } catch {
+    errors.push(`Sitemap: URL senza pagina locale (${url}).`);
   }
 }
 
