@@ -145,6 +145,17 @@ for (const url of sitemapUrls) {
 
 // Ogni SVG deve dichiarare proporzioni intrinseche valide per evitare salti di layout.
 const allFiles = await walk(".");
+const htmlFiles = allFiles.filter((path) => path.endsWith(".html"));
+
+// Il tema deve restare globale e portabile: ogni pagina carica gli stessi due file.
+await mustExist("color-theme.css", "Tema colore");
+await mustExist("site-theme.js", "Controllo tema");
+for (const file of htmlFiles) {
+  const html = await read(file);
+  if (!html.includes('src="/site-theme.js"')) errors.push(`${file}: script del tema mancante.`);
+  if (!html.includes('href="/color-theme.css"')) errors.push(`${file}: foglio del tema mancante.`);
+}
+
 for (const file of allFiles.filter((path) => path.endsWith(".svg"))) {
   const svg = await read(file);
   const viewBox = svg.match(/<svg[^>]+viewBox="([^"]+)"/i)?.[1];
@@ -155,7 +166,7 @@ for (const file of allFiles.filter((path) => path.endsWith(".svg"))) {
 }
 
 // Collegamenti e risorse locali dichiarati nell'HTML devono esistere prima del deploy.
-for (const file of allFiles.filter((path) => path.endsWith(".html"))) {
+for (const file of htmlFiles) {
   const html = await read(file);
   for (const [, raw] of html.matchAll(/(?:href|src)="([^"]+)"/g)) {
     if (!raw.startsWith("/") || raw.startsWith("//")) continue;
