@@ -237,11 +237,39 @@ function render(value, shouldCollect = false) {
   result.innerHTML = `<p class="result-label">Risposta dell’archivio</p><h2>${x.title}</h2><p class="quick-answer">${x.answer}</p><div class="result-grid"><section><h3>Soluzione da provare</h3><ol class="tool-path">${x.tools.map(([name, why]) => `<li><strong>${name}</strong><span>${why}</span></li>`).join('')}</ol></section><section><h3>Approfondisci e verifica</h3><ul class="reading-list">${x.links.map(([name, url]) => `<li><a href="${url}">${name} →</a></li>`).join('')}</ul></section></div>${relatedMarkup(matches)}<p class="result-note">Ricerca guidata sperimentale basata sui contenuti già pubblicati. Non interroga il web e non sostituisce la verifica delle fonti ufficiali.</p>`;
 }
 
+let revealTimer;
+
 function revealResult() {
-  requestAnimationFrame(() => {
-    result.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    result.focus({ preventScroll: true });
-  });
+  clearTimeout(revealTimer);
+
+  const reveal = () => {
+    requestAnimationFrame(() => {
+      result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      result.focus({ preventScroll: true });
+    });
+  };
+
+  /*
+   * Su mobile input.blur() chiude la tastiera e modifica l'altezza del viewport.
+   * Aspettiamo quel ridimensionamento prima di scorrere: altrimenti il primo
+   * risultato può fermarsi troppo in basso. Il timer copre i browser che non
+   * espongono visualViewport o non emettono l'evento resize.
+   */
+  if (window.visualViewport && window.innerWidth <= 760) {
+    const onViewportResize = () => {
+      window.visualViewport.removeEventListener('resize', onViewportResize);
+      clearTimeout(revealTimer);
+      reveal();
+    };
+    window.visualViewport.addEventListener('resize', onViewportResize, { once: true });
+    revealTimer = window.setTimeout(() => {
+      window.visualViewport.removeEventListener('resize', onViewportResize);
+      reveal();
+    }, 420);
+    return;
+  }
+
+  reveal();
 }
 
 function runSearch(value, shouldCollect) {
