@@ -14,7 +14,7 @@
 .study-result{margin-top:26px;padding:24px;background:#07182f;color:#fff;outline:0;scroll-margin-top:128px}
 .study-result h3{margin:8px 0 12px;color:#fff;font:500 2rem/1.1 var(--display)}
 .study-result p{font:1rem/1.65 var(--body);color:#d8deea}
-.study-result textarea{box-sizing:border-box;width:100%;min-height:330px;margin-top:14px;padding:16px;border:1px solid #8b96a8;background:#fff;color:#07182f;font:500 .96rem/1.55 var(--body);resize:vertical}
+.study-result textarea{box-sizing:border-box;width:100%;min-height:330px;margin-top:14px;padding:16px;border:1px solid #8b96a8;background:#fff;color:#07182f;font:500 .96rem/1.55 var(--body);resize:vertical;scroll-margin-top:118px}
 .study-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
 .study-actions button{min-height:44px;padding:10px 16px;border:1px solid var(--signal);background:var(--signal);color:#07182f;font:800 .9rem/1.2 var(--body);cursor:pointer}
 .study-actions button.secondary{border-color:#fff;background:transparent;color:#fff}

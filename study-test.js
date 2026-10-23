@@ -37,6 +37,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       const selectPlaceholder=()=>{
         prompt.focus({preventScroll:true});
         prompt.setSelectionRange(start,end);
+        prompt.scrollTop=0;
       };
       const finish=()=>{
         if(settled)return;
@@ -44,7 +45,11 @@ document.addEventListener('DOMContentLoaded',()=>{
         clearTimeout(settleTimer);
         if(window.visualViewport)window.visualViewport.removeEventListener('resize',onViewportResize);
         selectPlaceholder();
-        prompt.scrollIntoView({behavior:'smooth',block:'center'});
+        prompt.scrollIntoView({behavior:'auto',block:'start'});
+        requestAnimationFrame(()=>{
+          selectPlaceholder();
+          prompt.scrollTop=0;
+        });
       };
       const onViewportResize=()=>{
         clearTimeout(settleTimer);
