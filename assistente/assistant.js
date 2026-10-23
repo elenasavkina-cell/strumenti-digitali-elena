@@ -9,7 +9,7 @@ const knowledge = [
   },
   {
     id: 'assistenti',
-    terms: ['chatgpt o gemini', 'claude o gemini', 'chatgpt', 'gemini', 'claude', 'assistente ai', 'quale ai', 'meglio ai'],
+    terms: ['chatgpt o gemini', 'claude o gemini', 'chatgpt', 'gemini', 'claude', 'assistente ai', 'quale ai', 'meglio ai', 'scriv', 'correggere una bozza', 'riassum'],
     title: 'Scegli in base al compito, non a un vincitore',
     answer: 'I tre servizi includono funzioni che in parte si sovrappongono. L’archivio non assegna un vincitore: ti rimanda alle differenze documentate e al metodo di scelta descritto nell’articolo.',
     tools: [['ChatGPT', 'Consulta la scheda per funzioni, strumenti disponibili e condizioni del piano.'], ['Claude', 'Consulta la scheda per funzioni relative a testi, documenti e sviluppo.'], ['Gemini', 'Consulta la scheda per funzioni e integrazioni con i servizi Google.']],
@@ -17,7 +17,7 @@ const knowledge = [
   },
   {
     id: 'video',
-    terms: ['video', 'reel', 'short', 'youtube', 'montagg', 'avatar', 'animaz', 'clip'],
+    terms: ['video', 'reel', 'short', 'youtube', 'montagg', 'avatar', 'animaz', 'clip', 'capcut', 'invideo', 'pictory', 'opusclip', 'heygen', 'synthesia', 'davinci resolve', 'premiere pro'],
     title: 'Scegli quanto controllo vuoi avere sul video',
     answer: 'Non serve iniziare da un programma professionale. Puoi partire da foto, testo o un modello pronto; passare poi a strumenti assistiti dall’AI; usare un montaggio completo soltanto quando servono precisione ed effetti.',
     tools: [['1. Semplice e veloce', 'Canva o CapCut per Reel, Short e video da foto, testo e modelli.'], ['2. Assistito dall’AI', 'InVideo o Pictory da uno script; OpusClip per ricavare clip; HeyGen o Synthesia per avatar.'], ['3. Controllo professionale', 'DaVinci Resolve o Premiere Pro per montaggio, audio e colore.']],
@@ -25,7 +25,7 @@ const knowledge = [
   },
   {
     id: 'immagini',
-    terms: ['immagin', 'grafic', 'foto', 'sfond', 'logo', 'social', 'fotograf'],
+    terms: ['immagin', 'grafic', 'foto', 'sfond', 'logo', 'social', 'fotograf', 'canva', 'ideogram', 'photoroom', 'clipdrop'],
     title: 'Separa creazione e rifinitura dell’immagine',
     answer: 'Prima definisci formato e funzione della grafica. Poi genera o scegli l’immagine e, soltanto alla fine, prepara testo, sfondo e dimensioni per il canale in cui sarà pubblicata.',
     tools: [['Canva', 'Per composizione e formati social.'], ['Ideogram', 'Per concept grafici che includono testo.'], ['Photoroom o Clipdrop', 'Per rimuovere sfondi e preparare gli elementi.']],
@@ -33,7 +33,7 @@ const knowledge = [
   },
   {
     id: 'presentazioni',
-    terms: ['presentaz', 'slide', 'powerpoint', 'diapositiv', 'diagramm', 'mappa visual'],
+    terms: ['presentaz', 'slide', 'powerpoint', 'diapositiv', 'diagramm', 'mappa visual', 'gamma', 'napkin ai'],
     title: 'Parti dalla struttura, poi scegli il livello di controllo',
     answer: 'Per una prima bozza visuale puoi generare una struttura, ma contenuti, dati e ordine narrativo vanno controllati prima della consegna.',
     tools: [['Gamma', 'Per produrre rapidamente una prima struttura visuale.'], ['Canva', 'Per modificare con modelli e controllo grafico semplice.'], ['Napkin AI', 'Per trasformare concetti in schemi e diagrammi.']],
@@ -73,7 +73,7 @@ const knowledge = [
   },
   {
     id: 'audio',
-    terms: ['audio', 'voce', 'podcast', 'musica', 'registrare microfono', 'trascriz', 'sottotitol'],
+    terms: ['audio', 'voce', 'podcast', 'musica', 'registrare microfono', 'trascriz', 'sottotitol', 'adobe podcast', 'suno'],
     title: 'Distingui voce, pulizia audio e musica',
     answer: 'Sono attività diverse: prima chiarisci se devi registrare o migliorare una voce, trascrivere un parlato oppure creare una colonna sonora.',
     tools: [['Adobe Podcast', 'Per registrare, pulire e trascrivere la voce.'], ['Suno', 'Per bozze musicali e contenuti sonori originali.'], ['CapCut o un editor video', 'Per sottotitoli e sincronizzazione con le immagini.']],
@@ -81,7 +81,7 @@ const knowledge = [
   },
   {
     id: 'verifica',
-    terms: ['risposta sbagliat', 'inventat', 'allucin', 'verific', 'fonti', 'controllare risposta', 'controll', 'fact check', 'citaz', 'assecond', 'compiacen', 'contraddittori', 'sempre ragione', 'obiezi', 'pensiero critico'],
+    terms: ['risposta sbagliat', 'inventat', 'allucin', 'verific', 'fonti', 'controllare risposta', 'controll', 'fact check', 'citaz', 'assecond', 'compiacen', 'contraddittori', 'sempre ragione', 'obiezi', 'pensiero critico', 'perplexity'],
     title: 'Una risposta convincente deve ancora essere verificata',
     answer: 'Controlla se la fonte esiste, se sostiene davvero l’affermazione, se la data è adeguata e se il sistema distingue fatti e deduzioni. Per decisioni importanti usa anche fonti indipendenti.',
     tools: [['Perplexity', 'Per una prima raccolta di fonti consultabili.'], ['NotebookLM', 'Per lavorare su documenti scelti da te.'], ['Un secondo controllo', 'Chiedi obiezioni e limiti, ma non trattare un’altra AI come prova finale.']],
@@ -226,7 +226,7 @@ function render(value, shouldCollect = false) {
   if (shouldCollect) recordQuery(value, matches);
   result.hidden = false;
   if (!matches.length) {
-    result.innerHTML = `<div class="no-result"><p class="result-label">Nessuna corrispondenza sicura</p><h2>Questa domanda non è ancora coperta dall’archivio.</h2><p>Non preparo una risposta generica: puoi consultare la raccolta oppure proporre il tema per un futuro approfondimento.</p><p><a href="/strumenti/">Esplora gli strumenti →</a><br><a href="/domande/" data-propose-question>Proponi la domanda →</a></p></div>`;
+    result.innerHTML = `<div class="no-result"><p class="result-label">Nessuna corrispondenza sicura</p><h2>Questa domanda non è ancora coperta dall’archivio.</h2><p>Non è stata trovata una risposta specifica nei contenuti pubblicati. Puoi consultare la raccolta oppure proporre il tema per un futuro approfondimento.</p><p><a href="/strumenti/">Esplora gli strumenti →</a><br><a href="/domande/" data-propose-question>Proponi la domanda →</a></p></div>`;
     const propose = result.querySelector('[data-propose-question]');
     propose.addEventListener('click', () => {
       try { sessionStorage.setItem('archivePendingQuestion', value); } catch (error) { /* Il collegamento continua a funzionare. */ }
@@ -234,12 +234,12 @@ function render(value, shouldCollect = false) {
     return;
   }
   const x = matches[0].item;
-  result.innerHTML = `<p class="result-label">Risposta dell’archivio</p><h2>${x.title}</h2><p class="quick-answer">${x.answer}</p><div class="result-grid"><section><h3>Soluzione da provare</h3><ol class="tool-path">${x.tools.map(([name, why]) => `<li><strong>${name}</strong><span>${why}</span></li>`).join('')}</ol></section><section><h3>Approfondisci e verifica</h3><ul class="reading-list">${x.links.map(([name, url]) => `<li><a href="${url}">${name} →</a></li>`).join('')}</ul></section></div>${relatedMarkup(matches)}<p class="result-note">Ricerca guidata sperimentale basata sui contenuti già pubblicati. Non interroga il web e non sostituisce la verifica delle fonti ufficiali.</p>`;
+  result.innerHTML = `<p class="result-label">Risultato trovato nell’archivio</p><h2>${x.title}</h2><p class="quick-answer">${x.answer}</p><div class="result-grid"><section><h3>Soluzione da provare</h3><ol class="tool-path">${x.tools.map(([name, why]) => `<li><strong>${name}</strong><span>${why}</span></li>`).join('')}</ol></section><section><h3>Approfondisci e verifica</h3><ul class="reading-list">${x.links.map(([name, url]) => `<li><a href="${url}">${name} →</a></li>`).join('')}</ul></section></div>${relatedMarkup(matches)}<p class="result-note">Ricerca guidata sperimentale basata sui contenuti già pubblicati. La ricerca avviene nell’archivio del sito e non sostituisce il controllo delle fonti ufficiali.</p>`;
 }
 
 let revealTimer;
 
-function revealResult() {
+function revealResult(waitForKeyboard) {
   clearTimeout(revealTimer);
 
   const reveal = () => {
@@ -255,7 +255,7 @@ function revealResult() {
    * risultato può fermarsi troppo in basso. Il timer copre i browser che non
    * espongono visualViewport o non emettono l'evento resize.
    */
-  if (window.visualViewport && window.innerWidth <= 760) {
+  if (waitForKeyboard && window.visualViewport && window.innerWidth <= 760) {
     const onViewportResize = () => {
       window.visualViewport.removeEventListener('resize', onViewportResize);
       clearTimeout(revealTimer);
@@ -276,6 +276,7 @@ function runSearch(value, shouldCollect) {
   submitButton.disabled = true;
   submitButton.textContent = 'Cerco nell’archivio…';
   form.setAttribute('aria-busy', 'true');
+  const waitForKeyboard = document.activeElement === input;
   input.blur();
 
   requestAnimationFrame(() => {
@@ -283,15 +284,24 @@ function runSearch(value, shouldCollect) {
     form.removeAttribute('aria-busy');
     submitButton.disabled = false;
     submitButton.textContent = submitLabel;
-    revealResult();
+    revealResult(waitForKeyboard);
   });
 }
 
 form.addEventListener('submit', event => {
   event.preventDefault();
   const value = input.value.trim();
-  if (value) runSearch(value, true);
+  if (!value) {
+    input.setCustomValidity('Scrivi una domanda.');
+    input.reportValidity();
+    input.focus();
+    return;
+  }
+  input.setCustomValidity('');
+  runSearch(value, true);
 });
+
+input.addEventListener('input', () => input.setCustomValidity(''));
 
 document.querySelectorAll('.examples button').forEach(button => button.addEventListener('click', () => {
   input.value = button.textContent;
