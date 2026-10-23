@@ -158,6 +158,8 @@ const tokens = value => normalize(value).split(' ').filter(Boolean);
 const form = document.querySelector('#archive-form');
 const input = document.querySelector('#archive-question');
 const result = document.querySelector('#archive-result');
+const submitButton = form.querySelector('button[type="submit"]');
+const submitLabel = submitButton.textContent;
 const STATISTICS_CONSENT_KEY = 'elena_statistics_consent_v2';
 const QUERY_COLLECTION_ENDPOINT = '/';
 
@@ -235,13 +237,35 @@ function render(value, shouldCollect = false) {
   result.innerHTML = `<p class="result-label">Risposta dell’archivio</p><h2>${x.title}</h2><p class="quick-answer">${x.answer}</p><div class="result-grid"><section><h3>Soluzione da provare</h3><ol class="tool-path">${x.tools.map(([name, why]) => `<li><strong>${name}</strong><span>${why}</span></li>`).join('')}</ol></section><section><h3>Approfondisci e verifica</h3><ul class="reading-list">${x.links.map(([name, url]) => `<li><a href="${url}">${name} →</a></li>`).join('')}</ul></section></div>${relatedMarkup(matches)}<p class="result-note">Ricerca guidata sperimentale basata sui contenuti già pubblicati. Non interroga il web e non sostituisce la verifica delle fonti ufficiali.</p>`;
 }
 
+function revealResult() {
+  requestAnimationFrame(() => {
+    result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    result.focus({ preventScroll: true });
+  });
+}
+
+function runSearch(value, shouldCollect) {
+  submitButton.disabled = true;
+  submitButton.textContent = 'Cerco nell’archivio…';
+  form.setAttribute('aria-busy', 'true');
+  input.blur();
+
+  requestAnimationFrame(() => {
+    render(value, shouldCollect);
+    form.removeAttribute('aria-busy');
+    submitButton.disabled = false;
+    submitButton.textContent = submitLabel;
+    revealResult();
+  });
+}
+
 form.addEventListener('submit', event => {
   event.preventDefault();
   const value = input.value.trim();
-  if (value) render(value, true);
+  if (value) runSearch(value, true);
 });
 
 document.querySelectorAll('.examples button').forEach(button => button.addEventListener('click', () => {
   input.value = button.textContent;
-  render(input.value);
+  runSearch(input.value, false);
 }));
