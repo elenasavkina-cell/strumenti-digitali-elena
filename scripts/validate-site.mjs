@@ -31,6 +31,7 @@ const assessmentPage = await read("valuta-progetto/index.html");
 const sitemap = await read("sitemap.xml");
 const studyPage = await read("blog/ai-studio-imparare-intelligenza-artificiale/index.html");
 const studyJs = await read("study-test.js");
+const studyCss = await read("study-test.css");
 
 if (/Prototipo privato/i.test(assistantPage)) {
   errors.push("Assistente: la pagina pubblica non deve definirsi prototipo privato.");
@@ -65,6 +66,9 @@ if (!studyJs.includes("answers[2].value") || !studyJs.includes("prompt.value") |
 }
 if ((studyJs.match(/aspetta la mia risposta prima di procedere/g) || []).length !== 3) {
   errors.push("AI e studio: i tre prompt devono attendere la risposta iniziale.");
+}
+if (!/\.study-result\{[^}]*background:#07182f[^}]*color:#fff/.test(studyCss) || !/\.study-result h3\{[^}]*color:#fff/.test(studyCss)) {
+  errors.push("AI e studio: il risultato deve restare blu notte con testo bianco in entrambi i temi.");
 }
 
 

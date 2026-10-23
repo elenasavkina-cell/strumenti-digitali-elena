@@ -11,8 +11,8 @@
 .study-progress{position:relative;margin-top:26px;padding-top:10px;border-top:3px solid var(--line)}
 .study-progress span{position:absolute;top:-3px;left:0;height:3px;background:var(--accent);transition:width .2s}
 .study-progress small{display:block;margin-top:8px;color:var(--muted);font:.78rem/1.4 var(--body);letter-spacing:.06em;text-transform:uppercase}
-.study-result{margin-top:26px;padding:24px;background:var(--ink);color:#fff;outline:0;scroll-margin-top:128px}
-.study-result h3{margin:8px 0 12px;font:500 2rem/1.1 var(--display)}
+.study-result{margin-top:26px;padding:24px;background:#07182f;color:#fff;outline:0;scroll-margin-top:128px}
+.study-result h3{margin:8px 0 12px;color:#fff;font:500 2rem/1.1 var(--display)}
 .study-result p{font:1rem/1.65 var(--body);color:#d8deea}
 .study-result textarea{box-sizing:border-box;width:100%;min-height:330px;margin-top:14px;padding:16px;border:1px solid #8b96a8;background:#fff;color:#07182f;font:500 .96rem/1.55 var(--body);resize:vertical}
 .study-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
