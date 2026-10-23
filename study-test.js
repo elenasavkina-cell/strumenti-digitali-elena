@@ -28,7 +28,38 @@ document.addEventListener('DOMContentLoaded',()=>{
       const selected=paths[winner];form.hidden=true;progress.hidden=true;title.textContent=`Percorso suggerito dalle tue risposte: ${selected.title}`;explanation.textContent=selected.explanation+' Sostituisci le parole in maiuscolo e copia la richiesta.';prompt.value=selected.prompt;status.textContent='';reveal();
     });
     test.querySelector('[data-copy]').addEventListener('click',async(event)=>{try{await navigator.clipboard.writeText(prompt.value);event.currentTarget.textContent='Copiata';status.textContent='Richiesta copiata.';setTimeout(()=>event.currentTarget.textContent='Copia la richiesta',2000);}catch(error){prompt.focus();prompt.select();status.textContent='Non riesco a copiare in automatico. Seleziona il testo e copialo a mano.';}});
-    test.querySelector('[data-edit]').addEventListener('click',()=>{prompt.focus();const match=prompt.value.match(/ARGOMENTO|LIVELLO|VERIFICA O ESAME/);if(match)prompt.setSelectionRange(match.index,match.index+match[0].length);});
+    const focusPromptForEditing=()=>{
+      const match=prompt.value.match(/ARGOMENTO|LIVELLO|VERIFICA O ESAME/);
+      const start=match?match.index:0;
+      const end=match?match.index+match[0].length:start;
+      let settled=false;
+      let settleTimer;
+      const selectPlaceholder=()=>{
+        prompt.focus({preventScroll:true});
+        prompt.setSelectionRange(start,end);
+      };
+      const finish=()=>{
+        if(settled)return;
+        settled=true;
+        clearTimeout(settleTimer);
+        if(window.visualViewport)window.visualViewport.removeEventListener('resize',onViewportResize);
+        selectPlaceholder();
+        prompt.scrollIntoView({behavior:'smooth',block:'center'});
+      };
+      const onViewportResize=()=>{
+        clearTimeout(settleTimer);
+        settleTimer=setTimeout(finish,120);
+      };
+      selectPlaceholder();
+      requestAnimationFrame(()=>requestAnimationFrame(selectPlaceholder));
+      if(window.visualViewport&&window.innerWidth<=760){
+        window.visualViewport.addEventListener('resize',onViewportResize);
+        settleTimer=setTimeout(finish,500);
+      }else{
+        finish();
+      }
+    };
+    test.querySelector('[data-edit]').addEventListener('click',focusPromptForEditing);
     test.querySelector('[data-restart]').addEventListener('click',()=>{form.reset();form.hidden=false;result.hidden=true;progress.hidden=false;show(0);questions[0].querySelector('input').focus();});
     show(0);
   });
