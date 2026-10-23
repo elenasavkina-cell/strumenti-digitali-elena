@@ -72,6 +72,7 @@
   background:var(--field)!important;
   color:var(--ink)!important;
 }
+.question-row button{color:#07182f!important}
 .advisor-options button:hover,.advisor-options button:focus-visible,
 .level-tabs button:hover,.level-tabs button:focus-visible{background:var(--soft-accent)!important}
 .prose .notice.warning-note{background:var(--warning-bg)!important}
