@@ -138,6 +138,14 @@ for (const file of [...new Set(articleFiles)]) {
     if (!/<script type="application\/ld\+json">[\s\S]*?"@type":"Article"/.test(html)) {
       errors.push(`${file}: dati strutturati Article mancanti.`);
     }
+    for (const anchor of html.matchAll(/<a\s+([^>]*href="https?:\/\/[^"#]+[^">]*")>/gi)) {
+      const attributes = anchor[1];
+      const href = attributes.match(/href="([^"]+)"/i)?.[1] ?? "";
+      if (href.startsWith("https://elenasavkina.it/")) continue;
+      if (!/target="_blank"/i.test(attributes) || !/rel="[^"]*noopener[^"]*"/i.test(attributes)) {
+        errors.push(`${file}: il collegamento esterno ${href} deve aprirsi in una nuova scheda in sicurezza.`);
+      }
+    }
     if (og?.startsWith("https://elenasavkina.it/")) {
       await mustExist(og.replace("https://elenasavkina.it/", ""), `${file} immagine social`);
     }
