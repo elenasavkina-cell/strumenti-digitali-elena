@@ -24,6 +24,7 @@
 .test-result{margin-top:26px;padding:24px;background:var(--ink);color:#fff;outline:0}
 .test-result h3{margin:8px 0 12px;font:500 2rem/1.1 var(--display)}
 .test-result p:not(.test-eyebrow){font:1rem/1.65 var(--body);color:#d8deea}
+.test-result [data-result-warning]{margin:18px 0 0;padding:12px 14px;border-left:3px solid var(--signal);background:rgba(255,255,255,.08);color:#fff}
 .test-result a{display:inline-block;margin-top:8px;color:#fff;font-weight:700;border-bottom:2px solid #fff}
 .test-result button{display:block;margin-top:22px;padding:0;border:0;background:transparent;color:#c8d0dd;font:600 .9rem/1.4 var(--body);text-decoration:underline;cursor:pointer}
 .interactive-test .test-privacy{margin:20px 0 0;font-size:.86rem}
