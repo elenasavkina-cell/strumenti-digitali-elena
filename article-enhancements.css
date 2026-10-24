@@ -28,3 +28,5 @@
 .test-result button{display:block;margin-top:22px;padding:0;border:0;background:transparent;color:#c8d0dd;font:600 .9rem/1.4 var(--body);text-decoration:underline;cursor:pointer}
 .interactive-test .test-privacy{margin:20px 0 0;font-size:.86rem}
 @media(max-width:620px){.interactive-test{margin:36px -2px;padding:22px 18px}.interactive-test label{padding:13px 12px}.prose .article-table{display:block;overflow-x:auto}.prose .article-table th,.prose .article-table td{min-width:160px;padding:12px}}
+
+.sources li{scroll-margin-top:128px}
