@@ -67,6 +67,12 @@ if (!studyJs.includes("answers[2].value") || !studyJs.includes("prompt.value") |
 if ((studyJs.match(/aspetta la mia risposta prima di procedere/g) || []).length !== 3) {
   errors.push("AI e studio: i tre prompt devono attendere la risposta iniziale.");
 }
+if ((studyPage.match(/href="#fonte-[1-7]"/g) || []).length !== 7 || (studyPage.match(/id="fonte-[1-7]"/g) || []).length !== 7) {
+  errors.push("AI e studio: i sette richiami nel testo devono restare collegati alle rispettive fonti.");
+}
+if (!/"description":"L’intelligenza artificiale può spiegare/.test(studyPage) || !/href="\/assistente\/">Chiedi all’archivio/.test(studyPage)) {
+  errors.push("AI e studio: descrizione Article o collegamento all’archivio mancante.");
+}
 if (!/\.study-result\{[^}]*background:#07182f[^}]*color:#fff/.test(studyCss) || !/\.study-result h3\{[^}]*color:#fff/.test(studyCss)) {
   errors.push("AI e studio: il risultato deve restare blu notte con testo bianco in entrambi i temi.");
 }
