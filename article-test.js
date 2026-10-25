@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const result = test.querySelector('.test-result');
     const resultTitle = result.querySelector('h3');
     const resultCopy = result.querySelector('[data-result-copy]');
+    const resultWarning = result.querySelector('[data-result-warning]');
 
     const showQuestion = (index) => {
       questions.forEach((question, i) => { question.hidden = i !== index; });
@@ -25,9 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
       const score = [...form.querySelectorAll('input:checked')]
         .reduce((total, input) => total + Number(input.value), 0);
+      const requiredForTop = [...form.querySelectorAll('input[data-required-for-top]')];
+      const canShowTopResult = requiredForTop.length === 0 || requiredForTop.every((input) => input.checked);
+      const selectedWarning = form.querySelector('input[data-result-warning]:checked');
       let title = 'Fiducia da riequilibrare';
       let copy = 'Le risposte dell’AI possono sembrare sicure anche quando sono incomplete. Aggiungi almeno un controllo esterno prima di usarle per una decisione.';
-      if (score >= 5) {
+      if (score >= 5 && canShowTopResult) {
         title = 'Verifica consapevole';
         copy = 'Confronti fonti e alternative prima di decidere. Mantieni questo metodo soprattutto quando un errore può avere conseguenze importanti.';
       } else if (score >= 3) {
@@ -39,6 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
       progress.hidden = true;
       resultTitle.textContent = title;
       resultCopy.textContent = copy;
+      if (resultWarning) {
+        resultWarning.textContent = selectedWarning?.dataset.resultWarning || '';
+        resultWarning.hidden = !selectedWarning;
+      }
       result.hidden = false;
       result.focus();
     });
