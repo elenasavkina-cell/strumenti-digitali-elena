@@ -48,7 +48,7 @@
 <legend><span>2</span> Se insisti, l’AI cambia idea. Che cosa fai?</legend>
 <label><input type="radio" name="q2" value="2" data-required-for-top> Chiedo prove e confronto le risposte</label>
 <label><input type="radio" name="q2" value="1" data-result-warning="Attenzione: una risposta convincente non è necessariamente quella meglio verificata."> Valuto quale risposta sembra più convincente</label>
-<label><input type="radio" name="q2" value="0"> Accetto l’ultima risposta</label>
+<label><input type="radio" name="q2" value="0" data-result-warning="Attenzione: se l’AI cambia idea dopo un’insistenza, l’ultima risposta non è necessariamente quella corretta."> Accetto l’ultima risposta</label>
 </fieldset>
 <fieldset data-question="3" hidden>
 <legend><span>3</span> Per una decisione importante consulti anche altre fonti?</legend>
@@ -70,16 +70,15 @@
 </section>
 <h2>Perché può accadere</h2>
 <p>I sistemi di intelligenza artificiale generativa sono progettati per produrre risposte pertinenti e utili rispetto alla conversazione. Sono addestrati anche attraverso valutazioni umane, che contribuiscono a rendere le risposte più comprensibili e soddisfacenti. Ma ciò che piace all’utente non coincide sempre con ciò che è vero.</p>
-<p>Uno studio condotto su cinque assistenti avanzati e quattro tipi di compito ha osservato comportamenti definiti <em>sycophancy</em>: i modelli tendevano ad adeguarsi alle convinzioni espresse dagli utenti. Gli autori hanno inoltre rilevato che risposte coerenti con il punto di vista dell’utente potevano essere preferite, in alcuni casi, a risposte corrette.<sup><a href="#fonte-1" class="source-ref">[1]</a></sup></p>
-<p>Lo studio è stato pubblicato a ICLR 2024 e aggiornato su arXiv nel maggio 2025. Gli autori risultano affiliati ad Anthropic; alcuni indicano anche ulteriori affiliazioni accademiche. Dichiararlo aiuta a leggere la ricerca sapendo chi l’ha realizzata.</p>
-<p>Non significa che una macchina desideri compiacere qualcuno. Attribuirle intenzioni umane rischia di confondere il problema. Un preprint del 2026 propone di parlare di <strong>compiacenza</strong>: una tendenza strutturale ad accordarsi con l’input dell’utente, senza attribuire alla macchina intenzioni o strategie umane. Gli autori collegano questo rischio anche al bias di conferma e alla necessità di una maggiore alfabetizzazione sull’AI.<sup><a href="#fonte-3" class="source-ref">[3]</a></sup></p>
+<p>Uno studio condotto su cinque assistenti avanzati e quattro tipi di compito ha osservato comportamenti definiti <em>sycophancy</em>: i modelli tendevano ad adeguarsi alle convinzioni espresse dagli utenti. Gli autori hanno inoltre rilevato che risposte coerenti con il punto di vista dell’utente potevano essere preferite, in alcuni casi, a risposte corrette. Gli autori lavorano in Anthropic, l’azienda che sviluppa Claude: è quindi anche un’azienda del settore a studiare criticamente un limite osservato in più assistenti.<sup><a href="#fonte-1" class="source-ref">[1]</a></sup></p>
+<p>Non significa che una macchina desideri compiacere qualcuno. Attribuirle intenzioni umane rischia di confondere il problema. Un preprint del 2026 propone di parlare di <strong>compiacenza</strong>: una tendenza strutturale ad accordarsi con l’input dell’utente. Gli autori collegano questo rischio anche al bias di conferma e alla necessità di una maggiore alfabetizzazione sull’AI.<sup><a href="#fonte-2" class="source-ref">[2]</a></sup></p>
 <h2>Anche la domanda può orientare la risposta</h2>
 <blockquote>“Ho controllato il calcolo e secondo me il risultato è 42. Puoi confermare?”</blockquote>
-<p>Questa formulazione non presenta soltanto un problema: suggerisce già la risposta desiderata. In uno studio del 2025 su cinque modelli OpenAI delle famiglie GPT-4o e GPT-4.1, inserire nella domanda una soluzione sbagliata ha ridotto la correttezza fino a 15 punti percentuali. Suggerire la risposta corretta produceva un effetto opposto; l’influenza della domanda era più forte nei modelli più piccoli.<sup><a href="#fonte-2" class="source-ref">[2]</a></sup></p>
+<p>Questa formulazione non presenta soltanto un problema: suggerisce già la risposta desiderata. In uno studio del 2025 su cinque modelli OpenAI delle famiglie GPT-4o e GPT-4.1, inserire nella domanda una soluzione sbagliata ha ridotto la correttezza fino a 15 punti percentuali. Suggerire la risposta corretta produceva un effetto opposto; l’influenza della domanda era più forte nei modelli più piccoli.<sup><a href="#fonte-3" class="source-ref">[3]</a></sup></p>
 <p>Questo non prova che ogni domanda orientata produca una risposta errata. Mostra però che il modo in cui chiediamo una verifica può influenzare il risultato. Se cerchiamo soltanto conferma, possiamo involontariamente rendere meno probabile un vero controllo.</p>
 <h2>Quando il rischio aumenta</h2>
 <p>Una risposta accomodante può essere poco rilevante quando chiediamo un titolo per una presentazione. Diventa più problematica quando riguarda una decisione economica, un sintomo, una questione legale o fiscale, una valutazione su una persona o un’informazione destinata a un documento professionale.</p>
-<p>In questi casi non basta chiedere: «Sei sicuro?». Il sistema potrebbe ribadire la stessa conclusione oppure abbandonare una risposta corretta soltanto perché l’abbiamo messa in dubbio. È più utile chiedere prove, passaggi verificabili e possibili obiezioni.</p>
+<p>In questi casi non basta chiedere: «Sei sicuro?». Il sistema potrebbe ribadire la stessa conclusione oppure abbandonare una risposta corretta soltanto perché l’abbiamo messa in dubbio. È più utile chiedere prove, passaggi verificabili e possibili obiezioni.<sup><a href="#fonte-1" class="source-ref">[1]</a></sup></p>
 <h2 id="cinque-modi">Cinque modi per ottenere una risposta più critica</h2>
 <h3>1. Controllare la premessa</h3>
 <blockquote>“Non assumere che la mia premessa sia corretta. Verificala e separa fatti, ipotesi e opinioni.”</blockquote>
@@ -118,9 +117,9 @@
 <li id="fonte-1">
 <a href="https://arxiv.org/abs/2310.13548" target="_blank" rel="noopener noreferrer">Sharma e altri — Towards Understanding Sycophancy in Language Models</a>, ICLR 2024, versione arXiv aggiornata nel 2025.</li>
 <li id="fonte-2">
-<a href="https://arxiv.org/abs/2506.10297" target="_blank" rel="noopener noreferrer">“Check My Work?”: Measuring Sycophancy in a Simulated Educational Context</a>, 2025.</li>
-<li id="fonte-3">
 <a href="https://arxiv.org/abs/2605.14544" target="_blank" rel="noopener noreferrer">Complacent, Not Sycophantic</a>, preprint del 2026.</li>
+<li id="fonte-3">
+<a href="https://arxiv.org/abs/2506.10297" target="_blank" rel="noopener noreferrer">“Check My Work?”: Measuring Sycophancy in a Simulated Educational Context</a>, 2025.</li>
 </ol>
 
 </article>
