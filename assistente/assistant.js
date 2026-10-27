@@ -152,8 +152,16 @@ const knowledge = [
     links: [['Tour virtuali e realtà aumentata: cosa mostrano?', '/turismo/tour-virtuali-realta-aumentata/']]
   },
   {
+    id: 'pubblicita-online',
+    terms: ['fare pubblicita', 'pubblicita online', 'google ads', 'meta ads', 'facebook ads', 'instagram ads', 'whatsapp ads', 'click to whatsapp', 'sponsorizzare', 'gestione inserzioni', 'budget pubblicitario', 'campagna pubblicitaria', 'pubblicita per azienda'],
+    title: 'Scegli tra ricerca, scoperta e conversazione',
+    answer: 'Google Search intercetta soprattutto chi sta già cercando una soluzione; Facebook e Instagram aiutano a far scoprire una proposta; gli annunci che aprono WhatsApp portano il contatto in una conversazione. Prima della piattaforma definisci risultato, destinazione, capacità di risposta e misurazione.',
+    tools: [['Google Search', 'Per una domanda già espressa con ricerche precise.'], ['Facebook e Instagram', 'Per far scoprire l’offerta attraverso contenuti e pubblici.'], ['Click-to-WhatsApp', 'Per richieste che richiedono domande, preventivi o consulenza.']],
+    links: [['Google Ads, Meta Ads o WhatsApp: da dove iniziare?', '/blog/google-meta-whatsapp-pubblicita-online/']]
+  },
+  {
     id: 'pubblicita',
-    terms: ['pubblicit', 'telefono ascolta', 'microfono', 'permessi microfono', 'microfono android', 'microfono iphone', 'android', 'dashboard privacy', 'annunci', 'tracciament', 'pensato qualcosa'],
+    terms: ['pubblicita dopo aver parlato', 'pubblicita dopo aver pensato', 'telefono ascolta', 'microfono', 'permessi microfono', 'microfono android', 'microfono iphone', 'android', 'dashboard privacy', 'annunci', 'tracciament', 'pensato qualcosa'],
     title: 'Un annuncio preciso non prova da solo l’uso del microfono',
     answer: 'Il risultato può dipendere da attività precedenti, profilo statistico, dispositivi collegati, posizione, contesto o coincidenza. Controlla la spiegazione dell’annuncio e i permessi del telefono.',
     tools: [['Centro annunci', 'Per vedere alcuni fattori usati nella selezione.'], ['Dashboard privacy', 'Per controllare gli accessi al microfono su Android.'], ['Impostazioni Privacy', 'Per verificare i permessi su iPhone.']],
