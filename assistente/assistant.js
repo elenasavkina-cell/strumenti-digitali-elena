@@ -1,11 +1,11 @@
 const knowledge = [
   {
     id: 'claude-mistral',
-    terms: ['claude o mistral', 'mistral o claude', 'mistral', 'modello europeo'],
-    title: 'Claude o Mistral: dipende da che cosa vuoi fare',
-    answer: 'L’archivio non contiene ancora un confronto diretto e verificato tra i due. Le schede descrivono funzioni e contesti d’uso, senza stabilire un vincitore. Controlla sempre disponibilità, piano e condizioni sui siti ufficiali.',
-    tools: [['Claude', 'Consulta la scheda per funzioni relative a testi, documenti e sviluppo.'], ['Mistral', 'Consulta la scheda per modelli, servizi e possibilità di integrazione.'], ['Scheda di confronto', 'Annota compito, piano, data e risultato: evita una classifica assoluta.']],
-    links: [['Come scegliere un assistente in base al compito', '/blog/chatgpt-claude-gemini-quale-scegliere/'], ['Controlla Claude e Mistral nella raccolta', '/strumenti/#strumenti']]
+    terms: ['claude o mistral', 'mistral o claude', 'mistral', 'mixtral', 'modello europeo'],
+    title: 'Claude, Mistral e Mixtral non indicano la stessa cosa',
+    answer: 'Claude è un assistente e una famiglia di modelli di Anthropic; Mistral AI offre modelli e servizi propri; Mixtral indica invece una famiglia specifica di modelli. L’archivio non contiene ancora un confronto diretto e verificato tra gli assistenti Claude e Mistral.',
+    tools: [['Claude', 'Consulta la scheda per testi, documenti e sviluppo.'], ['Mistral AI', 'Controlla sul sito ufficiale quale servizio o modello stai valutando.'], ['Mixtral', 'Consulta la scheda della famiglia di modelli, senza confonderla con l’assistente Mistral.']],
+    links: [['Come scegliere un assistente in base al compito', '/blog/chatgpt-claude-gemini-quale-scegliere/'], ['Esplora Claude e Mixtral nella raccolta', '/strumenti/?cat=Testi%20e%20ricerca#strumenti']]
   },
   {
     id: 'assistenti',
@@ -13,15 +13,15 @@ const knowledge = [
     title: 'Scegli in base al compito, non a un vincitore',
     answer: 'I tre servizi includono funzioni che in parte si sovrappongono. L’archivio non assegna un vincitore: ti rimanda alle differenze documentate e al metodo di scelta descritto nell’articolo.',
     tools: [['ChatGPT', 'Consulta la scheda per funzioni, strumenti disponibili e condizioni del piano.'], ['Claude', 'Consulta la scheda per funzioni relative a testi, documenti e sviluppo.'], ['Gemini', 'Consulta la scheda per funzioni e integrazioni con i servizi Google.']],
-    links: [['ChatGPT, Claude o Gemini: quale scegliere?', '/blog/chatgpt-claude-gemini-quale-scegliere/'], ['Esplora gli strumenti AI', '/strumenti/#strumenti']]
+    links: [['ChatGPT, Claude o Gemini: quale scegliere?', '/blog/chatgpt-claude-gemini-quale-scegliere/'], ['Esplora gli strumenti AI', '/strumenti/?cat=Testi%20e%20ricerca#strumenti']]
   },
   {
     id: 'video',
     terms: ['video', 'reel', 'short', 'youtube', 'montagg', 'avatar', 'animaz', 'clip', 'capcut', 'invideo', 'pictory', 'opusclip', 'heygen', 'synthesia', 'davinci resolve', 'premiere pro'],
     title: 'Scegli quanto controllo vuoi avere sul video',
     answer: 'Non serve iniziare da un programma professionale. Puoi partire da foto, testo o un modello pronto; passare poi a strumenti assistiti dall’AI; usare un montaggio completo soltanto quando servono precisione ed effetti.',
-    tools: [['1. Semplice e veloce', 'Canva o CapCut per Reel, Short e video da foto, testo e modelli.'], ['2. Assistito dall’AI', 'InVideo o Pictory da uno script; OpusClip per ricavare clip; HeyGen o Synthesia per avatar.'], ['3. Controllo professionale', 'DaVinci Resolve o Premiere Pro per montaggio, audio e colore.']],
-    links: [['Confronta gli strumenti per video e immagini', '/strumenti/#strumenti'], ['Impara dalle risorse ufficiali', '/impara/']]
+    tools: [['1. Semplice e veloce', 'Canva per Reel, Short e video da foto, testo e modelli.'], ['2. Assistito dall’AI', 'OpusClip per ricavare clip; HeyGen o Synthesia per avatar; Runway per generare o trasformare scene.'], ['3. Maggiore controllo', 'Remotion per video ripetibili costruiti con componenti e codice.']],
+    links: [['Confronta gli strumenti per video e immagini', '/strumenti/?cat=Video%20e%20immagini#strumenti'], ['Impara dalle risorse ufficiali', '/impara/']]
   },
   {
     id: 'immagini',
@@ -29,7 +29,7 @@ const knowledge = [
     title: 'Separa creazione e rifinitura dell’immagine',
     answer: 'Prima definisci formato e funzione della grafica. Poi genera o scegli l’immagine e, soltanto alla fine, prepara testo, sfondo e dimensioni per il canale in cui sarà pubblicata.',
     tools: [['Canva', 'Per composizione e formati social.'], ['Ideogram', 'Per concept grafici che includono testo.'], ['Photoroom o Clipdrop', 'Per rimuovere sfondi e preparare gli elementi.']],
-    links: [['Strumenti per video e immagini', '/strumenti/#strumenti']]
+    links: [['Strumenti per video e immagini', '/strumenti/?cat=Video%20e%20immagini#strumenti']]
   },
   {
     id: 'presentazioni',
@@ -37,7 +37,15 @@ const knowledge = [
     title: 'Parti dalla struttura, poi scegli il livello di controllo',
     answer: 'Per una prima bozza visuale puoi generare una struttura, ma contenuti, dati e ordine narrativo vanno controllati prima della consegna.',
     tools: [['Gamma', 'Per produrre rapidamente una prima struttura visuale.'], ['Canva', 'Per modificare con modelli e controllo grafico semplice.'], ['Napkin AI', 'Per trasformare concetti in schemi e diagrammi.']],
-    links: [['Esplora presentazioni e contenuti', '/strumenti/#strumenti']]
+    links: [['Esplora presentazioni e contenuti', '/strumenti/?cat=Testi%20e%20ricerca#strumenti']]
+  },
+  {
+    id: 'ai-locale',
+    terms: ['ai offline', 'intelligenza artificiale offline', 'modello locale', 'modelli locali', 'lm studio', 'ollama', 'server ai locale', 'server locale ai', 'ai sul computer', 'usare ai sul computer'],
+    title: 'Puoi usare alcuni modelli direttamente sul computer',
+    answer: 'LM Studio offre un’interfaccia grafica per provare modelli locali; Ollama li rende disponibili anche ad altre applicazioni tramite API. L’elaborazione locale riduce l’invio dei dati al cloud, ma non rende automaticamente sicuri computer, file o modelli.',
+    tools: [['LM Studio', 'Per iniziare con un’interfaccia grafica e senza terminale.'], ['Ollama', 'Per collegare modelli locali ad applicazioni e automazioni.'], ['Gemma, Llama o Qwen', 'Scegli un modello compatibile con memoria, hardware e licenza.']],
+    links: [['Esplora AI locale e server', '/strumenti/?cat=AI%20locale%20e%20server#strumenti'], ['Cosa controllare prima di caricare un file', '/blog/file-caricati-intelligenza-artificiale-privacy/']]
   },
   {
     id: 'siti',
@@ -45,7 +53,7 @@ const knowledge = [
     title: 'Scegli la strada più piccola che basta al progetto',
     answer: 'Per un sito piccolo o informativo non devi comprare né configurare un server tradizionale. Puoi conservare il progetto su GitHub e pubblicarlo con Netlify oppure Vercel. Database e accessi vanno aggiunti soltanto quando servono davvero.',
     tools: [['1. Solo sito', 'GitHub per le versioni; Netlify o Vercel per pubblicare.'], ['2. Piccole funzioni', 'Funzioni serverless incluse nell’hosting, senza amministrare un server.'], ['3. Utenti o dati', 'Supabase solo per account, area riservata o dati persistenti.']],
-    links: [['Confronta gli strumenti per siti e sviluppo', '/strumenti/#strumenti']]
+    links: [['Confronta gli strumenti per siti e sviluppo', '/strumenti/?cat=Siti%20e%20sviluppo#strumenti']]
   },
   {
     id: 'dati',
@@ -53,7 +61,7 @@ const knowledge = [
     title: 'Aggiungi un database soltanto quando devi conservare dati',
     answer: 'Un sito informativo non ne ha bisogno. Per tabelle gestite a mano puoi partire da Airtable o Baserow; per utenti, autenticazione e dati di un’app serve un backend come Supabase o Firebase.',
     tools: [['Airtable o Baserow', 'Per archivi e tabelle gestibili senza molto codice.'], ['Supabase', 'Per database, accessi utenti e file di una web app.'], ['Firebase', 'Per un backend gestito nell’ecosistema Google.']],
-    links: [['Esplora organizzazione, dati e sviluppo', '/strumenti/#strumenti']]
+    links: [['Esplora organizzazione e dati', '/strumenti/?cat=Organizzazione%20e%20dati#strumenti']]
   },
   {
     id: 'automazioni',
@@ -61,7 +69,7 @@ const knowledge = [
     title: 'Automatizza prima una sola attività ripetitiva',
     answer: 'Descrivi evento iniziale, dati necessari e risultato finale. Prova il flusso con dati non riservati e mantieni un passaggio umano quando l’errore può avere conseguenze.',
     tools: [['Make', 'Per disegnare visivamente flussi articolati.'], ['Zapier', 'Per partire rapidamente con integrazioni pronte.'], ['n8n', 'Per maggiore controllo tecnico o installazione propria.']],
-    links: [['Confronta gli strumenti di automazione', '/strumenti/#strumenti']]
+    links: [['Confronta gli strumenti di automazione', '/strumenti/?cat=Automazione#strumenti']]
   },
   {
     id: 'organizzazione',
@@ -69,7 +77,7 @@ const knowledge = [
     title: 'Scegli dove vuoi conservare e ritrovare le informazioni',
     answer: 'Notion è pratico per pagine, procedure e piccoli database condivisi; Obsidian conserva note locali collegate; Anytype e Capacities organizzano la conoscenza come oggetti.',
     tools: [['Notion', 'Per pagine, procedure e progetti condivisi.'], ['Obsidian', 'Per un archivio locale in Markdown.'], ['Anytype o Capacities', 'Per note e oggetti collegati.']],
-    links: [['Esplora organizzazione e dati', '/strumenti/#strumenti']]
+    links: [['Esplora organizzazione e dati', '/strumenti/?cat=Organizzazione%20e%20dati#strumenti']]
   },
   {
     id: 'audio',
@@ -77,14 +85,14 @@ const knowledge = [
     title: 'Distingui voce, pulizia audio e musica',
     answer: 'Sono attività diverse: prima chiarisci se devi registrare o migliorare una voce, trascrivere un parlato oppure creare una colonna sonora.',
     tools: [['Adobe Podcast', 'Per registrare, pulire e trascrivere la voce.'], ['Suno', 'Per bozze musicali e contenuti sonori originali.'], ['CapCut o un editor video', 'Per sottotitoli e sincronizzazione con le immagini.']],
-    links: [['Esplora voce e audio', '/strumenti/#strumenti']]
+    links: [['Esplora voce e audio', '/strumenti/?cat=Voce%20e%20audio#strumenti']]
   },
   {
     id: 'verifica',
     terms: ['risposta sbagliat', 'inventat', 'allucin', 'verific', 'fonti', 'controllare risposta', 'controll', 'fact check', 'citaz', 'assecond', 'compiacen', 'contraddittori', 'sempre ragione', 'obiezi', 'pensiero critico', 'perplexity'],
     title: 'Una risposta convincente deve ancora essere verificata',
     answer: 'Controlla se la fonte esiste, se sostiene davvero l’affermazione, se la data è adeguata e se il sistema distingue fatti e deduzioni. Per decisioni importanti usa anche fonti indipendenti.',
-    tools: [['Perplexity', 'Per una prima raccolta di fonti consultabili.'], ['NotebookLM', 'Per lavorare su documenti scelti da te.'], ['Un secondo controllo', 'Chiedi obiezioni e limiti, ma non trattare un’altra AI come prova finale.']],
+    tools: [['Perplexity', 'Per una prima raccolta di fonti consultabili.'], ['Gemini Notebook', 'Il servizio già chiamato NotebookLM, per lavorare su documenti scelti da te.'], ['Un secondo controllo', 'Chiedi obiezioni e limiti, ma non trattare un’altra AI come prova finale.']],
     links: [['Quando l’AI inventa una risposta', '/blog/allucinazioni-intelligenza-artificiale-come-riconoscerle/'], ['Perché l’AI può assecondarci', '/blog/intelligenza-artificiale-risposte-critiche/']]
   },
   {
@@ -92,7 +100,7 @@ const knowledge = [
     terms: ['file', 'pdf', 'document', 'privacy', 'dati personali', 'dati clienti', 'dati dei clienti', 'proteggere dati', 'documento riservato', 'contratto', 'caricare contratto', 'alleg', 'caric', 'metadati', 'notebooklm', 'studiare documenti'],
     title: 'Controlla il file prima di allegarlo',
     answer: 'Invia soltanto ciò che serve. Rimuovi identificatori e metadati non necessari, verifica account e impostazioni e ricontrolla la risposta sul documento originale.',
-    tools: [['Controllo del file', 'Cerca dati personali, metadati e contenuti nascosti prima dell’invio.'], ['Scheda NotebookLM', 'Consulta funzioni e condizioni per lavorare su fonti scelte.'], ['Scheda ChatPDF', 'Consulta funzioni e condizioni prima di caricare un PDF non riservato.']],
+    tools: [['Controllo del file', 'Cerca dati personali, metadati e contenuti nascosti prima dell’invio.'], ['Scheda Gemini Notebook', 'Consulta funzioni e condizioni del servizio già chiamato NotebookLM.'], ['Scheda ChatPDF', 'Consulta funzioni e condizioni prima di caricare un PDF non riservato.']],
     links: [['Cosa succede ai file caricati nell’AI?', '/blog/file-caricati-intelligenza-artificiale-privacy/'], ['Regole europee prima di usare l’AI', '/blog/ai-act-cosa-sapere-prima-di-usare-intelligenza-artificiale/']]
   },
   {
