@@ -46,7 +46,9 @@ document.querySelectorAll('[data-level-test]').forEach(test=>{
     let title='Livello 1 — Capire e collaborare con l’AI';
     let copy='Parti dalle basi: richieste chiare, valutazione delle risposte e riconoscimento dei limiti. Costruirai fondamenta utili per tutti i livelli successivi.';
     recommended='iniziale';
-    if(score>=8){title='Livello 3 — Costruire agenti, automazioni e soluzioni';copy='Hai già un metodo solido. Puoi concentrarti sulla progettazione di sistemi, integrazioni e controlli, tornando ai livelli precedenti quando serve.';recommended='avanzato'}
+    const agentsAndApi=Number(form.querySelector('input[name="level-q5"]:checked')?.value||0);
+    if(score>=8&&agentsAndApi===2){title='Livello 3 — Avanzato tecnico';copy='Hai già un metodo solido e sai progettare soluzioni con agenti o API. Concentrati su codice, MCP, valutazione e controlli degli errori.';recommended='avanzato'}
+    else if(score>=8){title='Livello 3 — Avanzato pratico';copy='Hai già un metodo solido nell’uso. Concentrati su workflow, delega, valutazione e automazioni guidate; per API e codice parti dai prerequisiti indicati.';recommended='avanzato'}
     else if(score>=4){title='Livello 2 — Trasformare le conversazioni in metodo';copy='Conosci già le basi. Il passo successivo è rendere le risposte più affidabili e trasformare le buone conversazioni in procedure riutilizzabili.';recommended='intermedio'}
     form.hidden=true;progress.hidden=true;result.hidden=false;
     result.querySelector('h3').textContent=title;
