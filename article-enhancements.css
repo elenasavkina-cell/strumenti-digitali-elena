@@ -28,6 +28,17 @@
 .test-result a{display:inline-block;margin-top:8px;color:#fff;font-weight:700;border-bottom:2px solid #fff}
 .test-result button{display:block;margin-top:22px;padding:0;border:0;background:transparent;color:#c8d0dd;font:600 .9rem/1.4 var(--body);text-decoration:underline;cursor:pointer}
 .interactive-test .test-privacy{margin:20px 0 0;font-size:.86rem}
+.learning-card-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;margin:28px 0 32px;font-family:var(--body)}
+.learning-card{display:flex;flex-direction:column;margin:0;padding:22px;border:1px solid var(--line);background:var(--paper)}
+.learning-card .learning-card-type{margin:0 0 10px;color:var(--accent);font:800 .72rem/1.35 var(--body);letter-spacing:.07em;text-transform:uppercase}
+.learning-card h3{margin:0 0 10px;font:600 1.45rem/1.15 var(--display)}
+.learning-card>p:not(.learning-card-type){margin:0 0 16px;font:1rem/1.55 var(--body)}
+.learning-card dl{margin:0 0 18px;font:1rem/1.5 var(--body)}
+.learning-card dl div{padding:10px 0;border-top:1px solid var(--line)}
+.learning-card dt{font-weight:800}
+.learning-card dd{margin:2px 0 0;color:var(--muted)}
+.learning-card>a{margin-top:auto;font-weight:800}
+.learning-card>sup{margin-top:5px}
 @media(max-width:620px){
   .interactive-test{margin:36px -2px;padding:22px 18px}
   .interactive-test label{padding:13px 12px}
@@ -40,6 +51,7 @@
   .prose .article-table-cards td{border:0;border-top:1px solid var(--line);padding:13px 15px}
   .prose .article-table-cards td:first-child{border-top:0;background:var(--panel-dark);color:var(--panel-text);font-weight:800;font-size:1.05rem}
   .prose .article-table-cards td[data-label]::before{content:attr(data-label);display:block;margin-bottom:5px;color:var(--muted);font:800 .72rem/1.3 var(--body);letter-spacing:.06em;text-transform:uppercase}
+  .learning-card-grid{grid-template-columns:1fr}
 }
 
 .sources li,#controllare-microfono{scroll-margin-top:128px}
