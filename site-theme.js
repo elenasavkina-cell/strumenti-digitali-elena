@@ -13,6 +13,7 @@
     '/assets/chatgpt-claude-gemini.svg':'/assets/chatgpt-claude-gemini-dark.svg',
     '/assets/file-caricati-ai-privacy.svg':'/assets/file-caricati-ai-privacy-dark.svg',
     '/assets/recensioni-online.svg':'/assets/recensioni-online-dark.svg',
+    '/assets/pubblicita-digitale-canali.svg':'/assets/pubblicita-digitale-canali-dark.svg',
     '/assets/telefono-pubblicita-personalizzata.svg':'/assets/telefono-pubblicita-personalizzata-dark.svg',
     '/assets/tour-virtuali-realta-aumentata.svg':'/assets/tour-virtuali-realta-aumentata-dark.svg',
     '/assets/traduttori-in-viaggio.svg':'/assets/traduttori-in-viaggio-dark.svg',
