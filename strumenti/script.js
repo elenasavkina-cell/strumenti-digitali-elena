@@ -61,6 +61,9 @@ const tools=[
  ,{n:'Gamma',c:'Presentazioni e contenuti',p:'Freemium',d:'Crea presentazioni, documenti, pagine web e contenuti social a partire da un’idea.',b:'Produrre una prima struttura visuale',w:['Documenti','Siti web','Social'],u:'https://gamma.app/',x:'#7c3aed'}
  ,{n:'Replit',c:'Sviluppo e codice',p:'Freemium',d:'Ambiente online per creare, eseguire e pubblicare applicazioni anche con assistenza AI.',b:'Prototipare applicazioni nel browser',w:['GitHub','Database','Deploy'],u:'https://replit.com/',x:'#f26207'}
  ,{n:'Lovable',c:'Sviluppo e codice',p:'Freemium',d:'Genera applicazioni web tramite istruzioni testuali e modifiche iterative.',b:'Creare rapidamente un prototipo web',w:['Supabase','GitHub','Deploy'],u:'https://lovable.dev/',x:'#f43f5e'}
+ ,{n:'Meta Ad Library',c:'Pubblicità e verifica',p:'Gratis',d:'Archivio pubblico per cercare gli annunci attivi sui prodotti Meta e osservare messaggi, formati e inserzionisti.',b:'Studiare gli annunci prima di preparare una campagna',w:['Facebook','Instagram','Meta Blueprint'],u:'https://www.facebook.com/ads/library/',x:'#0866ff'}
+ ,{n:'Google Ads Transparency Center',c:'Pubblicità e verifica',p:'Gratis',d:'Centro pubblico per cercare gli annunci pubblicati da inserzionisti verificati sui prodotti Google.',b:'Controllare creatività e inserzionisti su Google',w:['Google Ads','Skillshop','Google Trends'],u:'https://adstransparency.google.com/',x:'#4285f4'}
+ ,{n:'Google Trends',c:'Pubblicità e verifica',p:'Gratis',d:'Confronta l’interesse relativo delle ricerche nel tempo e per area geografica; non mostra il numero assoluto di potenziali clienti.',b:'Verificare stagionalità e interesse prima di investire',w:['Google Ads','Keyword research','Content strategy'],u:'https://trends.google.com/trends/',x:'#34a853'}
 ];
 const groups={
  'Testi e ricerca':['ChatGPT','Claude','Perplexity','Gemini','Gemma','Llama','Mixtral','DeepSeek','Qwen','Gemini Notebook','Kimi','Genspark','Manus','Microsoft Copilot','DeepL','ChatPDF','Napkin AI','Gamma'],
@@ -69,7 +72,8 @@ const groups={
  'Automazione':['Make','Zapier','n8n','Activepieces','Dify','Langflow','Genspark','Manus','OpusClip','Remotion','Gamma'],
  'Siti e sviluppo':['Supabase','GitHub','Netlify','Cursor','Devin Desktop','v0','Bolt.new','GitHub Copilot','Firebase','Kimi','Manus','Remotion','Gamma','Replit','Lovable'],
  'AI locale e server':['LM Studio','Ollama','Gemma','Llama','Mixtral','DeepSeek','Qwen'],
- 'Organizzazione e dati':['Airtable','Baserow','SmartSuite','Microsoft Clarity','Notion','Obsidian','Tally','Typeform','Fillout','Anytype','Capacities','Gemini Notebook']
+ 'Organizzazione e dati':['Airtable','Baserow','SmartSuite','Microsoft Clarity','Notion','Obsidian','Tally','Typeform','Fillout','Anytype','Capacities','Gemini Notebook'],
+ 'Pubblicità e verifica':['Meta Ad Library','Google Ads Transparency Center','Google Trends','Microsoft Clarity','Tally']
 };
 tools.forEach(tool=>{tool.uses=Object.entries(groups).filter(([,names])=>names.includes(tool.n)).map(([group])=>group);if(!tool.uses.length)tool.uses=['Altro']});
 const categories=['Tutte le categorie',...Object.keys(groups),...(tools.some(tool=>tool.uses.includes('Altro'))?['Altro']:[])];
@@ -101,7 +105,7 @@ if(advisor){
  const resultBox=advisor.querySelector('.advisor-result');
  const answers={};
  const goals=[
-  ['video','Creare o montare video'],['images','Creare immagini e grafiche'],['site','Costruire un sito o un’app'],['local','Usare l’AI sul computer o creare un server locale'],['server','Pubblicare un sito e collegarlo a dominio o hosting'],['automation','Automatizzare attività e collegare strumenti'],['all','Fare più attività in un solo ambiente']
+  ['video','Creare o montare video'],['images','Creare immagini e grafiche'],['site','Costruire un sito o un’app'],['local','Usare l’AI sul computer o creare un server locale'],['server','Pubblicare un sito e collegarlo a dominio o hosting'],['automation','Automatizzare attività e collegare strumenti'],['ads','Iniziare a fare pubblicità online'],['all','Fare più attività in un solo ambiente']
  ];
  const questions=[
   {key:'goal',title:'Che cosa vuoi realizzare?',options:goals},
@@ -115,6 +119,7 @@ if(advisor){
   local:{title:'Avvia l’AI sul tuo computer',items:[['LM Studio','Parti da qui se preferisci un’interfaccia grafica per scaricare e provare modelli locali.'],['Ollama','Sceglilo se vuoi collegare il modello ad applicazioni, automazioni o un server locale.'],['Gemma, Llama o Qwen','Scarica un modello compatibile con la memoria e l’hardware del computer, controllandone la licenza.']],task:'Scarica un modello piccolo, avvialo localmente e ripeti una prova dopo aver scollegato Internet.',category:'AI locale e server'},
   server:{title:'Collega correttamente sito, dominio e servizi',items:[['GitHub','Conserva qui il codice che dovrà essere pubblicato.'],['Netlify','Collega il repository: gestisce pubblicazione, HTTPS e aggiornamenti del sito.'],['Supabase','Aggiungilo soltanto se servono database, accesso utenti o dati persistenti.']],task:'Pubblica prima una pagina di prova con indirizzo temporaneo; collega il dominio solo quando funziona.',category:'Siti e sviluppo'},
   automation:{title:'Automatizza un’attività reale',items:[['Make','Disegna visivamente il primo flusso e osserva ogni passaggio.'],['Zapier','Confrontalo se cerchi configurazioni rapide e integrazioni già pronte.'],['n8n','Valutalo dopo se vuoi più controllo o installazione su un tuo server.']],task:'Crea un flusso di prova che copia i dati di un modulo in un foglio, senza inviare messaggi pubblici.',category:'Automazione'},
+  ads:{title:'Verifica prima di investire',items:[['Meta Ad Library','Osserva annunci attivi, messaggi e formati usati da attività simili alla tua.'],['Google Trends','Controlla interesse relativo, stagionalità e differenze tra aree.'],['Microsoft Clarity','Dopo il lancio, verifica come viene usata la pagina di arrivo senza fermarti ai clic.']],task:'Scegli un’offerta reale, confronta cinque annunci, controlla una ricerca e verifica che pagina o modulo funzionino da telefono.',category:'Pubblicità e verifica'},
   all:{title:'Prova un ambiente versatile senza fare tutto insieme',items:[['ChatGPT','Usalo per ricerca, testi, analisi e supporto alla costruzione del progetto.'],['Genspark','Prova un’attività completa che unisca ricerca e produzione di un risultato.'],['Canva','Completa la parte visuale e prepara formati pronti da condividere.']],task:'Scegli un solo risultato — per esempio una mini guida — e realizzalo con massimo due strumenti.',category:'Testi e ricerca'}
  };
  let step=0;
