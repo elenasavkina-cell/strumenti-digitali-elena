@@ -22,6 +22,7 @@ const walk = async (dir) => {
 const home = await read("index.html");
 const cardCss = await read("article-index.css");
 const mainCss = await read("styles.css");
+const themeJs = await read("site-theme.js");
 
 const assistantPage = await read("assistente/index.html");
 const assistantJs = await read("assistente/assistant.js");
@@ -100,6 +101,24 @@ if (/-dark\.svg/.test(homeWithoutLatest)) {
   errors.push("Home: una scheda normale usa ancora una variante -dark.svg.");
 }
 
+// Le schede normali devono avere una copertina chiara senza pannelli blu incorporati
+// e una variante scura registrata nel selettore globale del tema.
+const normalCardImages = [...homeWithoutLatest.matchAll(/<figure class="article-card-media"><img[^>]+src="(\/assets\/[^"?]+\.svg)"/g)]
+  .map(([, src]) => src);
+for (const src of new Set(normalCardImages)) {
+  const lightPath = src.slice(1);
+  try {
+    const lightSvg = await read(lightPath);
+    if (/<rect[^>]+width="1200"[^>]+height="675"[^>]+fill="#(?:07182f|0b1422|102744)"/i.test(lightSvg)) {
+      errors.push(`${lightPath}: una scheda normale non deve contenere un fondo blu scuro incorporato.`);
+    }
+    const darkSrc = src.replace(/\.svg$/, "-dark.svg");
+    if (!themeJs.includes(`'${src}':'${darkSrc}'`)) {
+      errors.push(`Tema immagini: manca l’associazione ${src} → ${darkSrc}.`);
+    }
+  } catch {}
+}
+
 if (latestImage) {
   const darkPath = latestImage.replace(/^\//, "");
   const lightPath = darkPath.replace(/-dark\.svg$/, ".svg");
@@ -117,6 +136,9 @@ if (latestImage) {
 // Regole CSS che non devono più essere modificate articolo per articolo.
 if (!/\.article-card-latest \.article-card-media\{background:transparent\}/.test(cardCss)) {
   errors.push("CSS Home: il contenitore dell’immagine in evidenza deve essere trasparente.");
+}
+if (!/\.article-card-latest\{[^}]*border:0/.test(cardCss)) {
+  errors.push("CSS Home: la scheda in evidenza non deve avere bordi chiari.");
 }
 if (!/\.article-page \.article-cover\{width:min\(820px,calc\(100% - 48px\)\)/.test(mainCss)) {
   errors.push("CSS articoli: la copertina deve restare allineata alla colonna editoriale di 820 px.");
