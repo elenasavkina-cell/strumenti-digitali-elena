@@ -124,14 +124,15 @@ if(advisor){
  };
  let step=0;
  function showQuestion(){
-  const current=step===1&&answers.goal==='ads'?{key:'experience',title:'Hai già una pagina o un modulo pronto per ricevere contatti?',options:[['easy','Non ancora'],['guided','Sì, ma devo ancora verificarlo'],['technical','Sì, è pronto e posso misurare il risultato']]}:questions[step];
+  const current=step===1&&answers.goal==='ads'?{key:'experience',title:'Hai già una pagina o un modulo pronto per ricevere contatti?',options:[['easy','Non ancora'],['guided','Sì, ma devo ancora verificarlo'],['technical','Sì, è pronto e posso misurare il risultato']]}:step===2&&answers.goal==='ads'?{key:'budget',title:'Quanto vuoi investire nella prima prova?',options:[['free','Vorrei iniziare gratuitamente'],['small','Posso investire un piccolo budget di prova'],['flexible','Scelgo in base al risultato']]}:questions[step];
   questionBox.innerHTML=`<h3>${current.title}</h3><div class="advisor-options">${current.options.map(([value,label])=>`<button type="button" data-value="${value}">${label}</button>`).join('')}</div>`;
   progressBar.style.width=`${((step+1)/questions.length)*100}%`;
   progressText.textContent=`Domanda ${step+1} di ${questions.length}`;
   questionBox.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{answers[current.key]=button.dataset.value;if(step<questions.length-1){step+=1;showQuestion()}else showResult()}));
  }
  function showResult(){
-  const plan=plans[answers.goal];
+  const basePlan=plans[answers.goal];
+  const plan=answers.goal==='ads'&&answers.experience==='easy'?{...basePlan,items:[basePlan.items[0],basePlan.items[1],['Tally','Crea un modulo semplice per ricevere le richieste prima di avviare la campagna.']],task:'Scegli un’offerta reale, confronta cinque annunci, controlla una ricerca e prepara un modulo funzionante da telefono.'}:basePlan;
   const budgetNote=answers.goal==='ads'?'Inizia dagli strumenti gratuiti e decidi il budget solo dopo aver verificato pagina, offerta e misurazione.':answers.budget==='free'?'Inizia dai piani gratuiti e verifica i limiti prima di inserire dati o acquistare crediti.':answers.budget==='small'?'Usa prima la prova gratuita; paga soltanto se il piccolo progetto riesce e la funzione necessaria è inclusa.':'Confronta comunque piano gratuito e pagamento: un prezzo maggiore non garantisce che lo strumento sia più adatto.';
   const technicalNote=answers.goal==='ads'?(answers.experience==='technical'?'La destinazione è pronta: controlla che misuri richieste, prenotazioni o vendite, non soltanto clic.':answers.experience==='guided'?'Prima della campagna, prova pagina o modulo da telefono e verifica che ogni richiesta arrivi correttamente.':'Prima di acquistare visibilità, prepara una pagina o un modulo semplice e un modo per registrare i risultati.'):answers.experience==='technical'?'Hai scelto maggiore controllo: verifica esportazione, proprietà dei dati e possibilità di installazione autonoma.':answers.experience==='guided'?'Conserva sempre una copia esportabile del progetto e controlla le modifiche proposte dall’AI.':'Parti con impostazioni gestite e pochi passaggi; aggiungi complessità soltanto quando serve.';
   const relatedLinks=answers.goal==='ads'?'<p class="advisor-related"><a href="/blog/google-meta-whatsapp-pubblicita-online/">Leggi la guida ai canali →</a><br><a href="/impara/#pubblicita">Apri i corsi ufficiali →</a></p>':'';
