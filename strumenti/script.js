@@ -64,6 +64,10 @@ const tools=[
  ,{n:'Meta Ad Library',c:'Pubblicità e misurazione',p:'Gratis',d:'Archivio pubblico per cercare gli annunci attivi sui prodotti Meta e osservare messaggi, formati e inserzionisti.',b:'Studiare gli annunci prima di preparare una campagna',w:['Facebook','Instagram','Meta Blueprint'],u:'https://www.facebook.com/ads/library/',x:'#0866ff'}
  ,{n:'Google Ads Transparency Center',c:'Pubblicità e misurazione',p:'Gratis',d:'Centro pubblico per cercare gli annunci pubblicati da inserzionisti verificati sui prodotti Google.',b:'Controllare creatività e inserzionisti su Google',w:['Google Ads','Skillshop','Google Trends'],u:'https://adstransparency.google.com/',x:'#4285f4'}
  ,{n:'Google Trends',c:'Pubblicità e misurazione',p:'Gratis',d:'Confronta l’interesse relativo delle ricerche nel tempo e per area geografica; non mostra il numero assoluto di potenziali clienti.',b:'Verificare stagionalità e interesse prima di investire',w:['Google Ads','Ricerca delle parole chiave','Strategia dei contenuti'],u:'https://trends.google.com/trends/',x:'#34a853'}
+ ,{n:'Google Search Console',c:'Visibilità sui motori',p:'Gratis',d:'Mostra per quali ricerche un sito compare su Google, impressioni, clic e problemi di indicizzazione. Non misura tutte le visite al sito.',b:'Controllare se Google trova le pagine e come le mostra',w:['Sitemap','Controllo URL','Google Trends'],u:'https://search.google.com/search-console/about',x:'#4285f4'}
+ ,{n:'Bing Webmaster Tools',c:'Visibilità sui motori',p:'Gratis',d:'Controlla indicizzazione, scansione e prestazioni di un sito su Bing; può importare proprietà e sitemap già presenti in Search Console.',b:'Verificare la presenza del sito anche fuori da Google',w:['Search Console','Sitemap','Invio degli aggiornamenti'],u:'https://www.bing.com/webmasters/about',x:'#008373'}
+ ,{n:'PageSpeed Insights',c:'Prestazioni del sito',p:'Gratis',d:'Analizza una pagina da mobile e desktop, distingue dati reali e test di laboratorio e suggerisce possibili miglioramenti.',b:'Capire perché una pagina è lenta o instabile',w:['Velocità su telefono','Search Console','Test della pagina'],u:'https://pagespeed.web.dev/',x:'#f9ab00'}
+ ,{n:'Rich Results Test',c:'Dati strutturati',p:'Gratis',d:'Controlla se Google riconosce i dati strutturati supportati e segnala errori. L’idoneità non garantisce che il risultato arricchito venga mostrato.',b:'Verificare dati strutturati prima e dopo la pubblicazione',w:['Dati strutturati','Anteprime Google','Search Console'],u:'https://search.google.com/test/rich-results',x:'#ea4335'}
 ];
 const groups={
  'Testi e ricerca':['ChatGPT','Claude','Perplexity','Gemini','Gemma','Llama','Mixtral','DeepSeek','Qwen','Gemini Notebook','Kimi','Genspark','Manus','Microsoft Copilot','DeepL','ChatPDF','Napkin AI','Gamma'],
@@ -73,7 +77,8 @@ const groups={
  'Siti e sviluppo':['Supabase','GitHub','Netlify','Cursor','Devin Desktop','v0','Bolt.new','GitHub Copilot','Firebase','Kimi','Manus','Remotion','Gamma','Replit','Lovable'],
  'AI locale e server':['LM Studio','Ollama','Gemma','Llama','Mixtral','DeepSeek','Qwen'],
  'Organizzazione e dati':['Airtable','Baserow','SmartSuite','Microsoft Clarity','Notion','Obsidian','Tally','Typeform','Fillout','Anytype','Capacities','Gemini Notebook'],
- 'Pubblicità e misurazione':['Meta Ad Library','Google Ads Transparency Center','Google Trends','Microsoft Clarity','Tally']
+ 'Pubblicità e misurazione':['Meta Ad Library','Google Ads Transparency Center','Google Trends','Microsoft Clarity','Tally'],
+ 'Farsi trovare su Google':['Google Search Console','Bing Webmaster Tools','PageSpeed Insights','Rich Results Test','Google Trends']
 };
 tools.forEach(tool=>{tool.uses=Object.entries(groups).filter(([,names])=>names.includes(tool.n)).map(([group])=>group);if(!tool.uses.length)tool.uses=['Altro']});
 const categories=['Tutte le categorie',...Object.keys(groups),...(tools.some(tool=>tool.uses.includes('Altro'))?['Altro']:[])];
@@ -83,10 +88,12 @@ const grid=document.querySelector('#tool-grid');
 const filters=document.querySelector('#filters');
 const count=document.querySelector('#result-count');
 const empty=document.querySelector('#empty');
+const searchGuide=document.querySelector('#search-guide');
 function render(){
  const found=tools.filter(tool=>active==='Tutte le categorie'||tool.uses.includes(active));
  count.textContent=`${found.length} strumenti`;
  empty.style.display=found.length?'none':'block';
+ if(searchGuide)searchGuide.hidden=active!=='Farsi trovare su Google';
  grid.innerHTML=found.map(tool=>`<article class="tool-card"><div class="card-top"><span class="tool-logo" style="background:${tool.x}">${tool.n[0]}</span><span class="badge">${tool.p}</span></div><p class="tool-category">${tool.uses.join(' · ')}</p><h3>${tool.n}</h3><p>${tool.d}</p><div class="ideal">✓ <span><b>Utile per</b>${tool.b}</span></div><label>SI COMBINA BENE CON</label><div class="tags">${tool.w.map(item=>`<span>${item}</span>`).join('')}</div><a href="${tool.u}" target="_blank" rel="noopener">Visita il sito ufficiale ↗</a></article>`).join('');
 }
 function drawFilters(){
@@ -105,7 +112,7 @@ if(advisor){
  const resultBox=advisor.querySelector('.advisor-result');
  const answers={};
  const goals=[
-  ['video','Creare o montare video'],['images','Creare immagini e grafiche'],['site','Costruire un sito o un’app'],['local','Usare l’AI sul computer o creare un server locale'],['server','Pubblicare un sito e collegarlo a dominio o hosting'],['automation','Automatizzare attività e collegare strumenti'],['ads','Iniziare a fare pubblicità online'],['all','Fare più attività in un solo ambiente']
+  ['video','Creare o montare video'],['images','Creare immagini e grafiche'],['site','Costruire un sito o un’app'],['local','Usare l’AI sul computer o creare un server locale'],['server','Pubblicare un sito e collegarlo a dominio o hosting'],['automation','Automatizzare attività e collegare strumenti'],['ads','Iniziare a fare pubblicità online'],['search','Controllare se un sito si trova su Google'],['all','Fare più attività in un solo ambiente']
  ];
  const questions=[
   {key:'goal',title:'Che cosa vuoi realizzare?',options:goals},
@@ -120,6 +127,7 @@ if(advisor){
   server:{title:'Collega correttamente sito, dominio e servizi',items:[['GitHub','Conserva qui il codice che dovrà essere pubblicato.'],['Netlify','Collega il repository: gestisce pubblicazione, HTTPS e aggiornamenti del sito.'],['Supabase','Aggiungilo soltanto se servono database, accesso utenti o dati persistenti.']],task:'Pubblica prima una pagina di prova con indirizzo temporaneo; collega il dominio solo quando funziona.',category:'Siti e sviluppo'},
   automation:{title:'Automatizza un’attività reale',items:[['Make','Disegna visivamente il primo flusso e osserva ogni passaggio.'],['Zapier','Confrontalo se cerchi configurazioni rapide e integrazioni già pronte.'],['n8n','Valutalo dopo se vuoi più controllo o installazione su un tuo server.']],task:'Crea un flusso di prova che copia i dati di un modulo in un foglio, senza inviare messaggi pubblici.',category:'Automazione'},
   ads:{title:'Verifica prima di investire',items:[['Meta Ad Library','Osserva annunci attivi, messaggi e formati usati da attività simili alla tua.'],['Google Trends','Controlla interesse relativo, stagionalità e differenze tra aree.'],['Microsoft Clarity','Dopo il lancio, verifica come viene usata la pagina di arrivo senza fermarti ai clic.']],task:'Scegli un’offerta reale, confronta cinque annunci, controlla una ricerca e verifica che pagina o modulo funzionino da telefono.',category:'Pubblicità e misurazione'},
+  search:{title:'Controlla come i motori vedono il sito',items:[['Google Search Console','Verifica proprietà, indicizzazione, query, impressioni e clic provenienti da Google.'],['PageSpeed Insights','Prova una pagina importante da telefono e controlla i problemi che rallentano l’esperienza.'],['Rich Results Test','Controlla se i dati strutturati presenti nella pagina vengono riconosciuti.']],task:'Controlla una pagina pubblica con Search Console, verifica che sia indicizzabile e annota un solo problema concreto da correggere.',category:'Farsi trovare su Google'},
   all:{title:'Prova un ambiente versatile senza fare tutto insieme',items:[['ChatGPT','Usalo per ricerca, testi, analisi e supporto alla costruzione del progetto.'],['Genspark','Prova un’attività completa che unisca ricerca e produzione di un risultato.'],['Canva','Completa la parte visuale e prepara formati pronti da condividere.']],task:'Scegli un solo risultato — per esempio una mini guida — e realizzalo con massimo due strumenti.',category:'Testi e ricerca'}
  };
  let step=0;
@@ -133,7 +141,7 @@ if(advisor){
  function showResult(){
   const basePlan=plans[answers.goal];
   const plan=answers.goal==='ads'&&answers.experience==='easy'?{...basePlan,items:[basePlan.items[0],basePlan.items[1],['Tally','Crea un modulo semplice per ricevere le richieste prima di avviare la campagna.']],task:'Scegli un’offerta reale, confronta cinque annunci, controlla una ricerca e prepara un modulo funzionante da telefono.'}:basePlan;
-  const budgetNote=answers.goal==='ads'?'Inizia dagli strumenti gratuiti e decidi il budget solo dopo aver verificato pagina, offerta e misurazione.':answers.budget==='free'?'Inizia dai piani gratuiti e verifica i limiti prima di inserire dati o acquistare crediti.':answers.budget==='small'?'Usa prima la prova gratuita; paga soltanto se il piccolo progetto riesce e la funzione necessaria è inclusa.':'Confronta comunque piano gratuito e pagamento: un prezzo maggiore non garantisce che lo strumento sia più adatto.';
+  const budgetNote=answers.goal==='ads'?'Inizia dagli strumenti gratuiti e decidi il budget solo dopo aver verificato pagina, offerta e misurazione.':answers.goal==='search'?'Gli strumenti di questo percorso sono gratuiti: dedica la prima prova a una sola pagina e a un problema verificabile.':answers.budget==='free'?'Inizia dai piani gratuiti e verifica i limiti prima di inserire dati o acquistare crediti.':answers.budget==='small'?'Usa prima la prova gratuita; paga soltanto se il piccolo progetto riesce e la funzione necessaria è inclusa.':'Confronta comunque piano gratuito e pagamento: un prezzo maggiore non garantisce che lo strumento sia più adatto.';
   const technicalNote=answers.goal==='ads'?(answers.experience==='technical'?'La destinazione è pronta: controlla che misuri richieste, prenotazioni o vendite, non soltanto clic.':answers.experience==='guided'?'Prima della campagna, prova pagina o modulo da telefono e verifica che ogni richiesta arrivi correttamente.':'Prima di acquistare visibilità, prepara una pagina o un modulo semplice e un modo per registrare i risultati.'):answers.experience==='technical'?'Hai scelto maggiore controllo: verifica esportazione, proprietà dei dati e possibilità di installazione autonoma.':answers.experience==='guided'?'Conserva sempre una copia esportabile del progetto e controlla le modifiche proposte dall’AI.':'Parti con impostazioni gestite e pochi passaggi; aggiungi complessità soltanto quando serve.';
   const relatedLinks=answers.goal==='ads'?'<p class="advisor-related"><a href="/blog/google-meta-whatsapp-pubblicita-online/">Leggi la guida ai canali →</a><br><a href="/impara/#pubblicita">Apri i corsi ufficiali →</a></p>':'';
   questionBox.hidden=true;progress.hidden=true;resultBox.hidden=false;

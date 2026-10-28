@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Controllare se un sito è presente su Google</title>
+  <desc id="desc">Una pagina web attraversa le fasi di scoperta, indicizzazione e controllo fino a comparire in una ricerca.</desc>
+  <rect width="1200" height="630" fill="#eef2f6"/>
+  <path d="M120 486H1080" stroke="#cfd6df" stroke-width="2"/>
+  <rect x="120" y="135" width="290" height="300" fill="#fff"/>
+  <rect x="152" y="170" width="166" height="18" fill="#2457ff"/>
+  <rect x="152" y="220" width="224" height="12" fill="#cfd6df"/>
+  <rect x="152" y="251" width="186" height="12" fill="#cfd6df"/>
+  <rect x="152" y="282" width="205" height="12" fill="#cfd6df"/>
+  <rect x="152" y="332" width="90" height="70" fill="#b8e320"/>
+  <rect x="258" y="332" width="118" height="12" fill="#cfd6df"/>
+  <rect x="258" y="361" width="96" height="12" fill="#cfd6df"/>
+  <rect x="258" y="390" width="108" height="12" fill="#cfd6df"/>
+  <path d="M445 286H565" stroke="#b8e320" stroke-width="10"/>
+  <path d="m546 267 22 19-22 19" fill="none" stroke="#b8e320" stroke-width="10"/>
+  <circle cx="675" cy="286" r="104" fill="#fff" stroke="#07182f" stroke-width="8"/>
+  <path d="m748 361 82 82" stroke="#07182f" stroke-width="22" stroke-linecap="square"/>
+  <path d="M622 286h106M675 233v106" stroke="#b8e320" stroke-width="9"/>
+  <path d="M834 286H965" stroke="#2457ff" stroke-width="10"/>
+  <path d="m946 267 22 19-22 19" fill="none" stroke="#2457ff" stroke-width="10"/>
+  <rect x="958" y="193" width="122" height="186" fill="#fff"/>
+  <rect x="980" y="218" width="78" height="12" fill="#2457ff"/>
+  <rect x="980" y="251" width="70" height="9" fill="#cfd6df"/>
+  <rect x="980" y="278" width="78" height="9" fill="#cfd6df"/>
+  <rect x="980" y="319" width="31" height="31" fill="#b8e320"/>
+  <path d="m989 334 8 8 17-20" fill="none" stroke="#07182f" stroke-width="5"/>
+  <text x="120" y="544" fill="#07182f" font-family="Arial, sans-serif" font-size="25" font-weight="700" letter-spacing="2">SCOPERTA · INDICIZZAZIONE · CONTROLLO</text>
+</svg>

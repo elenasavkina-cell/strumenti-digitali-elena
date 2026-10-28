@@ -5,6 +5,12 @@
 .filters{display:flex;flex-wrap:wrap;gap:8px;margin:30px 0 42px}
 .filters button,.more{border:1px solid var(--line);background:transparent;color:var(--ink);padding:10px 15px;font:700 .82rem/1 var(--body);cursor:pointer}
 .filters button:hover,.filters button.active{background:var(--ink);border-color:var(--ink);color:#fff}
+.category-guide{margin:-14px 0 34px;padding:26px;border:1px solid var(--line);background:var(--bg)}
+.category-guide[hidden]{display:none}
+.category-guide .kicker{margin:0 0 8px}
+.category-guide h2{margin:0 0 10px;font-size:clamp(2rem,3.5vw,3.25rem)}
+.category-guide p:not(.kicker){max-width:720px;color:var(--muted)}
+.category-guide .text-link{display:inline-block;margin-top:8px}
 .tool-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
 .tool-card{background:var(--paper);padding:26px;min-height:390px;display:flex;flex-direction:column}
 .card-top{display:flex;justify-content:space-between;align-items:center}
