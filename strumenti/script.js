@@ -65,9 +65,9 @@ const tools=[
  ,{n:'Google Ads Transparency Center',c:'Pubblicità e misurazione',p:'Gratis',d:'Centro pubblico per cercare gli annunci pubblicati da inserzionisti verificati sui prodotti Google.',b:'Controllare creatività e inserzionisti su Google',w:['Google Ads','Skillshop','Google Trends'],u:'https://adstransparency.google.com/',x:'#4285f4'}
  ,{n:'Google Trends',c:'Pubblicità e misurazione',p:'Gratis',d:'Confronta l’interesse relativo delle ricerche nel tempo e per area geografica; non mostra il numero assoluto di potenziali clienti.',b:'Verificare stagionalità e interesse prima di investire',w:['Google Ads','Ricerca delle parole chiave','Strategia dei contenuti'],u:'https://trends.google.com/trends/',x:'#34a853'}
  ,{n:'Google Search Console',c:'Visibilità sui motori',p:'Gratis',d:'Mostra per quali ricerche un sito compare su Google, impressioni, clic e problemi di indicizzazione. Non misura tutte le visite al sito.',b:'Controllare se Google trova le pagine e come le mostra',w:['Sitemap','Controllo URL','Google Trends'],u:'https://search.google.com/search-console/about',x:'#4285f4'}
- ,{n:'Bing Webmaster Tools',c:'Visibilità sui motori',p:'Gratis',d:'Controlla indicizzazione, scansione e prestazioni di un sito su Bing; può importare proprietà e sitemap già presenti in Search Console.',b:'Verificare la presenza del sito anche fuori da Google',w:['Search Console','Sitemap','IndexNow'],u:'https://www.bing.com/webmasters/about',x:'#008373'}
- ,{n:'PageSpeed Insights',c:'Prestazioni del sito',p:'Gratis',d:'Analizza una pagina da mobile e desktop, distingue dati reali e test di laboratorio e suggerisce possibili miglioramenti.',b:'Capire perché una pagina è lenta o instabile',w:['Core Web Vitals','Search Console','Lighthouse'],u:'https://pagespeed.web.dev/',x:'#f9ab00'}
- ,{n:'Rich Results Test',c:'Dati strutturati',p:'Gratis',d:'Controlla se Google riconosce i dati strutturati supportati e segnala errori. L’idoneità non garantisce che il risultato arricchito venga mostrato.',b:'Verificare dati strutturati prima e dopo la pubblicazione',w:['Schema.org','JSON-LD','Search Console'],u:'https://search.google.com/test/rich-results',x:'#ea4335'}
+ ,{n:'Bing Webmaster Tools',c:'Visibilità sui motori',p:'Gratis',d:'Controlla indicizzazione, scansione e prestazioni di un sito su Bing; può importare proprietà e sitemap già presenti in Search Console.',b:'Verificare la presenza del sito anche fuori da Google',w:['Search Console','Sitemap','Invio degli aggiornamenti'],u:'https://www.bing.com/webmasters/about',x:'#008373'}
+ ,{n:'PageSpeed Insights',c:'Prestazioni del sito',p:'Gratis',d:'Analizza una pagina da mobile e desktop, distingue dati reali e test di laboratorio e suggerisce possibili miglioramenti.',b:'Capire perché una pagina è lenta o instabile',w:['Velocità su telefono','Search Console','Test della pagina'],u:'https://pagespeed.web.dev/',x:'#f9ab00'}
+ ,{n:'Rich Results Test',c:'Dati strutturati',p:'Gratis',d:'Controlla se Google riconosce i dati strutturati supportati e segnala errori. L’idoneità non garantisce che il risultato arricchito venga mostrato.',b:'Verificare dati strutturati prima e dopo la pubblicazione',w:['Dati strutturati','Anteprime Google','Search Console'],u:'https://search.google.com/test/rich-results',x:'#ea4335'}
 ];
 const groups={
  'Testi e ricerca':['ChatGPT','Claude','Perplexity','Gemini','Gemma','Llama','Mixtral','DeepSeek','Qwen','Gemini Notebook','Kimi','Genspark','Manus','Microsoft Copilot','DeepL','ChatPDF','Napkin AI','Gamma'],
@@ -88,10 +88,12 @@ const grid=document.querySelector('#tool-grid');
 const filters=document.querySelector('#filters');
 const count=document.querySelector('#result-count');
 const empty=document.querySelector('#empty');
+const searchGuide=document.querySelector('#search-guide');
 function render(){
  const found=tools.filter(tool=>active==='Tutte le categorie'||tool.uses.includes(active));
  count.textContent=`${found.length} strumenti`;
  empty.style.display=found.length?'none':'block';
+ if(searchGuide)searchGuide.hidden=active!=='Farsi trovare su Google';
  grid.innerHTML=found.map(tool=>`<article class="tool-card"><div class="card-top"><span class="tool-logo" style="background:${tool.x}">${tool.n[0]}</span><span class="badge">${tool.p}</span></div><p class="tool-category">${tool.uses.join(' · ')}</p><h3>${tool.n}</h3><p>${tool.d}</p><div class="ideal">✓ <span><b>Utile per</b>${tool.b}</span></div><label>SI COMBINA BENE CON</label><div class="tags">${tool.w.map(item=>`<span>${item}</span>`).join('')}</div><a href="${tool.u}" target="_blank" rel="noopener">Visita il sito ufficiale ↗</a></article>`).join('');
 }
 function drawFilters(){
