@@ -10,7 +10,7 @@ const tools=[
  {n:'SmartSuite',c:'Database',p:'Prova gratuita',d:'Workspace no-code per processi e progetti; dopo la prova gratuita di 14 giorni serve un piano a pagamento.',b:'Flussi strutturati per team',w:['Fillout','Make','Zapier'],u:'https://www.smartsuite.com/',x:'#6c5ce7'},
  {n:'GitHub',c:'Siti e app',p:'Gratis',d:'Conserva il codice e tiene traccia di ogni modifica.',b:'Versioni e backup',w:['Netlify','Cloudflare','VS Code'],u:'https://github.com/',x:'#24292f'},
  {n:'Netlify',c:'Siti e app',p:'Freemium',d:'Pubblica un sito e lo aggiorna automaticamente dal repository.',b:'Siti statici',w:['GitHub','Supabase','Forms'],u:'https://www.netlify.com/',x:'#00a99d'},
- {n:'Microsoft Clarity',c:'Marketing',p:'Gratis',d:'Registrazioni e mappe di calore per capire come viene usato un sito.',b:'Analisi del comportamento',w:['Analytics','GTM','Siti web'],u:'https://clarity.microsoft.com/',x:'#1678f2'},
+ {n:'Microsoft Clarity',c:'Marketing',p:'Gratis',d:'Registrazioni e mappe di calore per capire come viene usato un sito. Prima di installarlo su un sito europeo, configura correttamente consenso e informativa privacy.',b:'Analisi del comportamento sulla pagina',w:['Statistiche','Gestione dei tag','Siti web'],u:'https://clarity.microsoft.com/',x:'#1678f2'},
  {n:'Notion',c:'Organizzazione',p:'Freemium',d:'Note, procedure, progetti e piccoli database.',b:'Conoscenza condivisa',w:['Make','Drive','AI'],u:'https://www.notion.so/',x:'#191919'},
  {n:'Obsidian',c:'Organizzazione',p:'Gratis',d:'Note locali collegate e conservate sul computer.',b:'Archivio personale duraturo',w:['Markdown','GitHub','Plugin'],u:'https://obsidian.md/',x:'#7c3aed'}
  ,{n:'Tally',c:'Form e raccolta dati',p:'Freemium',d:'Moduli con stile essenziale; piano gratuito con moduli e invii illimitati entro le regole di uso corretto.',b:'Raccogliere dati con pochi costi',w:['Notion','Make','Google Sheets'],u:'https://tally.so/',x:'#333333'}
@@ -61,6 +61,9 @@ const tools=[
  ,{n:'Gamma',c:'Presentazioni e contenuti',p:'Freemium',d:'Crea presentazioni, documenti, pagine web e contenuti social a partire da un’idea.',b:'Produrre una prima struttura visuale',w:['Documenti','Siti web','Social'],u:'https://gamma.app/',x:'#7c3aed'}
  ,{n:'Replit',c:'Sviluppo e codice',p:'Freemium',d:'Ambiente online per creare, eseguire e pubblicare applicazioni anche con assistenza AI.',b:'Prototipare applicazioni nel browser',w:['GitHub','Database','Deploy'],u:'https://replit.com/',x:'#f26207'}
  ,{n:'Lovable',c:'Sviluppo e codice',p:'Freemium',d:'Genera applicazioni web tramite istruzioni testuali e modifiche iterative.',b:'Creare rapidamente un prototipo web',w:['Supabase','GitHub','Deploy'],u:'https://lovable.dev/',x:'#f43f5e'}
+ ,{n:'Meta Ad Library',c:'Pubblicità e misurazione',p:'Gratis',d:'Archivio pubblico per cercare gli annunci attivi sui prodotti Meta e osservare messaggi, formati e inserzionisti.',b:'Studiare gli annunci prima di preparare una campagna',w:['Facebook','Instagram','Meta Blueprint'],u:'https://www.facebook.com/ads/library/',x:'#0866ff'}
+ ,{n:'Google Ads Transparency Center',c:'Pubblicità e misurazione',p:'Gratis',d:'Centro pubblico per cercare gli annunci pubblicati da inserzionisti verificati sui prodotti Google.',b:'Controllare creatività e inserzionisti su Google',w:['Google Ads','Skillshop','Google Trends'],u:'https://adstransparency.google.com/',x:'#4285f4'}
+ ,{n:'Google Trends',c:'Pubblicità e misurazione',p:'Gratis',d:'Confronta l’interesse relativo delle ricerche nel tempo e per area geografica; non mostra il numero assoluto di potenziali clienti.',b:'Verificare stagionalità e interesse prima di investire',w:['Google Ads','Ricerca delle parole chiave','Strategia dei contenuti'],u:'https://trends.google.com/trends/',x:'#34a853'}
 ];
 const groups={
  'Testi e ricerca':['ChatGPT','Claude','Perplexity','Gemini','Gemma','Llama','Mixtral','DeepSeek','Qwen','Gemini Notebook','Kimi','Genspark','Manus','Microsoft Copilot','DeepL','ChatPDF','Napkin AI','Gamma'],
@@ -69,7 +72,8 @@ const groups={
  'Automazione':['Make','Zapier','n8n','Activepieces','Dify','Langflow','Genspark','Manus','OpusClip','Remotion','Gamma'],
  'Siti e sviluppo':['Supabase','GitHub','Netlify','Cursor','Devin Desktop','v0','Bolt.new','GitHub Copilot','Firebase','Kimi','Manus','Remotion','Gamma','Replit','Lovable'],
  'AI locale e server':['LM Studio','Ollama','Gemma','Llama','Mixtral','DeepSeek','Qwen'],
- 'Organizzazione e dati':['Airtable','Baserow','SmartSuite','Microsoft Clarity','Notion','Obsidian','Tally','Typeform','Fillout','Anytype','Capacities','Gemini Notebook']
+ 'Organizzazione e dati':['Airtable','Baserow','SmartSuite','Microsoft Clarity','Notion','Obsidian','Tally','Typeform','Fillout','Anytype','Capacities','Gemini Notebook'],
+ 'Pubblicità e misurazione':['Meta Ad Library','Google Ads Transparency Center','Google Trends','Microsoft Clarity','Tally']
 };
 tools.forEach(tool=>{tool.uses=Object.entries(groups).filter(([,names])=>names.includes(tool.n)).map(([group])=>group);if(!tool.uses.length)tool.uses=['Altro']});
 const categories=['Tutte le categorie',...Object.keys(groups),...(tools.some(tool=>tool.uses.includes('Altro'))?['Altro']:[])];
@@ -101,7 +105,7 @@ if(advisor){
  const resultBox=advisor.querySelector('.advisor-result');
  const answers={};
  const goals=[
-  ['video','Creare o montare video'],['images','Creare immagini e grafiche'],['site','Costruire un sito o un’app'],['local','Usare l’AI sul computer o creare un server locale'],['server','Pubblicare un sito e collegarlo a dominio o hosting'],['automation','Automatizzare attività e collegare strumenti'],['all','Fare più attività in un solo ambiente']
+  ['video','Creare o montare video'],['images','Creare immagini e grafiche'],['site','Costruire un sito o un’app'],['local','Usare l’AI sul computer o creare un server locale'],['server','Pubblicare un sito e collegarlo a dominio o hosting'],['automation','Automatizzare attività e collegare strumenti'],['ads','Iniziare a fare pubblicità online'],['all','Fare più attività in un solo ambiente']
  ];
  const questions=[
   {key:'goal',title:'Che cosa vuoi realizzare?',options:goals},
@@ -115,22 +119,25 @@ if(advisor){
   local:{title:'Avvia l’AI sul tuo computer',items:[['LM Studio','Parti da qui se preferisci un’interfaccia grafica per scaricare e provare modelli locali.'],['Ollama','Sceglilo se vuoi collegare il modello ad applicazioni, automazioni o un server locale.'],['Gemma, Llama o Qwen','Scarica un modello compatibile con la memoria e l’hardware del computer, controllandone la licenza.']],task:'Scarica un modello piccolo, avvialo localmente e ripeti una prova dopo aver scollegato Internet.',category:'AI locale e server'},
   server:{title:'Collega correttamente sito, dominio e servizi',items:[['GitHub','Conserva qui il codice che dovrà essere pubblicato.'],['Netlify','Collega il repository: gestisce pubblicazione, HTTPS e aggiornamenti del sito.'],['Supabase','Aggiungilo soltanto se servono database, accesso utenti o dati persistenti.']],task:'Pubblica prima una pagina di prova con indirizzo temporaneo; collega il dominio solo quando funziona.',category:'Siti e sviluppo'},
   automation:{title:'Automatizza un’attività reale',items:[['Make','Disegna visivamente il primo flusso e osserva ogni passaggio.'],['Zapier','Confrontalo se cerchi configurazioni rapide e integrazioni già pronte.'],['n8n','Valutalo dopo se vuoi più controllo o installazione su un tuo server.']],task:'Crea un flusso di prova che copia i dati di un modulo in un foglio, senza inviare messaggi pubblici.',category:'Automazione'},
+  ads:{title:'Verifica prima di investire',items:[['Meta Ad Library','Osserva annunci attivi, messaggi e formati usati da attività simili alla tua.'],['Google Trends','Controlla interesse relativo, stagionalità e differenze tra aree.'],['Microsoft Clarity','Dopo il lancio, verifica come viene usata la pagina di arrivo senza fermarti ai clic.']],task:'Scegli un’offerta reale, confronta cinque annunci, controlla una ricerca e verifica che pagina o modulo funzionino da telefono.',category:'Pubblicità e misurazione'},
   all:{title:'Prova un ambiente versatile senza fare tutto insieme',items:[['ChatGPT','Usalo per ricerca, testi, analisi e supporto alla costruzione del progetto.'],['Genspark','Prova un’attività completa che unisca ricerca e produzione di un risultato.'],['Canva','Completa la parte visuale e prepara formati pronti da condividere.']],task:'Scegli un solo risultato — per esempio una mini guida — e realizzalo con massimo due strumenti.',category:'Testi e ricerca'}
  };
  let step=0;
  function showQuestion(){
-  const current=questions[step];
+  const current=step===1&&answers.goal==='ads'?{key:'experience',title:'Hai già una pagina o un modulo pronto per ricevere contatti?',options:[['easy','Non ancora'],['guided','Sì, ma devo ancora verificarlo'],['technical','Sì, è pronto e posso misurare il risultato']]}:step===2&&answers.goal==='ads'?{key:'budget',title:'Quanto vuoi investire nella prima prova?',options:[['free','Vorrei iniziare gratuitamente'],['small','Posso investire un piccolo budget di prova'],['flexible','Scelgo in base al risultato']]}:questions[step];
   questionBox.innerHTML=`<h3>${current.title}</h3><div class="advisor-options">${current.options.map(([value,label])=>`<button type="button" data-value="${value}">${label}</button>`).join('')}</div>`;
   progressBar.style.width=`${((step+1)/questions.length)*100}%`;
   progressText.textContent=`Domanda ${step+1} di ${questions.length}`;
   questionBox.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{answers[current.key]=button.dataset.value;if(step<questions.length-1){step+=1;showQuestion()}else showResult()}));
  }
  function showResult(){
-  const plan=plans[answers.goal];
-  const budgetNote=answers.budget==='free'?'Inizia dai piani gratuiti e verifica i limiti prima di inserire dati o acquistare crediti.':answers.budget==='small'?'Usa prima la prova gratuita; paga soltanto se il piccolo progetto riesce e la funzione necessaria è inclusa.':'Confronta comunque piano gratuito e pagamento: un prezzo maggiore non garantisce che lo strumento sia più adatto.';
-  const technicalNote=answers.experience==='technical'?'Hai scelto maggiore controllo: verifica esportazione, proprietà dei dati e possibilità di installazione autonoma.':answers.experience==='guided'?'Conserva sempre una copia esportabile del progetto e controlla le modifiche proposte dall’AI.':'Parti con impostazioni gestite e pochi passaggi; aggiungi complessità soltanto quando serve.';
+  const basePlan=plans[answers.goal];
+  const plan=answers.goal==='ads'&&answers.experience==='easy'?{...basePlan,items:[basePlan.items[0],basePlan.items[1],['Tally','Crea un modulo semplice per ricevere le richieste prima di avviare la campagna.']],task:'Scegli un’offerta reale, confronta cinque annunci, controlla una ricerca e prepara un modulo funzionante da telefono.'}:basePlan;
+  const budgetNote=answers.goal==='ads'?'Inizia dagli strumenti gratuiti e decidi il budget solo dopo aver verificato pagina, offerta e misurazione.':answers.budget==='free'?'Inizia dai piani gratuiti e verifica i limiti prima di inserire dati o acquistare crediti.':answers.budget==='small'?'Usa prima la prova gratuita; paga soltanto se il piccolo progetto riesce e la funzione necessaria è inclusa.':'Confronta comunque piano gratuito e pagamento: un prezzo maggiore non garantisce che lo strumento sia più adatto.';
+  const technicalNote=answers.goal==='ads'?(answers.experience==='technical'?'La destinazione è pronta: controlla che misuri richieste, prenotazioni o vendite, non soltanto clic.':answers.experience==='guided'?'Prima della campagna, prova pagina o modulo da telefono e verifica che ogni richiesta arrivi correttamente.':'Prima di acquistare visibilità, prepara una pagina o un modulo semplice e un modo per registrare i risultati.'):answers.experience==='technical'?'Hai scelto maggiore controllo: verifica esportazione, proprietà dei dati e possibilità di installazione autonoma.':answers.experience==='guided'?'Conserva sempre una copia esportabile del progetto e controlla le modifiche proposte dall’AI.':'Parti con impostazioni gestite e pochi passaggi; aggiungi complessità soltanto quando serve.';
+  const relatedLinks=answers.goal==='ads'?'<p class="advisor-related"><a href="/blog/google-meta-whatsapp-pubblicita-online/">Leggi la guida ai canali →</a><br><a href="/impara/#pubblicita">Apri i corsi ufficiali →</a></p>':'';
   questionBox.hidden=true;progress.hidden=true;resultBox.hidden=false;
-  resultBox.innerHTML=`<p class="result-label">Percorso da provare</p><h3>${plan.title}</h3><ol>${plan.items.map(([name,why])=>`<li><strong>${name}</strong><span>${why}</span></li>`).join('')}</ol><p>${technicalNote} ${budgetNote}</p><p class="test-task"><strong>Prima prova:</strong> ${plan.task}</p><a href="#strumenti" data-filter="${plan.category}">Mostra gli strumenti consigliati ↓</a><button type="button" data-advisor-restart>Ricomincia</button>`;
+  resultBox.innerHTML=`<p class="result-label">Percorso da provare</p><h3>${plan.title}</h3><ol>${plan.items.map(([name,why])=>`<li><strong>${name}</strong><span>${why}</span></li>`).join('')}</ol><p>${technicalNote} ${budgetNote}</p><p class="test-task"><strong>Prima prova:</strong> ${plan.task}</p><a href="#strumenti" data-filter="${plan.category}">Mostra gli strumenti consigliati ↓</a>${relatedLinks}<button type="button" data-advisor-restart>Ricomincia</button>`;
   resultBox.querySelector('[data-filter]').addEventListener('click',()=>{active=plan.category;drawFilters();render()});
   resultBox.querySelector('[data-advisor-restart]').addEventListener('click',restart);
   resultBox.focus();
