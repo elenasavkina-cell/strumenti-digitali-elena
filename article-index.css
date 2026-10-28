@@ -13,4 +13,6 @@
 .article-card-media{margin:0;aspect-ratio:16/9;overflow:hidden;background:var(--surface)}
 .article-card-media img{display:block;width:100%;height:100%;object-fit:cover}
 .article-card-latest .article-card-media{background:transparent}
+.article-card-latest{grid-template-columns:minmax(280px,40%) 1fr;gap:34px}
+.article-card-latest .article-card-media img{object-fit:contain}
 @media(max-width:760px){.article-card{grid-template-columns:1fr;gap:24px}.article-card-media{width:100%}}
