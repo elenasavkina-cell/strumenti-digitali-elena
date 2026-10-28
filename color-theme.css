@@ -55,7 +55,7 @@
 .site-header{background:var(--header-bg)!important}
 .article-page .site-header{background:var(--article-header-bg)!important}
 
-.feature,.collection-note,.tutor-section,
+.feature,.article-card-latest,.collection-note,.tutor-section,
 .assistant-area form,.advisor-result,.level-test-result,.test-result,
 .next-step,.answer-progress,.prose .article-table th,
 .filters button:hover,.filters button.active,.level-tabs button.active,
