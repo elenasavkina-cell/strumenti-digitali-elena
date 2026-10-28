@@ -152,6 +152,14 @@ const knowledge = [
     links: [['Tour virtuali e realtà aumentata: cosa mostrano?', '/turismo/tour-virtuali-realta-aumentata/']]
   },
   {
+    id: 'sito-google',
+    terms: ['sito su google', 'essere su google', 'farsi trovare su google', 'search console', 'indicizz', 'sitemap', 'controllo url', 'pagina non su google', 'pagina non indicizzata', 'pagespeed', 'rich results', 'bing webmaster', 'visibilita online'],
+    title: 'Prima controlla se il motore trova e indicizza la pagina',
+    answer: 'Una ricerca site: può offrire un primo indizio, ma non è completa. Search Console permette di verificare una pagina precisa, inviare la sitemap e vedere query, impressioni e clic provenienti da Google. Non misura tutte le visite al sito.',
+    tools: [['Google Search Console', 'Per indicizzazione, query, impressioni e clic da Google.'], ['PageSpeed Insights', 'Per controllare velocità ed esperienza tecnica da mobile e desktop.'], ['Rich Results Test', 'Per verificare i dati strutturati riconosciuti da Google.']],
+    links: [['Il tuo sito è su Google? Guida pratica', '/blog/sito-su-google-search-console/'], ['Strumenti per farsi trovare su Google', '/strumenti/?cat=Farsi%20trovare%20su%20Google#strumenti']]
+  },
+  {
     id: 'pubblicita-online',
     terms: ['fare pubblicita', 'pubblicita online', 'google ads', 'meta ads', 'facebook ads', 'instagram ads', 'whatsapp ads', 'click to whatsapp', 'sponsorizzare', 'gestione inserzioni', 'budget pubblicitario', 'campagna pubblicitaria', 'pubblicita per azienda'],
     title: 'Scegli tra ricerca, scoperta e conversazione',
