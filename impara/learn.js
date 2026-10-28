@@ -23,6 +23,12 @@ tabs.forEach((tab,index)=>{
   });
 });
 
+if(window.location.hash==='#pubblicita'){
+  window.requestAnimationFrame(()=>window.requestAnimationFrame(()=>{
+    document.querySelector('#pubblicita')?.scrollIntoView({block:'start'});
+  }));
+}
+
 document.querySelectorAll('[data-level-test]').forEach(test=>{
   const form=test.querySelector('form');
   const questions=[...form.querySelectorAll('fieldset')];

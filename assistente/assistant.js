@@ -156,8 +156,8 @@ const knowledge = [
     terms: ['fare pubblicita', 'pubblicita online', 'google ads', 'meta ads', 'facebook ads', 'instagram ads', 'whatsapp ads', 'click to whatsapp', 'sponsorizzare', 'gestione inserzioni', 'budget pubblicitario', 'campagna pubblicitaria', 'pubblicita per azienda'],
     title: 'Scegli tra ricerca, scoperta e conversazione',
     answer: 'Google Search intercetta soprattutto chi sta già cercando una soluzione; Facebook e Instagram aiutano a far scoprire una proposta; gli annunci che aprono WhatsApp portano il contatto in una conversazione. Prima della piattaforma definisci risultato, destinazione, capacità di risposta e misurazione.',
-    tools: [['Google Search', 'Per una domanda già espressa con ricerche precise.'], ['Facebook e Instagram', 'Per far scoprire l’offerta attraverso contenuti e pubblici.'], ['Click-to-WhatsApp', 'Per richieste che richiedono domande, preventivi o consulenza.']],
-    links: [['Google Ads, Meta Ads o WhatsApp: da dove iniziare?', '/blog/google-meta-whatsapp-pubblicita-online/'], ['Corsi ufficiali sulla pubblicità digitale', '/impara/#pubblicita'], ['Strumenti per osservare e verificare gli annunci', '/strumenti/?cat=Pubblicit%C3%A0%20e%20verifica#strumenti']]
+    tools: [['Google Search', 'Per una domanda già espressa con ricerche precise.'], ['Facebook e Instagram', 'Per far scoprire l’offerta attraverso contenuti e pubblici.'], ['Annunci che aprono WhatsApp', 'Per richieste che richiedono domande, preventivi o consulenza.']],
+    links: [['Google Ads, Meta Ads o WhatsApp: da dove iniziare?', '/blog/google-meta-whatsapp-pubblicita-online/'], ['Corsi ufficiali sulla pubblicità digitale', '/impara/#pubblicita'], ['Strumenti per pubblicità e misurazione', '/strumenti/?cat=Pubblicit%C3%A0%20e%20misurazione#strumenti']]
   },
   {
     id: 'pubblicita',
