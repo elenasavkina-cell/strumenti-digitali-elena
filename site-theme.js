@@ -15,7 +15,8 @@
     '/assets/recensioni-online.svg':'/assets/recensioni-online-dark.svg',
     '/assets/telefono-pubblicita-personalizzata.svg':'/assets/telefono-pubblicita-personalizzata-dark.svg',
     '/assets/tour-virtuali-realta-aumentata.svg':'/assets/tour-virtuali-realta-aumentata-dark.svg',
-    '/assets/traduttori-in-viaggio.svg':'/assets/traduttori-in-viaggio-dark.svg'
+    '/assets/traduttori-in-viaggio.svg':'/assets/traduttori-in-viaggio-dark.svg',
+    '/assets/sito-google-search-console.svg':'/assets/sito-google-search-console-dark.svg'
   };
 
   try{saved=localStorage.getItem(key);}catch(error){}
