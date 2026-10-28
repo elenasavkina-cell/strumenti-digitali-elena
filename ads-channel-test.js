@@ -31,7 +31,7 @@
     },
     notready: {
       title: 'Prima prepara le basi della campagna',
-      copy: 'Non serve scegliere subito una piattaforma. Definisci un risultato, prepara la pagina o il processo di risposta e decidi come riconoscere un contatto qualificato. Poi prova un solo canale con un budget limitato.',
+      copy: 'Non serve scegliere subito una piattaforma, anche se hai già un’idea del canale. Definisci un risultato, prepara la pagina o il processo di risposta e decidi come riconoscere un contatto qualificato. Poi prova un solo canale con un budget limitato.',
       warning: 'Spendere prima di avere destinazione, risposta e misurazione rende difficile capire che cosa non ha funzionato.'
     }
   };
